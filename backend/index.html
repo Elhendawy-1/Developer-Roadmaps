@@ -115,7 +115,13 @@ nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
 </head>
 <body>
 <noscript><p style="padding:20px;text-align:center">This roadmap needs JavaScript to run. Please enable it and reload.</p></noscript>
-<div class="topbar"><div class="wrap bar2"><strong class="brand"><svg class="logo" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path class="path" d="M4 22 H11 V15 H17"/><circle class="node" cx="4" cy="22" r="2.4"/><circle class="node" cx="17" cy="15" r="2.4"/><path class="tick" d="M21 10 l2 2 3.5-5"/></svg><span>.NET Roadmap</span></strong><a href="../" class="chip" style="margin-inline-end:auto;margin-inline-start:8px;min-height:34px;padding:4px 12px;font-size:.82rem;text-decoration:none;">&#8592; All Roadmaps</a><div class="seg" role="group" aria-label="Color theme"><button type="button" data-t="light" aria-pressed="false">&#9728; Light</button><button type="button" data-t="dark" aria-pressed="false">&#9790; Night</button></div></div></div>
+<div class="topbar"><div class="wrap bar2"><strong class="brand"><svg class="logo" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path class="path" d="M4 22 H11 V15 H17"/><circle class="node" cx="4" cy="22" r="2.4"/><circle class="node" cx="17" cy="15" r="2.4"/><path class="tick" d="M21 10 l2 2 3.5-5"/></svg><span>.NET Roadmap</span></strong><a href="../" class="chip" style="margin-inline-end:auto;margin-inline-start:8px;min-height:34px;padding:4px 12px;font-size:.82rem;text-decoration:none;">&#8592; All Roadmaps</a>
+<div class="chip" style="min-height:34px;padding:4px 12px;font-size:.82rem;gap:6px;border-color:var(--acc);color:var(--ink);" title="إجمالي الزيارات الحية للمنصة">
+  <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;"></span>
+  <span>الزوار:</span>
+  <strong id="liveVisitorsCount" style="color:var(--acc)">--</strong>
+</div>
+<div class="seg" role="group" aria-label="Color theme"><button type="button" data-t="light" aria-pressed="false">&#9728; Light</button><button type="button" data-t="dark" aria-pressed="false">&#9790; Night</button></div></div></div>
 <div class="wrap">
 <header><h1>.NET Backend Developer Roadmap</h1>
 <p class="lead">Nine stages from computer science fundamentals to ASP.NET Core. Each stage lists a main resource, alternatives and practice. Where a lesson list was not readable, the card says so.</p></header>
@@ -258,6 +264,28 @@ var t0=null;try{t0=localStorage.getItem("roadmap-theme");}catch(e){}
 setT(t0||(mq.matches?"dark":"light"),false);
 tb.forEach(function(b){b.addEventListener("click",function(){setT(b.getAttribute("data-t"),true);});});
 if(mq.addEventListener)mq.addEventListener("change",function(e){var x=null;try{x=localStorage.getItem("roadmap-theme");}catch(_){}if(!x)setT(e.matches?"dark":"light",false);});
+
+// Live visitors counter
+(function() {
+  var API_BASE = 'https://abacus.jasoncameron.dev';
+  var NAMESPACE = 'elhendawy-developer-roadmaps';
+  var KEY_TOTAL = 'total-visits';
+  var SESSION_KEY = 'visited_session_back';
+  var CACHE_KEY = 'cached_visits_total';
+  var el = document.getElementById('liveVisitorsCount');
+  var cached = localStorage.getItem(CACHE_KEY);
+  if (cached && el) el.textContent = Number(cached).toLocaleString();
+  var action = sessionStorage.getItem(SESSION_KEY) ? 'get' : 'hit';
+  fetch(API_BASE + '/' + action + '/' + NAMESPACE + '/' + KEY_TOTAL)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d && typeof d.value === 'number') {
+        sessionStorage.setItem(SESSION_KEY, 'true');
+        localStorage.setItem(CACHE_KEY, String(d.value));
+        if (el) el.textContent = d.value.toLocaleString();
+      }
+    }).catch(function(){});
+})();
 </script>
 </body>
 </html>

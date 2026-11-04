@@ -169,6 +169,39 @@
     color: #fff;
   }
 
+  .live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--emerald);
+    box-shadow: 0 0 8px var(--emerald);
+    animation: livePulse 1.8s infinite;
+    display: inline-block;
+  }
+  @keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(1.35); }
+  }
+  .live-counter-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 99px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  .stat-pill.highlight-pill {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.35);
+  }
+  .stat-pill.highlight-pill strong {
+    color: var(--primary-light);
+    font-size: 1.25rem;
+  }
+
   /* STATS PILLS */
   .stats-row {
     display: flex;
@@ -470,10 +503,10 @@
       <span>مسارات المطورين | Developer Roadmaps</span>
     </div>
     <div class="nav-actions">
-      <div class="views-badge" style="display:inline-flex;align-items:center;gap:6px;padding:6px 12px;background:rgba(255,255,255,0.05);border:1px solid var(--border-color);border-radius:99px;font-size:0.82rem;color:var(--text-secondary);" title="إجمالي الزيارات">
-        <span style="font-size:0.85rem;">👁️</span>
-        <span style="font-weight:600;font-size:0.8rem;">الزوار:</span>
-        <img src="https://komarev.com/ghpvc/?username=Elhendawy-1-Developer-Roadmaps&label=&color=6366f1&style=flat-square" alt="Visitors" style="vertical-align:middle;height:18px;border-radius:3px;">
+      <div class="live-counter-pill" title="إجمالي الزيارات الحية للمنصة">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span>الزوار:</span>
+        <strong id="liveTotalCountNav" style="color:#fff;font-size:0.95rem;">--</strong>
       </div>
       <a href="https://github.com/Elhendawy-1/Developer-Roadmaps" target="_blank" rel="noopener noreferrer" class="btn-gh">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
@@ -519,9 +552,10 @@
         <span>تتبع التقدم:</span>
         <strong>حفظ تلقائي محلي (LocalStorage)</strong>
       </div>
-      <div class="stat-pill">
-        <span>👁️ إجمالي المشاهدات:</span>
-        <img src="https://komarev.com/ghpvc/?username=Elhendawy-1-Developer-Roadmaps&label=&color=6366f1&style=flat-square" alt="Visitors" style="vertical-align:middle;height:20px;border-radius:3px;">
+      <div class="stat-pill highlight-pill" title="إجمالي زيارات الموقع والمسارات">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span>إجمالي زوار الموقع الحي:</span>
+        <strong id="liveTotalCountHero">--</strong>
       </div>
     </div>
   </section>
@@ -680,5 +714,43 @@
   </div>
 </footer>
 
+<script>
+(function() {
+  var API_BASE = 'https://abacus.jasoncameron.dev';
+  var NAMESPACE = 'elhendawy-developer-roadmaps';
+  var KEY_TOTAL = 'total-visits';
+  var SESSION_KEY = 'elhendawy_visited_session_hub';
+  var CACHE_KEY = 'cached_visits_total';
+
+  var navEl = document.getElementById('liveTotalCountNav');
+  var heroEl = document.getElementById('liveTotalCountHero');
+
+  var cached = localStorage.getItem(CACHE_KEY);
+  if (cached && !isNaN(cached)) {
+    var num = Number(cached).toLocaleString();
+    if (navEl) navEl.textContent = num;
+    if (heroEl) heroEl.textContent = num;
+  }
+
+  var isNewSession = !sessionStorage.getItem(SESSION_KEY);
+  var action = isNewSession ? 'hit' : 'get';
+  var url = API_BASE + '/' + action + '/' + NAMESPACE + '/' + KEY_TOTAL;
+
+  fetch(url)
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      if (data && typeof data.value === 'number') {
+        sessionStorage.setItem(SESSION_KEY, 'true');
+        localStorage.setItem(CACHE_KEY, String(data.value));
+        var formatted = data.value.toLocaleString();
+        if (navEl) navEl.textContent = formatted;
+        if (heroEl) heroEl.textContent = formatted;
+      }
+    })
+    .catch(function(err) {
+      console.warn('Counter API offline, using cached/fallback:', err);
+    });
+})();
+</script>
 </body>
 </html>

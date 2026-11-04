@@ -521,6 +521,10 @@
       <span class="tag">TypeScript</span>
       <span class="tag">React</span>
       <span class="tag">Git</span>
+      <span class="tag" style="background:rgba(108,92,231,0.25);border-color:rgba(108,92,231,0.5);color:#fff;">
+        <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#00c853;margin-inline-end:5px;"></span>
+        Visitors: <strong id="liveVisitorsCount" style="color:#fdcb6e;margin-inline-start:3px;">--</strong>
+      </span>
     </div>
   </div>
 
@@ -1027,6 +1031,28 @@
     this.style.transform = 'translateY(0)';
     this.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
   });
+
+  // Live visitors counter
+  (function() {
+    var API_BASE = 'https://abacus.jasoncameron.dev';
+    var NAMESPACE = 'elhendawy-developer-roadmaps';
+    var KEY_TOTAL = 'total-visits';
+    var SESSION_KEY = 'visited_session_front';
+    var CACHE_KEY = 'cached_visits_total';
+    var el = document.getElementById('liveVisitorsCount');
+    var cached = localStorage.getItem(CACHE_KEY);
+    if (cached && el) el.textContent = Number(cached).toLocaleString();
+    var action = sessionStorage.getItem(SESSION_KEY) ? 'get' : 'hit';
+    fetch(API_BASE + '/' + action + '/' + NAMESPACE + '/' + KEY_TOTAL)
+      .then(function(r){ return r.json(); })
+      .then(function(d){
+        if (d && typeof d.value === 'number') {
+          sessionStorage.setItem(SESSION_KEY, 'true');
+          localStorage.setItem(CACHE_KEY, String(d.value));
+          if (el) el.textContent = d.value.toLocaleString();
+        }
+      }).catch(function(){});
+  })();
 </script>
 
 </body>

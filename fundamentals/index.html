@@ -315,6 +315,7 @@
             <div class="stat-item"><div class="stat-value" id="totalLessons">0</div><div class="stat-label">Total Lessons</div></div>
             <div class="stat-item"><div class="stat-value" id="completedLessons">0</div><div class="stat-label">Completed</div></div>
             <div class="stat-item"><div class="stat-value" id="overallProgress">0%</div><div class="stat-label">Progress</div></div>
+            <div class="stat-item"><div class="stat-value" id="liveVisitorsCount" style="color:var(--accent-1)">--</div><div class="stat-label">Total Visitors</div></div>
         </div>
     </header>
     <div class="container">
@@ -1279,6 +1280,28 @@
         try { document.getElementById('copyYear').textContent = new Date().getFullYear(); } catch (e) {}
         progress = getProgress();
         renderAll();
+
+        // Live visitors counter
+        (function() {
+            var API_BASE = 'https://abacus.jasoncameron.dev';
+            var NAMESPACE = 'elhendawy-developer-roadmaps';
+            var KEY_TOTAL = 'total-visits';
+            var SESSION_KEY = 'visited_session_fund';
+            var CACHE_KEY = 'cached_visits_total';
+            var el = document.getElementById('liveVisitorsCount');
+            var cached = localStorage.getItem(CACHE_KEY);
+            if (cached && el) el.textContent = Number(cached).toLocaleString();
+            var action = sessionStorage.getItem(SESSION_KEY) ? 'get' : 'hit';
+            fetch(API_BASE + '/' + action + '/' + NAMESPACE + '/' + KEY_TOTAL)
+                .then(function(r){ return r.json(); })
+                .then(function(d){
+                    if (d && typeof d.value === 'number') {
+                        sessionStorage.setItem(SESSION_KEY, 'true');
+                        localStorage.setItem(CACHE_KEY, String(d.value));
+                        if (el) el.textContent = d.value.toLocaleString();
+                    }
+                }).catch(function(){});
+        })();
     </script>
 </body>
 </html>
