@@ -4,6 +4,7 @@
 
 [![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-success?style=for-the-badge&logo=github)](https://elhendawy-1.github.io/Developer-Roadmaps/)
 [![Open Source Love](https://img.shields.io/badge/Open%20Source-%E2%99%A5-red?style=for-the-badge)](https://github.com/Elhendawy-1/Developer-Roadmaps)
+[![Visitors](https://komarev.com/ghpvc/?username=Elhendawy-1-Developer-Roadmaps&label=VISITORS&color=6366f1&style=for-the-badge)](https://github.com/Elhendawy-1/Developer-Roadmaps)
 [![Free](https://img.shields.io/badge/Access-100%25%20Free-blue?style=for-the-badge)](#)
 
 ---
