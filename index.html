@@ -2,9 +2,9 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="description" content="مسارات شاملة ومتكاملة لتعلم البرمجة من الصفر حتى الاحتراف: مسار الأساسيات، الواجهات الأمامية (Front-End)، والواجهات الخلفية (.NET Backend) - محتوى مجاني لوجه الله تعالى.">
-<meta name="theme-color" content="#0a0e17">
+<meta name="theme-color" content="#090d16">
 <title>مسارات تعلم البرمجة | Developer Roadmaps</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%236366f1'/%3E%3Cpath d='M14 15 L8 20 L14 25 M26 15 L32 20 L26 25 M22 13 L18 27' stroke='%23ffffff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 <style>
@@ -12,23 +12,37 @@
     --bg-dark: #090d16;
     --bg-card: #111827;
     --bg-card-hover: #172033;
+    --bg-card-glass: rgba(17, 24, 39, 0.75);
     --text-primary: #f8fafc;
     --text-secondary: #94a3b8;
     --text-muted: #64748b;
     --border-color: rgba(255, 255, 255, 0.08);
-    --border-hover: rgba(99, 102, 241, 0.4);
+    --border-hover: rgba(99, 102, 241, 0.45);
     --primary: #6366f1;
     --primary-light: #818cf8;
     --primary-glow: rgba(99, 102, 241, 0.25);
     --cyan: #06b6d4;
-    --cyan-glow: rgba(6, 182, 212, 0.2);
+    --cyan-glow: rgba(6, 182, 212, 0.25);
+    --rose: #f43f5e;
+    --rose-glow: rgba(244, 63, 94, 0.25);
     --emerald: #10b981;
-    --emerald-glow: rgba(16, 185, 129, 0.2);
+    --emerald-glow: rgba(16, 185, 129, 0.25);
     --amber: #f59e0b;
-    --font: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font: system-ui, -apple-system, 'Segoe UI', Tahoma, Arial, sans-serif;
   }
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
 
   body {
     background-color: var(--bg-dark);
@@ -40,13 +54,21 @@
     flex-direction: column;
     overflow-x: hidden;
     background-image: 
-      radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 40%),
-      radial-gradient(circle at 85% 25%, rgba(6, 182, 212, 0.1) 0%, transparent 40%),
-      radial-gradient(circle at 50% 85%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+      radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
+      radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
     background-attachment: fixed;
   }
 
-  a { text-decoration: none; color: inherit; }
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s ease;
+  }
+
+  button {
+    font-family: inherit;
+  }
 
   .container {
     width: 100%;
@@ -55,118 +77,86 @@
     padding: 0 24px;
   }
 
-  /* TOP NAVBAR */
+  /* ================= TOP NAVBAR ================= */
   .navbar {
-    border-bottom: 1px solid var(--border-color);
-    background: rgba(9, 13, 22, 0.75);
-    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
-    z-index: 50;
+    z-index: 100;
+    background: rgba(9, 13, 22, 0.85);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: background 0.3s ease;
   }
+
   .navbar-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 70px;
+    min-height: 64px;
+    padding: 8px 0;
+    gap: 12px;
   }
+
   .brand {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 1.25rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    color: #fff;
+    min-width: 0;
+    flex-shrink: 1;
   }
+
   .brand-logo {
     width: 38px;
     height: 38px;
-    border-radius: 10px;
+    border-radius: 11px;
     background: linear-gradient(135deg, var(--primary), var(--cyan));
     display: grid;
     place-items: center;
     box-shadow: 0 4px 14px var(--primary-glow);
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
   }
+
+  .brand:hover .brand-logo {
+    transform: scale(1.05) rotate(-3deg);
+  }
+
+  .brand-text {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #fff;
+    white-space: nowrap;
+  }
+
+  .brand-divider {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  .brand-sub {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    direction: ltr;
+    white-space: nowrap;
+  }
+
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
-  }
-  .btn-gh {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid var(--border-color);
-    border-radius: 99px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    transition: all 0.25s ease;
-  }
-  .btn-gh:hover {
-    background: rgba(255, 255, 255, 0.12);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: #fff;
-    transform: translateY(-1px);
-  }
-
-  /* HERO SECTION */
-  .hero {
-    text-align: center;
-    padding: 70px 0 40px;
-  }
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 16px;
-    background: rgba(99, 102, 241, 0.1);
-    border: 1px solid rgba(99, 102, 241, 0.3);
-    border-radius: 99px;
-    color: var(--primary-light);
-    font-size: 0.88rem;
-    font-weight: 600;
-    margin-bottom: 24px;
-  }
-  .hero-badge .pulse {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--emerald);
-    box-shadow: 0 0 10px var(--emerald);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.2); }
-  }
-  .hero-title {
-    font-size: clamp(2.2rem, 5vw, 3.8rem);
-    font-weight: 900;
-    line-height: 1.2;
-    letter-spacing: -0.03em;
-    margin-bottom: 20px;
-    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .hero-title span {
-    background: linear-gradient(135deg, var(--primary-light), var(--cyan));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .hero-desc {
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    color: var(--text-secondary);
-    max-width: 780px;
-    margin: 0 auto 36px;
-    line-height: 1.8;
-  }
-  .hero-desc strong {
-    color: #fff;
+    gap: 10px;
+    flex-shrink: 0;
   }
 
   .live-dot {
@@ -177,89 +167,256 @@
     box-shadow: 0 0 8px var(--emerald);
     animation: livePulse 1.8s infinite;
     display: inline-block;
+    flex-shrink: 0;
   }
+
   @keyframes livePulse {
     0%, 100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.35; transform: scale(1.35); }
   }
+
   .live-counter-pill {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 6px 14px;
-    background: rgba(99, 102, 241, 0.1);
+    background: rgba(99, 102, 241, 0.12);
     border: 1px solid rgba(99, 102, 241, 0.3);
     border-radius: 99px;
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     color: var(--text-secondary);
-  }
-  .stat-pill.highlight-pill {
-    background: rgba(99, 102, 241, 0.1);
-    border-color: rgba(99, 102, 241, 0.35);
-  }
-  .stat-pill.highlight-pill strong {
-    color: var(--primary-light);
-    font-size: 1.25rem;
+    white-space: nowrap;
+    transition: all 0.25s ease;
   }
 
-  /* STATS PILLS */
-  .stats-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 50px;
+  .live-counter-pill:hover {
+    border-color: rgba(99, 102, 241, 0.6);
+    background: rgba(99, 102, 241, 0.18);
   }
-  .stat-pill {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-color);
-    border-radius: 14px;
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-  }
-  .stat-pill strong {
+
+  .live-counter-pill strong {
     color: #fff;
-    font-size: 1.1rem;
     font-weight: 700;
   }
 
-  /* ROADMAPS GRID */
+  .btn-gh {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 7px 16px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-color);
+    border-radius: 99px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    transition: all 0.25s ease;
+  }
+
+  .btn-gh:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* ================= HERO SECTION ================= */
+  .hero {
+    text-align: center;
+    padding: clamp(38px, 6vw, 70px) 0 clamp(28px, 4vw, 44px);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 18px;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.32);
+    border-radius: 99px;
+    color: var(--primary-light);
+    font-size: clamp(0.78rem, 2.2vw, 0.88rem);
+    font-weight: 600;
+    margin-bottom: 22px;
+    max-width: 100%;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.12);
+  }
+
+  .hero-badge .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--emerald);
+    box-shadow: 0 0 10px var(--emerald);
+    animation: pulse 2s infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 5.2vw, 3.4rem);
+    font-weight: 900;
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 55%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-title span {
+    background: linear-gradient(135deg, var(--primary-light), var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-desc {
+    font-size: clamp(0.95rem, 2vw, 1.18rem);
+    color: var(--text-secondary);
+    max-width: 760px;
+    margin: 0 auto 36px;
+    line-height: 1.8;
+  }
+
+  .hero-desc strong {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  /* ================= STATS SECTION ================= */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin: 0 auto 48px;
+    max-width: 1100px;
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 16px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 6px;
+    transition: all 0.25s ease;
+  }
+
+  .stat-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(99, 102, 241, 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .stat-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-light);
+  }
+
+  .stat-label {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  .stat-value {
+    color: #fff;
+    font-size: 1.08rem;
+    font-weight: 700;
+  }
+
+  /* Live Highlight Banner (Spans full width or separate card) */
+  .stat-live-banner {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(6, 182, 212, 0.08) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    border-radius: 16px;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    transition: all 0.25s ease;
+  }
+
+  .stat-live-banner:hover {
+    border-color: rgba(99, 102, 241, 0.6);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.15);
+  }
+
+  .stat-live-banner .stat-live-title {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .stat-live-banner strong {
+    color: #fff;
+    font-size: 1.35rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #fff, var(--primary-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ================= ROADMAPS GRID ================= */
   .grid-title {
     text-align: center;
     margin-bottom: 36px;
   }
+
   .grid-title h2 {
-    font-size: 1.8rem;
+    font-size: clamp(1.45rem, 3vw, 1.9rem);
     font-weight: 800;
     margin-bottom: 8px;
+    color: #fff;
   }
+
   .grid-title p {
     color: var(--text-secondary);
-    font-size: 0.95rem;
+    font-size: clamp(0.88rem, 1.8vw, 0.98rem);
   }
 
   .roadmaps-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 28px;
-    margin-bottom: 60px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    gap: 26px;
+    margin-bottom: 56px;
   }
 
   .roadmap-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 24px;
-    padding: 32px 28px;
+    border-radius: 22px;
+    padding: 30px 26px;
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
     transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
+
   .roadmap-card::before {
     content: '';
     position: absolute;
@@ -269,29 +426,33 @@
     opacity: 0;
     transition: opacity 0.3s ease;
   }
+
   .roadmap-card:hover {
     transform: translateY(-6px);
     background: var(--bg-card-hover);
     border-color: var(--card-border-hover, var(--border-hover));
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px var(--card-glow, var(--primary-glow));
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 0 0 25px var(--card-glow, var(--primary-glow));
   }
+
   .roadmap-card:hover::before {
     opacity: 1;
   }
 
   .card-fund {
     --card-accent: var(--cyan);
-    --card-border-hover: rgba(6, 182, 212, 0.4);
+    --card-border-hover: rgba(6, 182, 212, 0.45);
     --card-glow: var(--cyan-glow);
   }
+
   .card-front {
-    --card-accent: #e84393;
-    --card-border-hover: rgba(232, 67, 147, 0.4);
-    --card-glow: rgba(232, 67, 147, 0.2);
+    --card-accent: var(--rose);
+    --card-border-hover: rgba(244, 63, 94, 0.45);
+    --card-glow: var(--rose-glow);
   }
+
   .card-back {
     --card-accent: var(--primary);
-    --card-border-hover: rgba(99, 102, 241, 0.4);
+    --card-border-hover: rgba(99, 102, 241, 0.45);
     --card-glow: var(--primary-glow);
   }
 
@@ -301,23 +462,40 @@
     justify-content: space-between;
     margin-bottom: 20px;
   }
+
   .card-icon {
-    width: 56px;
-    height: 56px;
+    width: 54px;
+    height: 54px;
     border-radius: 16px;
     display: grid;
     place-items: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
+
+  .card-tags-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
   .card-tag {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 700;
     padding: 5px 12px;
     border-radius: 99px;
     background: rgba(255, 255, 255, 0.06);
     color: var(--text-secondary);
     border: 1px solid var(--border-color);
+  }
+
+  .card-tag.highlight {
+    background: rgba(99, 102, 241, 0.12);
+    color: var(--primary-light);
+    border-color: rgba(99, 102, 241, 0.35);
   }
 
   .card-title {
@@ -327,6 +505,7 @@
     color: #fff;
     line-height: 1.3;
   }
+
   .card-subtitle {
     font-size: 0.88rem;
     color: var(--card-accent, var(--primary-light));
@@ -335,9 +514,10 @@
     direction: ltr;
     text-align: right;
   }
+
   .card-desc {
     color: var(--text-secondary);
-    font-size: 0.94rem;
+    font-size: 0.93rem;
     line-height: 1.7;
     margin-bottom: 22px;
     flex-grow: 1;
@@ -346,173 +526,543 @@
   .topics-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 28px;
+    gap: 7px;
+    margin-bottom: 26px;
   }
+
   .topic-item {
-    font-size: 0.78rem;
+    font-size: 0.77rem;
     padding: 4px 10px;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.04);
     color: #cbd5e1;
     border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.2s ease;
+  }
+
+  .topic-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
   }
 
   .btn-launch {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     width: 100%;
-    padding: 14px;
+    min-height: 48px;
+    padding: 13px 20px;
     border-radius: 14px;
     background: linear-gradient(135deg, var(--card-accent, var(--primary)), rgba(255, 255, 255, 0.1));
     color: #fff;
     font-weight: 700;
     font-size: 0.95rem;
     transition: all 0.25s ease;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    cursor: pointer;
   }
+
   .btn-launch:hover {
     filter: brightness(1.15);
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   }
 
-  /* LEARNING PATH SECTION */
+  .btn-launch:active {
+    transform: scale(0.98);
+  }
+
+  .btn-launch .arrow-icon {
+    transition: transform 0.25s ease;
+  }
+
+  .btn-launch:hover .arrow-icon {
+    transform: translateX(-4px);
+  }
+
+  /* ================= LEARNING PATH SECTION ================= */
   .section-guide {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--border-color);
-    border-radius: 24px;
-    padding: 40px 32px;
-    margin-bottom: 60px;
+    border-radius: 22px;
+    padding: 38px 30px;
+    margin-bottom: 56px;
   }
+
   .section-guide h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 2.5vw, 1.6rem);
     font-weight: 800;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     text-align: center;
+    color: #fff;
   }
+
   .section-guide p.lead-guide {
     color: var(--text-secondary);
     text-align: center;
-    margin-bottom: 36px;
-    font-size: 0.95rem;
+    margin-bottom: 32px;
+    font-size: 0.94rem;
   }
+
   .steps-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
   }
+
   .step-box {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 24px;
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
   }
+
+  .step-box:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(99, 102, 241, 0.35);
+    transform: translateY(-2px);
+  }
+
   .step-num {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: var(--primary);
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
     color: #fff;
     display: grid;
     place-items: center;
     font-weight: 800;
+    font-size: 1.05rem;
     margin-bottom: 16px;
+    box-shadow: 0 4px 12px var(--primary-glow);
   }
+
   .step-box h4 {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
     margin-bottom: 8px;
     color: #fff;
+    font-weight: 700;
   }
+
   .step-box p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  /* ================= COUPONS CALLOUT ================= */
+  .coupons-callout {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(234, 88, 12, 0.05) 100%);
+    border: 1px dashed rgba(245, 158, 11, 0.4);
+    border-radius: 20px;
+    padding: 24px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 56px;
+    transition: all 0.25s ease;
+  }
+
+  .coupons-callout:hover {
+    border-color: rgba(245, 158, 11, 0.65);
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.14) 0%, rgba(234, 88, 12, 0.08) 100%);
+  }
+
+  .coupons-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    min-width: 0;
+  }
+
+  .coupons-badge-icon {
+    font-size: 2.2rem;
+    flex-shrink: 0;
+    animation: floatIcon 3s ease-in-out infinite;
+  }
+
+  @keyframes floatIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .coupons-text h4 {
+    font-size: 1.12rem;
+    color: #fef08a;
+    margin-bottom: 6px;
+    font-weight: 800;
+  }
+
+  .coupons-text p {
     color: var(--text-secondary);
     font-size: 0.9rem;
     line-height: 1.6;
   }
 
-  /* COUPONS CALLOUT */
-  .coupons-callout {
-    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(234, 88, 12, 0.05) 100%);
-    border: 1px dashed rgba(245, 158, 11, 0.4);
-    border-radius: 20px;
-    padding: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-bottom: 60px;
-  }
-  .coupons-info {
-    display: flex;
-    align-items: center;
+  /* ================= PLATFORM ADVANTAGES ================= */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
-  }
-  .coupons-badge-icon {
-    font-size: 2.2rem;
-  }
-  .coupons-text h4 {
-    font-size: 1.15rem;
-    color: #fef08a;
-    margin-bottom: 4px;
-  }
-  .coupons-text p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+    margin-bottom: 56px;
   }
 
-  /* FOOTER */
+  .feature-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 20px 18px;
+    text-align: center;
+    transition: all 0.25s ease;
+  }
+
+  .feature-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(99, 102, 241, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .feature-icon {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  .feature-item h4 {
+    color: #fff;
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .feature-item p {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  /* ================= FOOTER ================= */
   footer {
     margin-top: auto;
     border-top: 1px solid var(--border-color);
-    padding: 40px 0;
+    padding: 38px 0;
     text-align: center;
     color: var(--text-muted);
-    font-size: 0.9rem;
-  }
-  footer p { margin-bottom: 8px; }
-  footer .dua {
-    color: #e2e8f0;
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 14px;
+    font-size: 0.88rem;
+    background: rgba(9, 13, 22, 0.6);
   }
 
+  footer .dua {
+    color: #e2e8f0;
+    font-size: 1.02rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.7;
+  }
+
+  footer p {
+    margin-bottom: 8px;
+  }
+
+  .footer-links {
+    margin-top: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 0.85rem;
+  }
+
+  .footer-links a {
+    color: var(--primary-light);
+    font-weight: 600;
+  }
+
+  .footer-links a:hover {
+    text-decoration: underline;
+  }
+
+  /* ================= FLOATING SCROLL-TO-TOP ================= */
+  .scroll-top-btn {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 90;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(17, 24, 39, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: all 0.25s ease;
+  }
+
+  .scroll-top-btn.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .scroll-top-btn:hover {
+    background: var(--primary);
+    border-color: var(--primary-light);
+    transform: translateY(-2px);
+  }
+
+  /* ================= RESPONSIVE BREAKPOINTS ================= */
+
+  /* Tablets & Small Laptops (768px - 1024px) */
+  @media (max-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .steps-row {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* Tablets / Large Mobile (<= 768px) */
   @media (max-width: 768px) {
-    .hero { padding: 45px 0 30px; }
-    .roadmap-card { padding: 24px 20px; }
-    .section-guide { padding: 28px 20px; }
+    .container {
+      padding: 0 18px;
+    }
+    .steps-row {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .coupons-callout {
+      flex-direction: column;
+      text-align: center;
+      padding: 22px 18px;
+    }
+    .coupons-info {
+      flex-direction: column;
+      text-align: center;
+    }
+    .features-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .roadmap-card {
+      padding: 24px 20px;
+    }
+    .section-guide {
+      padding: 28px 18px;
+    }
+  }
+
+  /* Mobile Devices (<= 640px) - FIX NAVBAR BUG & OPTIMIZE LAYOUT */
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 14px;
+    }
+
+    .navbar-inner {
+      min-height: 58px;
+      padding: 6px 0;
+      gap: 8px;
+    }
+
+    .brand {
+      gap: 9px;
+    }
+
+    .brand-logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+    }
+
+    .brand-logo svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+    }
+
+    /* Hide English subtitle and divider on mobile to eliminate header overflow */
+    .brand-divider,
+    .brand-sub {
+      display: none;
+    }
+
+    .nav-actions {
+      gap: 8px;
+    }
+
+    .live-counter-pill {
+      padding: 4px 9px;
+      font-size: 0.76rem;
+      gap: 6px;
+    }
+
+    .live-counter-pill .counter-label {
+      display: inline;
+    }
+
+    /* Make GitHub button compact icon-only on mobile */
+    .btn-gh {
+      padding: 6px 9px;
+      min-width: 34px;
+      min-height: 34px;
+      border-radius: 10px;
+    }
+
+    .btn-gh .gh-text {
+      display: none;
+    }
+
+    .hero {
+      padding: 26px 0 24px;
+    }
+
+    .hero-badge {
+      padding: 5px 12px;
+      font-size: 0.76rem;
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      margin-bottom: 14px;
+    }
+
+    .hero-desc {
+      margin-bottom: 24px;
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* Mobile 2x2 Stats Grid + Highlight Live Counter Banner */
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .stat-card {
+      padding: 12px 10px;
+    }
+
+    .stat-icon {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 2px;
+    }
+
+    .stat-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .stat-label {
+      font-size: 0.74rem;
+    }
+
+    .stat-value {
+      font-size: 0.92rem;
+    }
+
+    .stat-live-banner {
+      padding: 12px 16px;
+      gap: 8px;
+    }
+
+    .stat-live-banner .stat-live-title {
+      font-size: 0.85rem;
+    }
+
+    .stat-live-banner strong {
+      font-size: 1.15rem;
+    }
+
+    .roadmaps-grid {
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .feature-item {
+      padding: 16px 14px;
+    }
+
+    .scroll-top-btn {
+      bottom: 16px;
+      left: 16px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  /* Ultra-small mobile screens (<= 360px) */
+  @media (max-width: 360px) {
+    .brand-title {
+      font-size: 0.95rem;
+    }
+    .live-counter-pill {
+      padding: 3px 7px;
+      font-size: 0.72rem;
+    }
+    .live-counter-pill .counter-label {
+      display: none; /* Keep dot + number */
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- TOP NAVBAR -->
-<header class="navbar">
+<!-- ================= TOP NAVBAR ================= -->
+<header class="navbar" id="topNavbar">
   <div class="container navbar-inner">
-    <div class="brand">
+    <a href="./" class="brand" aria-label="مسارات المطورين - الصفحة الرئيسية">
       <div class="brand-logo" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
           <polyline points="16 18 22 12 16 6"></polyline>
           <polyline points="8 6 2 12 8 18"></polyline>
         </svg>
       </div>
-      <span>مسارات المطورين | Developer Roadmaps</span>
-    </div>
-    <div class="nav-actions">
-      <div class="live-counter-pill" title="إجمالي الزيارات الحية للمنصة">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span>الزوار:</span>
-        <strong id="liveTotalCountNav" style="color:#fff;font-size:0.95rem;">--</strong>
+      <div class="brand-text">
+        <span class="brand-title">مسارات المطورين</span>
+        <span class="brand-divider" aria-hidden="true">|</span>
+        <span class="brand-sub">Developer Roadmaps</span>
       </div>
-      <a href="https://github.com/Elhendawy-1/Developer-Roadmaps" target="_blank" rel="noopener noreferrer" class="btn-gh">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    </a>
+
+    <div class="nav-actions">
+      <div class="live-counter-pill" title="إجمالي الزيارات الحية لكافة المسارات والمنصة">
+        <span class="live-dot" aria-hidden="true"></span>
+        <span class="counter-label">الزوار:</span>
+        <strong id="liveTotalCountNav">--</strong>
+      </div>
+      <a href="https://github.com/Elhendawy-1/Developer-Roadmaps" target="_blank" rel="noopener noreferrer" class="btn-gh" aria-label="عرض الكود والمشروع على GitHub" title="عرض الكود والمشروع على GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
         </svg>
-        <span>GitHub</span>
+        <span class="gh-text">GitHub</span>
       </a>
     </div>
   </div>
@@ -520,7 +1070,7 @@
 
 <main class="container">
 
-  <!-- HERO SECTION -->
+  <!-- ================= HERO SECTION ================= -->
   <section class="hero">
     <div class="hero-badge">
       <span class="pulse"></span>
@@ -531,36 +1081,70 @@
     </h1>
     <p class="hero-desc">
       دليلك الشامل والمتكامل لاحتراف البرمجة من الصفر حتى سوق العمل. يجمع لك هذا المستودع 
-      <strong>أقوى 3 مسارات تعليمية</strong> مرتبة خطوة بخطوة بالدروس والمشاريع والتطبيقات العملية وكوبونات الخصم.
+      <strong>أقوى 3 مسارات تعليمية</strong> تفاعلية مرتبة خطوة بخطوة بالدروس والمشاريع والتطبيقات العملية وكوبونات الخصم.
     </p>
 
-    <!-- STATS -->
-    <div class="stats-row">
-      <div class="stat-pill">
-        <span>المسارات الشاملة:</span>
-        <strong>3 مسارات تخصصية</strong>
+    <!-- STATS GRID -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+            <polyline points="2 17 12 22 22 17"></polyline>
+            <polyline points="2 12 12 17 22 12"></polyline>
+          </svg>
+        </div>
+        <span class="stat-label">المسارات المتخصصة</span>
+        <strong class="stat-value">3 مسارات متكاملة</strong>
       </div>
-      <div class="stat-pill">
-        <span>إجمالي الدروس والكورسات:</span>
-        <strong>50+ كورس ومرحلة</strong>
+
+      <div class="stat-card">
+        <div class="stat-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+        </div>
+        <span class="stat-label">الدروس والمراحل</span>
+        <strong class="stat-value">50+ كورس ومرحلة</strong>
       </div>
-      <div class="stat-pill">
-        <span>طريقة التشغيل:</span>
-        <strong>مباشرة عبر المتصفح (Static)</strong>
+
+      <div class="stat-card">
+        <div class="stat-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <span class="stat-label">طريقة التشغيل</span>
+        <strong class="stat-value">مباشرة عبر المتصفح</strong>
       </div>
-      <div class="stat-pill">
-        <span>تتبع التقدم:</span>
-        <strong>حفظ تلقائي محلي (LocalStorage)</strong>
+
+      <div class="stat-card">
+        <div class="stat-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+            <polyline points="17 21 17 13 7 13 7 21"></polyline>
+            <polyline points="7 3 7 8 15 8"></polyline>
+          </svg>
+        </div>
+        <span class="stat-label">حفظ التقدم</span>
+        <strong class="stat-value">تلقائي محلي (Storage)</strong>
       </div>
-      <div class="stat-pill highlight-pill" title="إجمالي زيارات الموقع والمسارات">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span>إجمالي زوار الموقع الحي:</span>
+
+      <!-- Full-Width Live Counter Card -->
+      <div class="stat-live-banner" title="إجمالي الزيارات الحية للمنصة ومساراتها">
+        <div class="stat-live-title">
+          <span class="live-dot" aria-hidden="true"></span>
+          <span>إجمالي زوار الموقع الحي:</span>
+        </div>
         <strong id="liveTotalCountHero">--</strong>
       </div>
     </div>
   </section>
 
-  <!-- ROADMAPS CARDS -->
+  <!-- ================= ROADMAPS CARDS ================= -->
   <div class="grid-title">
     <h2>اختر مسارك التعليمي</h2>
     <p>اضغط على أي مسار لفتحه مباشرة وبدء رحلة التعلم وحفظ تقدمك</p>
@@ -571,13 +1155,16 @@
     <!-- CARD 1: FUNDAMENTALS -->
     <article class="roadmap-card card-fund">
       <div class="card-header">
-        <div class="card-icon">
+        <div class="card-icon" aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="4 17 10 11 4 5"></polyline>
             <line x1="12" y1="19" x2="20" y2="19"></line>
           </svg>
         </div>
-        <span class="card-tag">24 كورس متكامل</span>
+        <div class="card-tags-group">
+          <span class="card-tag highlight">موصى به للبدء</span>
+          <span class="card-tag">24 كورس متكامل</span>
+        </div>
       </div>
       <h3 class="card-title">مسار أساسيات البرمجة</h3>
       <div class="card-subtitle">Programming Fundamentals Roadmap</div>
@@ -593,28 +1180,31 @@
         <span class="topic-item">T-SQL & ADO.NET</span>
         <span class="topic-item">Real Projects</span>
       </div>
-      <a href="./fundamentals/" class="btn-launch">
+      <a href="./fundamentals/" class="btn-launch" aria-label="فتح مسار أساسيات البرمجة">
         <span>فتح مسار الأساسيات</span>
-        <span>&larr;</span>
+        <span class="arrow-icon" aria-hidden="true">&larr;</span>
       </a>
     </article>
 
     <!-- CARD 2: FRONTEND -->
     <article class="roadmap-card card-front">
       <div class="card-header">
-        <div class="card-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e84393" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
             <line x1="8" y1="21" x2="16" y2="21"></line>
             <line x1="12" y1="17" x2="12" y2="21"></line>
           </svg>
         </div>
-        <span class="card-tag">9 مراحل عملية</span>
+        <div class="card-tags-group">
+          <span class="card-tag highlight">جاهز للوظيفة</span>
+          <span class="card-tag">9 مراحل عملية</span>
+        </div>
       </div>
       <h3 class="card-title">مسار الواجهات الأمامية</h3>
       <div class="card-subtitle">Front-End Developer Roadmap</div>
       <p class="card-desc">
-        خارطة طريق عملية تأخذك من الصفر حتى تصبح مطور Front-End جاهزاً للعمل (Zero to Job-Ready) خلال 6 إلى 9 أشهر. تشمل بناء واجهات الويب الحديثة والمشاريع المتدرجة والتوثيق الرسمي.
+        خارطة طريق عملية تأخذك من الصفر حتى تصبح مطور Front-End جاهزاً لسوق العمل (Zero to Job-Ready) خلال 6 إلى 9 أشهر. تشمل بناء واجهات الويب الحديثة والمشاريع المتدرجة والمصادر الرسمية المجانية.
       </p>
       <div class="topics-list">
         <span class="topic-item">Web Fundamentals</span>
@@ -625,16 +1215,16 @@
         <span class="topic-item">React 19 & Router</span>
         <span class="topic-item">State & Testing</span>
       </div>
-      <a href="./frontend/" class="btn-launch">
+      <a href="./frontend/" class="btn-launch" aria-label="فتح مسار الواجهات الأمامية">
         <span>فتح مسار الـ Frontend</span>
-        <span>&larr;</span>
+        <span class="arrow-icon" aria-hidden="true">&larr;</span>
       </a>
     </article>
 
     <!-- CARD 3: BACKEND -->
     <article class="roadmap-card card-back">
       <div class="card-header">
-        <div class="card-icon">
+        <div class="card-icon" aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
             <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
@@ -642,12 +1232,15 @@
             <line x1="6" y1="18" x2="6.01" y2="18"></line>
           </svg>
         </div>
-        <span class="card-tag">9 مراحل + 20 مصدراً</span>
+        <div class="card-tags-group">
+          <span class="card-tag highlight">أنظمة مؤسسية</span>
+          <span class="card-tag">9 مراحل + 20 مصدراً</span>
+        </div>
       </div>
       <h3 class="card-title">مسار الواجهات الخلفية (.NET)</h3>
       <div class="card-subtitle">.NET Backend Developer Roadmap</div>
       <p class="card-desc">
-        المسار المتخصص في بناء وهندسة الأنظمة والـ APIs المؤسسية القوية باستخدام C# و ASP.NET Core. من مفاهيم الـ OOP المتقدمة، مبادئ SOLID، أنماط التصميم Design Patterns، LINQ، و Entity Framework Core حتى الـ Clean Architecture.
+        المسار المتخصص في هندسة وبناء الأنظمة والـ APIs المؤسسية القوية باستخدام C# و ASP.NET Core. من مفاهيم الـ OOP المتقدمة، مبادئ SOLID، أنماط التصميم Design Patterns، LINQ، و Entity Framework Core حتى الـ Clean Architecture و Docker.
       </p>
       <div class="topics-list">
         <span class="topic-item">C# Language In-Depth</span>
@@ -658,23 +1251,23 @@
         <span class="topic-item">ASP.NET Core REST APIs</span>
         <span class="topic-item">Clean Architecture & Docker</span>
       </div>
-      <a href="./backend/" class="btn-launch">
+      <a href="./backend/" class="btn-launch" aria-label="فتح مسار الواجهات الخلفية">
         <span>فتح مسار الـ Backend</span>
-        <span>&larr;</span>
+        <span class="arrow-icon" aria-hidden="true">&larr;</span>
       </a>
     </article>
 
   </section>
 
-  <!-- RECOMMENDED STUDY GUIDE -->
+  <!-- ================= RECOMMENDED STUDY GUIDE ================= -->
   <section class="section-guide">
-    <h3>كيف تبدأ رحلتك؟ | Recommended Learning Path</h3>
-    <p class="lead-guide">إذا كنت في حيرة من أين تبدأ، إليك الترتيب المثالي الموصى به لتحقيق أقصى استفادة:</p>
+    <h3>كيف تبدأ رحلتك التعليمية؟ | Recommended Path</h3>
+    <p class="lead-guide">إذا كنت في حيرة من أين تبدأ، إليك الترتيب العلمي المثالي لتحقيق أقصى استفادة وبناء أساس صلب:</p>
     <div class="steps-row">
       <div class="step-box">
         <div class="step-num">1</div>
         <h4>البداية بالأساسيات أولاً</h4>
-        <p>ابدأ بـ <strong>مسار أساسيات البرمجة (Fundamentals)</strong> لبناء عقلية المبرمج وحل المشكلات وإتقان C++ والخوارزميات وهياكل البيانات وقواعد البيانات.</p>
+        <p>ابدأ بـ <strong>مسار أساسيات البرمجة (Fundamentals)</strong> لبناء عقلية المبرمج، حل المشكلات، وإتقان C++ والخوارزميات وهياكل البيانات وقواعد البيانات.</p>
       </div>
       <div class="step-box">
         <div class="step-num">2</div>
@@ -684,38 +1277,72 @@
       <div class="step-box">
         <div class="step-num">3</div>
         <h4>احتراف الـ Full-Stack</h4>
-        <p>إذا أردت أن تصبح مطوراً متكاملاً (Full-Stack Developer)، يمكنك دراسة كلا المسارين بالتوازي أو بالتتابع لربط واجهات React بالواجهات الخلفية لـ ASP.NET Core.</p>
+        <p>إذا أردت أن تصبح مطوراً متكاملاً (Full-Stack)، يمكنك دراسة كلا المسارين لربط واجهات React التفاعلية بالواجهات الخلفية لـ ASP.NET Core.</p>
       </div>
     </div>
   </section>
 
-  <!-- COUPONS NOTICE -->
-  <div class="coupons-callout">
+  <!-- ================= PLATFORM ADVANTAGES ================= -->
+  <section class="features-grid">
+    <div class="feature-item">
+      <div class="feature-icon">&#9889;</div>
+      <h4>مجاني 100% لوجه الله</h4>
+      <p>بدون أي اشتراكات أو رسوم خفية أو إعلانات مزعجة.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">&#128274;</div>
+      <h4>بدون تسجيل دخول</h4>
+      <p>خصوصية تامة، افتح الرابط وابدأ التعلم فوراً دون تعقيدات.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">&#128190;</div>
+      <h4>حفظ محلي تلقائي</h4>
+      <p>يتم حفظ تقدمك في المتصفح تلقائياً لمتابعة الإنجاز أينما توقفت.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">&#128640;</div>
+      <h4>جاهز لسوق العمل</h4>
+      <p>محتوى ومشاريع عملية مبنية وفق أحدث معايير التوظيف الحديثة.</p>
+    </div>
+  </section>
+
+  <!-- ================= COUPONS NOTICE ================= -->
+  <aside class="coupons-callout">
     <div class="coupons-info">
-      <div class="coupons-badge-icon">&#127873;</div>
+      <div class="coupons-badge-icon" aria-hidden="true">&#127873;</div>
       <div class="coupons-text">
         <h4>كوبونات خصم متوفرة مجاناً بداخل المسارات (25% - 50% - 75% - 100%)</h4>
         <p>بداخل مسار الأساسيات ومسار الـ Backend ستجد قسماً مخصصاً لكوبونات الخصم لدورات م. محمد أبو هدهود مع زر لنسخ الكود بضغطة واحدة للمساعدة في رحلتك التعليمية.</p>
       </div>
     </div>
-  </div>
+  </aside>
 
 </main>
 
-<!-- FOOTER -->
+<!-- ================= FOOTER ================= -->
 <footer>
   <div class="container">
     <p class="dua">اللهم اجعل هذا العمل خالصاً لوجهك الكريم وعِلماً يُنتَفَعُ به، وصدقةً جاريةً لكل من ساهم فيه ونشره.</p>
     <p>جميع المسارات والكورسات تعود حقوق ملكيتها لأصحابها ومقدميها. هذا المستودع يهدف لتنظيم المسار وتسهيل التعلّم مجاناً.</p>
-    <p style="margin-top: 10px; font-size: 0.82rem;">
-      Made with care by <a href="https://github.com/Elhendawy-1" target="_blank" rel="noopener noreferrer" style="color: var(--primary-light); font-weight: 600;">Elhendawy</a> &bull;
-      Open Source on <a href="https://github.com/Elhendawy-1/Developer-Roadmaps" target="_blank" rel="noopener noreferrer" style="color: var(--primary-light); font-weight: 600;">GitHub</a>
-    </p>
+    <div class="footer-links">
+      <span>Made with care by <a href="https://github.com/Elhendawy-1" target="_blank" rel="noopener noreferrer">Elhendawy</a></span>
+      <span>&bull;</span>
+      <span>Open Source on <a href="https://github.com/Elhendawy-1/Developer-Roadmaps" target="_blank" rel="noopener noreferrer">GitHub</a></span>
+    </div>
   </div>
 </footer>
 
+<!-- ================= FLOATING SCROLL-TO-TOP ================= -->
+<button type="button" class="scroll-top-btn" id="scrollTopBtn" aria-label="الرجوع للأعلى" title="الرجوع لأعلى الصفحة">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<!-- ================= SCRIPTS ================= -->
 <script>
 (function() {
+  /* 1. Live Visitor Counter */
   var API_BASE = 'https://abacus.jasoncameron.dev';
   var NAMESPACE = 'elhendawy-developer-roadmaps';
   var KEY_TOTAL = 'total-visits';
@@ -750,6 +1377,22 @@
     .catch(function(err) {
       console.warn('Counter API offline, using cached/fallback:', err);
     });
+
+  /* 2. Scroll to Top Floating Button */
+  var scrollBtn = document.getElementById('scrollTopBtn');
+  if (scrollBtn) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    }, { passive: true });
+
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
 })();
 </script>
 </body>
