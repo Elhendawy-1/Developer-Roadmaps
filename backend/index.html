@@ -3,149 +3,1084 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>.NET Backend Developer Roadmap</title>
-<meta name="description" content="Interactive roadmap for learning .NET backend development: 9 stages from computer science fundamentals to ASP.NET Core, with courses, practice resources, and coupons.">
-<meta property="og:title" content=".NET Backend Developer Roadmap">
-<meta property="og:description" content="Nine stages from computer science fundamentals to ASP.NET Core, with courses, practice, and coupons.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://elhendawy-1.github.io/Back-End-Roadmap/">
-<meta name="theme-color" content="#f5f6fa" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='7' fill='%230b1020'/%3E%3Cpath d='M4 22 H11 V15 H17' fill='none' stroke='%238fa3ff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='4' cy='22' r='2.4' fill='%238fa3ff'/%3E%3Ccircle cx='17' cy='15' r='2.4' fill='%238fa3ff'/%3E%3Cpath d='M21 10 l2 2 3.5-5' fill='none' stroke='%238fa3ff' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<title>.NET Backend Developer Roadmap — Systems &amp; Cloud</title>
+<meta name="description" content="Interactive roadmap for mastering .NET backend engineering: 9 stages from computer science fundamentals to ASP.NET Core, with courses, practice resources, and official coupons.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='7' fill='%23080b11'/%3E%3Crect x='1' y='1' width='26' height='26' rx='6' fill='none' stroke='%233b82f6' stroke-width='1.5' stroke-opacity='0.4'/%3E%3Cpath d='M4 22 H11 V15 H17' fill='none' stroke='%233b82f6' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='4' cy='22' r='2.4' fill='%233b82f6'/%3E%3Ccircle cx='17' cy='15' r='2.4' fill='%233b82f6'/%3E%3Cpath d='M21 10 l2 2 3.5-5' fill='none' stroke='%2360a5fa' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<!-- Google Fonts: Cairo & Plus Jakarta Sans -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#080b11;--card:#0f141f;--ink:#f8fafc;--mute:#94a3b8;--line:rgba(255,255,255,0.08);--acc:#3b82f6;--onacc:#fff;--soft:#161c2b;--paid:#f59e0b;--paidbg:rgba(245,158,11,0.15);--err:#f43f5e;--errbg:rgba(244,63,94,0.15);--sh:none;--tr:.18s ease;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1020;--card:#131a2e;--ink:#e8ecf8;--mute:#a4aec6;--line:#27324d;--acc:#8fa3ff;--onacc:#0b1020;--soft:#1b2440;--paid:#f5b877;--paidbg:#3a2a17;--err:#f38ba8;--errbg:#2a1620;--sh:none;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0b1020;--card:#131a2e;--ink:#e8ecf8;--mute:#a4aec6;--line:#27324d;--acc:#8fa3ff;--onacc:#0b1020;--soft:#1b2440;--paid:#f5b877;--paidbg:#3a2a17;--err:#f38ba8;--errbg:#2a1620;--sh:none;color-scheme:dark}
-html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:clamp(15px,.4vw + 14px,17px)/1.6 'Plus Jakarta Sans','Cairo',system-ui,sans-serif;overflow-x:hidden}
-.topbar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-.bar2{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:8px!important;padding-bottom:8px!important}
-.brand{display:inline-flex;align-items:center;gap:9px;font-size:1.05rem;font-weight:800;letter-spacing:-.01em;overflow-wrap:anywhere;min-width:0}
-.logo{flex:none;display:block}
-.logo .path{fill:none;stroke:var(--acc);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.logo .node{fill:var(--acc)}
-.logo .tick{fill:none;stroke:var(--acc);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.seg{display:inline-flex;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:var(--card);flex:none}
-.seg button{min-height:44px;min-width:44px;padding:8px 14px;border:0;background:transparent;color:var(--mute);font:600 .9rem/1 inherit;font-family:inherit;cursor:pointer}
-.seg button+button{border-inline-start:1.5px solid var(--line)}
-.seg button[aria-pressed="true"]{background:var(--acc);color:var(--onacc)}
-.seg button:focus-visible{outline:3px solid var(--acc);outline-offset:-3px}
-.wrap{width:min(1200px,100%);margin:0 auto;padding:clamp(16px,3vw,36px) clamp(14px,3vw,32px) 56px}
-.topbar .wrap{padding:0 clamp(14px,3vw,32px)}
-header{margin:6px 0 20px}
-h1{font-size:clamp(1.6rem,2.6vw + 1rem,2.6rem);line-height:1.12;letter-spacing:-.02em;margin:0 0 10px;overflow-wrap:anywhere}
-.lead{color:var(--mute);max-width:68ch;margin:0}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--acc);background:var(--acc);color:var(--onacc);font:600 .95rem/1.2 inherit;font-family:inherit;text-decoration:none;cursor:pointer;text-align:center}
-.btn:hover{filter:brightness(1.1)}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn.ghost:hover{background:var(--soft);border-color:var(--acc);filter:none}
-.btn:focus-visible,.chip:focus-visible,.totop:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 16px;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--sh)}
-#q{flex:1 1 240px;min-width:0;min-height:44px;padding:8px 14px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit}
-#q:focus-visible,.mark input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-[hidden]{display:none!important}
-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 28px}
-.chip{display:inline-flex;align-items:center;min-height:44px;padding:6px 14px;border:1px solid var(--line);border-radius:99px;background:var(--card);color:var(--ink);text-decoration:none;font-size:.9rem}
-.chip:hover{border-color:var(--acc);color:var(--acc)}
-.chip.next{border-color:var(--acc);color:var(--acc)}
-.contbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-inline-start:4px solid var(--acc);border-radius:14px;box-shadow:var(--sh);padding:14px 16px;margin:0 0 14px}
-.contbar span{font-weight:700;overflow-wrap:anywhere}
-.rescount{color:var(--mute);font-size:.85rem;margin:0 0 10px}
-.totop{position:fixed;bottom:18px;inset-inline-end:18px;z-index:50;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:1.2rem;line-height:1;cursor:pointer;box-shadow:var(--sh)}
-.totop:hover{border-color:var(--acc);color:var(--acc)}
-.stage{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh);padding:clamp(16px,3vw,26px);margin:0 0 28px}
-.stage .card{background:var(--bg)}
-.stage .mark{background:var(--bg)}
-.stop{display:flex;align-items:flex-start;justify-content:space-between;gap:12px 16px;flex-wrap:wrap;margin-bottom:6px}
-.stop h2{flex:1 1 240px;min-width:0}
-.stop .mark{margin:0;flex:none}
-.stage h2{display:flex;gap:12px;align-items:center;font-size:clamp(1.15rem,1vw + 1rem,1.5rem);line-height:1.25;margin:0 0 8px;letter-spacing:-.01em}
-.num{display:inline-grid;place-items:center;min-width:2.3rem;height:2.3rem;padding:0 6px;border-radius:10px;background:var(--soft);color:var(--acc);font-weight:800;font-size:1rem;flex:none}
-.stage.is-done .num{background:var(--acc);color:var(--onacc);font-size:0}
-.stage.is-done .num::after{content:"\2713";font-size:1.15rem;font-weight:800}
-.desc{color:var(--mute);margin:0 0 10px;max-width:75ch}
-.mark{display:inline-flex;align-items:center;gap:10px;min-height:44px;margin:0 0 8px;padding:8px 18px 8px 10px;border:1.5px solid var(--line);border-radius:99px;background:var(--card);cursor:pointer;font-weight:600;transition:border-color var(--tr),background var(--tr)}
-.mark:hover{border-color:var(--acc)}
-.stage.is-done .mark{border-color:var(--acc);background:var(--soft)}
-.mark input{appearance:none;-webkit-appearance:none;flex:none;width:24px;height:24px;margin:0;border:2px solid var(--line);border-radius:8px;background:var(--bg);cursor:pointer;display:grid;place-content:center;transition:background var(--tr),border-color var(--tr)}
-.mark:hover input{border-color:var(--acc)}
-.mark input:checked{background:var(--acc);border-color:var(--acc)}
-.mark input:checked::after{content:"\2713";color:var(--onacc);font-size:.9rem;font-weight:800;line-height:1}
-.mark input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.mark-txt{font-size:.92rem}
-.grid{display:grid;gap:14px;align-items:stretch}
-.cols-1{grid-template-columns:minmax(0,1fr)}
-.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.cgrid{display:grid;gap:14px}
-.cgrid.cols-1{grid-template-columns:minmax(0,1fr)}
-.cgrid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-.cgrid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-@media(min-width:1024px){.grid{gap:16px}}
-@media(max-width:1023px){.cols-3,.cgrid.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.cols-1,.cols-2,.cols-3,.cgrid.cols-1,.cgrid.cols-2,.cgrid.cols-3{grid-template-columns:minmax(0,1fr)}}
-.card{display:flex;flex-direction:column;gap:8px;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:var(--sh)}
-.card.main{border-top:4px solid var(--acc)}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{font-size:.75rem;font-weight:700;padding:2px 9px;border-radius:99px;border:1px solid var(--line);background:var(--soft);color:var(--ink);white-space:nowrap}
-.tag.t-main{background:var(--acc);border-color:var(--acc);color:var(--onacc)}
-.tag.paid{background:var(--paidbg);border-color:var(--paid);color:var(--paid)}
-.card h3{font-size:1.05rem;line-height:1.35;margin:0;overflow-wrap:anywhere}
-.plat{color:var(--mute);font-size:.9rem;margin:0}
-.note{color:var(--mute);font-size:.9rem;margin:0;overflow-wrap:anywhere}
-.code{font:700 clamp(1rem,1.2vw + .8rem,1.25rem) ui-monospace,Consolas,monospace;background:var(--soft);border:1px dashed var(--acc);border-radius:10px;padding:8px 12px;overflow-wrap:anywhere;word-break:break-all;user-select:all}
-.lbl{font-size:.8rem;color:var(--mute);margin:0}
-.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px}
-.acts .btn{flex:1 1 150px}
-#coupons{margin-top:40px;padding:clamp(16px,2.5vw,28px);background:var(--soft);border:1.5px solid var(--acc);border-radius:16px}
-#coupons h2{margin:0 0 6px;font-size:clamp(1.15rem,1vw + 1rem,1.5rem)}
-#coupons>p{color:var(--mute);margin:0 0 14px;max-width:70ch}
-.ar{direction:rtl;text-align:right;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
-.ar h2{font-size:1.1rem;margin:0 0 6px}.ar p{color:var(--mute);margin:0}
-#cs{min-height:1.5em;color:var(--mute);margin:10px 0 0}
-@media (max-width:560px){.acts .btn{flex:1 1 100%}#q{flex:1 1 100%}#reset{flex:0 1 auto;white-space:nowrap}.stage h2{gap:8px}.seg button{padding:8px 11px}.contbar{flex-direction:column;align-items:stretch}.contbar .btn{width:100%}}
-@media (max-width:768px){.topbar{position:static}.tools{position:sticky;top:0;z-index:6}}
-@media (max-width:480px){.bar2{flex-wrap:wrap}.brand{font-size:.95rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}html{scroll-behavior:auto}}
-@media print{.topbar,.tools,.contbar,#totop,.mark,.acts{display:none!important}.stage,.card{break-inside:avoid}}
+  :root {
+    --bg-main: #080b11;
+    --bg-surface: #0f141f;
+    --bg-surface-elevated: #161c2b;
+    --bg-surface-hover: #1c2438;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    
+    --accent-blue: #3b82f6;
+    --accent-blue-light: #60a5fa;
+    --accent-indigo: #6366f1;
+    --accent-emerald: #10b981;
+    --accent-amber: #f59e0b;
+    --accent-cyan: #06b6d4;
+    
+    --font-latin: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-arabic: 'Cairo', system-ui, sans-serif;
+  }
+
+  body.light-theme {
+    --bg-main: #f8fafc;
+    --bg-surface: #ffffff;
+    --bg-surface-elevated: #f1f5f9;
+    --bg-surface-hover: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    --border-strong: rgba(0, 0, 0, 0.15);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-latin);
+    line-height: 1.65;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Architectural structural background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body.light-theme::before {
+    background-image: 
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ================= 1. MASTHEAD NAVBAR ================= */
+  .masthead {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(8, 11, 17, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  body.light-theme .masthead {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .masthead-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68px;
+    padding: 10px 0;
+    gap: 16px;
+  }
+
+  .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .brand-symbol {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    display: grid;
+    place-items: center;
+    color: var(--accent-blue-light);
+    flex-shrink: 0;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .brand-group:hover .brand-symbol {
+    transform: translateY(-2px);
+    border-color: var(--accent-blue);
+  }
+
+  .brand-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .brand-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+
+  body.light-theme .brand-name {
+    color: #0f172a;
+  }
+
+  .brand-tag {
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--accent-blue-light);
+    text-transform: uppercase;
+  }
+
+  .masthead-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .btn-back-hub {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 99px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    font-family: var(--font-arabic);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+  }
+
+  .btn-back-hub:hover {
+    background: var(--bg-surface-elevated);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue-light);
+  }
+
+  .live-status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 99px;
+    background: var(--bg-surface);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .status-light {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-emerald);
+    box-shadow: 0 0 8px var(--accent-emerald);
+  }
+
+  .live-status-chip strong {
+    font-weight: 800;
+    color: var(--accent-blue-light);
+  }
+
+  .theme-btn-seg {
+    display: inline-flex;
+    border: 1px solid var(--border-subtle);
+    border-radius: 99px;
+    overflow: hidden;
+    background: var(--bg-surface);
+  }
+
+  .theme-btn-seg button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .theme-btn-seg button.active {
+    background: var(--accent-blue);
+    color: #fff;
+  }
+
+  /* ================= 2. HERO STATEMENT ================= */
+  .hero-section {
+    padding: 56px 0 36px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .hero-meta-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .meta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent-blue-light);
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    padding: 4px 12px;
+    border-radius: 6px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: #fff;
+    max-width: 950px;
+    margin-bottom: 16px;
+  }
+
+  body.light-theme .hero-headline {
+    color: #0f172a;
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    color: var(--text-secondary);
+    max-width: 860px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  /* METRICS STRIP */
+  .metrics-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 36px;
+  }
+
+  .metric-cell {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-inline-start: 1px solid var(--border-subtle);
+  }
+
+  .metric-cell:first-child {
+    border-inline-start: none;
+  }
+
+  .metric-val {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  body.light-theme .metric-val {
+    color: #0f172a;
+  }
+
+  .metric-val.blue {
+    color: var(--accent-blue-light);
+  }
+
+  .metric-val.emerald {
+    color: var(--accent-emerald);
+  }
+
+  .metric-lbl {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  /* ================= 3. CONTINUE BANNER ================= */
+  .contbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-inline-start: 4px solid var(--accent-blue);
+    border-radius: 14px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+  }
+
+  .contbar span {
+    font-weight: 800;
+    font-size: 1rem;
+    color: #fff;
+  }
+
+  body.light-theme .contbar span {
+    color: #0f172a;
+  }
+
+  .btn-continue-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background: var(--accent-blue);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.92rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-continue-action:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+  }
+
+  /* ================= 4. SEARCH & NAV CHIPS ================= */
+  .tools-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+  }
+
+  #q {
+    flex: 1 1 280px;
+    min-height: 44px;
+    padding: 8px 16px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    background: var(--bg-surface-elevated);
+    color: var(--text-primary);
+    font: inherit;
+    font-size: 0.94rem;
+  }
+
+  #q:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+  }
+
+  .btn-reset-ghost {
+    padding: 10px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-surface-elevated);
+    color: var(--text-secondary);
+    font-weight: 700;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-reset-ghost:hover {
+    border-color: #ef4444;
+    color: #f87171;
+  }
+
+  .stages-nav-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+
+  .stage-nav-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 6px 14px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 99px;
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    font-size: 0.86rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+
+  .stage-nav-chip:hover {
+    border-color: var(--accent-blue);
+    color: #fff;
+  }
+
+  .stage-nav-chip.next-chip {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue-light);
+    background: rgba(59, 130, 246, 0.1);
+  }
+
+  /* ================= 5. STAGES AND CARDS ================= */
+  .stage {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 20px;
+    padding: clamp(20px, 3vw, 32px);
+    margin-bottom: 36px;
+    scroll-margin-top: 90px;
+    transition: border-color 0.2s ease;
+  }
+
+  .stage:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+  }
+
+  .stage.is-done {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.04) 0%, var(--bg-surface) 100%);
+  }
+
+  .stop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .stage h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: clamp(1.3rem, 2vw, 1.65rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+
+  body.light-theme .stage h2 {
+    color: #0f172a;
+  }
+
+  .stage-num-box {
+    display: inline-grid;
+    place-items: center;
+    min-width: 2.4rem;
+    height: 2.4rem;
+    padding: 0 6px;
+    border-radius: 10px;
+    background: var(--bg-surface-elevated);
+    color: var(--accent-blue-light);
+    font-weight: 800;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .stage.is-done .stage-num-box {
+    background: var(--accent-emerald);
+    color: #080b11;
+  }
+
+  .mark-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 42px;
+    padding: 6px 16px 6px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 99px;
+    background: var(--bg-surface-elevated);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+  }
+
+  .mark-toggle:hover {
+    border-color: var(--accent-blue);
+    color: #fff;
+  }
+
+  .stage.is-done .mark-toggle {
+    border-color: var(--accent-emerald);
+    background: rgba(16, 185, 129, 0.15);
+    color: #6ee7b7;
+  }
+
+  .mark-toggle input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-strong);
+    border-radius: 6px;
+    background: var(--bg-surface);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+
+  .mark-toggle input:checked {
+    background: var(--accent-emerald);
+    border-color: var(--accent-emerald);
+  }
+
+  .mark-toggle input:checked::after {
+    content: "✓";
+    color: #080b11;
+    font-size: 0.85rem;
+    font-weight: 900;
+  }
+
+  .stage-desc {
+    font-size: 0.98rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 12px;
+    max-width: 850px;
+  }
+
+  .rescount {
+    color: var(--text-muted);
+    font-size: 0.84rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  .grid {
+    display: grid;
+    gap: 18px;
+  }
+
+  .cols-1 { grid-template-columns: minmax(0, 1fr); }
+  .cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  @media (max-width: 1024px) {
+    .cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 640px) {
+    .theme-btn-seg { display: none; }
+    .brand-name { font-size: 1rem; white-space: nowrap; }
+    .masthead-inner { min-height: 56px; gap: 8px; }
+    .masthead-controls { gap: 6px; }
+    .cols-2, .cols-3 { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 20px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(59, 130, 246, 0.35);
+  }
+
+  .card.main {
+    border-top: 3px solid var(--accent-blue);
+  }
+
+  .card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag-badge {
+    font-size: 0.74rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .tag-badge.t-main {
+    background: rgba(59, 130, 246, 0.2);
+    border-color: rgba(59, 130, 246, 0.4);
+    color: var(--accent-blue-light);
+  }
+
+  .tag-badge.paid {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.3);
+    color: #fde68a;
+  }
+
+  .tag-badge.free {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #6ee7b7;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.4;
+  }
+
+  body.light-theme .card h3 {
+    color: #0f172a;
+  }
+
+  .card .plat {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .card .note {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 6px 10px;
+    border-radius: 6px;
+  }
+
+  .card .acts {
+    margin-top: auto;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-resource-launch {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 14px;
+    border-radius: 8px;
+    background: var(--accent-blue);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-resource-launch:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+  }
+
+  /* ================= 6. VOUCHER VAULT ================= */
+  .vault-section {
+    padding: 56px 0;
+    border-top: 1px solid var(--border-subtle);
+    margin-top: 48px;
+  }
+
+  .vault-title {
+    font-size: 1.85rem;
+    font-weight: 900;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  body.light-theme .vault-title {
+    color: #0f172a;
+  }
+
+  .vault-lead {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .coupons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .coupon-ticket {
+    background: var(--bg-surface);
+    border: 1px solid rgba(245, 158, 11, 0.28);
+    border-radius: 16px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .coupon-ticket:hover {
+    transform: translateY(-3px);
+    border-color: rgba(245, 158, 11, 0.55);
+  }
+
+  .coupon-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .coupon-badge-rate {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #fef08a;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    padding: 3px 10px;
+    border-radius: 7px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    direction: ltr;
+  }
+
+  .coupon-badge-rate.rate-100 {
+    background: var(--accent-amber);
+    color: #080b11;
+  }
+
+  .coupon-tier {
+    font-family: var(--font-arabic);
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .coupon-code-box {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #fff;
+    background: var(--bg-surface-elevated);
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px dashed rgba(255, 255, 255, 0.18);
+    text-align: center;
+  }
+
+  body.light-theme .coupon-code-box {
+    color: #0f172a;
+  }
+
+  .btn-copy-ticket {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: #fef08a;
+    font-weight: 700;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn-copy-ticket:hover {
+    background: var(--accent-amber);
+    color: #080b11;
+  }
+
+  /* ================= 7. FOOTER & TOTOP ================= */
+  .totop {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 50;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-strong);
+    background: var(--bg-surface-elevated);
+    color: #fff;
+    font-size: 1.2rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+
+  footer {
+    padding: 48px 0 36px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-family: var(--font-arabic);
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 1024px) {
+    .metrics-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .metrics-strip .metric-cell:nth-child(3) {
+      border-inline-start: none;
+    }
+    .coupons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .theme-btn-seg { display: none; }
+    .brand-name { font-size: 1rem; white-space: nowrap; }
+    .masthead-inner { min-height: 56px; gap: 8px; }
+    .masthead-controls { gap: 6px; }
+    .container {
+      padding: 0 16px;
+    }
+    .coupons-grid {
+      grid-template-columns: 1fr;
+    }
+    .masthead-inner {
+      min-height: 58px;
+    }
+    .brand-tag {
+      display: none;
+    }
+    .hub-full {
+      display: none;
+    }
+    .btn-back-hub {
+      padding: 6px 12px;
+      font-size: 0.78rem;
+    }
+    .live-status-chip {
+      padding: 5px 10px;
+      font-size: 0.76rem;
+    }
+    .live-status-chip span:not(.status-light):not(#liveVisitorsCountNav) {
+      display: none;
+    }
+  }
 </style>
 </head>
 <body>
-<noscript><p style="padding:20px;text-align:center">This roadmap needs JavaScript to run. Please enable it and reload.</p></noscript>
-<div class="topbar"><div class="wrap bar2"><strong class="brand"><svg class="logo" width="28" height="28" viewBox="0 0 28 28" aria-hidden="true" focusable="false"><path class="path" d="M4 22 H11 V15 H17"/><circle class="node" cx="4" cy="22" r="2.4"/><circle class="node" cx="17" cy="15" r="2.4"/><path class="tick" d="M21 10 l2 2 3.5-5"/></svg><span>.NET Roadmap</span></strong><a href="../" class="chip" style="margin-inline-end:auto;margin-inline-start:8px;min-height:34px;padding:4px 14px;font-size:.84rem;text-decoration:none;font-weight:700;">&#8592; All Roadmaps &bull; الرئيسية</a>
-<div class="chip" style="min-height:34px;padding:4px 12px;font-size:.82rem;gap:6px;border-color:var(--acc);color:var(--ink);" title="إجمالي الزيارات الحية للمنصة">
-  <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#10b981;"></span>
-  <span>الزوار:</span>
-  <strong id="liveVisitorsCount" style="color:var(--acc)">--</strong>
-</div>
-<div class="seg" role="group" aria-label="Color theme"><button type="button" data-t="light" aria-pressed="false">&#9728; Light</button><button type="button" data-t="dark" aria-pressed="false">&#9790; Night</button></div></div></div>
-<div class="wrap">
-<header><h1>.NET Backend Developer Roadmap</h1>
-<p class="lead">Nine stages from computer science fundamentals to ASP.NET Core. Each stage lists a main resource, alternatives and practice. Where a lesson list was not readable, the card says so.</p></header>
-<div class="contbar" id="contbar"><span id="contText" role="status" aria-live="polite"></span><button id="cont" class="btn" type="button">Continue</button></div>
-<div class="tools"><label class="sr" for="q">Search resources</label><input id="q" type="search" placeholder="Search courses, platforms, topics" autocomplete="off"><button id="reset" class="btn ghost" type="button">Reset progress</button></div>
-<p id="empty" class="lead" role="status" hidden>No resources match your search.</p>
-<nav id="nav" aria-label="Roadmap stages"></nav>
-<main id="stages"></main>
 
-<section id="coupons" aria-labelledby="ch">
-<h2 id="ch">Coupons for Eng. Mohamed Abu Hadhoud's courses</h2>
-<p>Use one of these codes at checkout on programmingadvices.com. Check the final price on the checkout page.</p>
-<div class="cgrid" id="cg"></div>
-<p id="cs" role="status" aria-live="polite"></p>
-<div class="ar" lang="ar"><h2>كوبونات كورسات م. محمد أبو هدهود</h2>
-<p>استخدم أي كود من دول وقت الدفع على programmingadvices.com. اضغط على نسخ الكود. راجع السعر النهائي في صفحة الدفع.</p></div>
-</section>
-</div>
-<button id="totop" class="totop" type="button" aria-label="Back to top" hidden>↑</button>
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="container masthead-inner">
+    <div class="brand-group">
+      <div class="brand-symbol" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </div>
+      <div class="brand-identity">
+        <span class="brand-name">.NET Backend</span>
+        <span class="brand-tag">Enterprise Architecture</span>
+      </div>
+    </div>
+
+    <div class="masthead-controls">
+      <a href="../" class="btn-back-hub">&#8592; <span class="hub-full">All Roadmaps &bull; </span>الرئيسية</a>
+      <div class="live-status-chip" title="إجمالي الزيارات الحية لكافة المسارات">
+        <span class="status-light" aria-hidden="true"></span>
+        <span>الزوار:</span>
+        <strong id="liveVisitorsCountNav">--</strong>
+      </div>
+      <div class="theme-btn-seg">
+        <button type="button" id="themeLightBtn">Light</button>
+        <button type="button" id="themeDarkBtn" class="active">Night</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO STATEMENT -->
+  <section class="hero-section">
+    <div class="hero-meta-bar">
+      <span class="meta-badge">&#10003; Production-Grade Curriculum</span>
+      <span class="meta-badge">9 Stages &bull; C# 13 &amp; ASP.NET Core</span>
+      <span class="meta-badge">Clean Architecture &amp; CQRS</span>
+    </div>
+
+    <h1 class="hero-headline">.NET Backend Developer Roadmap</h1>
+    <p class="hero-description">
+      An enterprise-grade curriculum designed to build scalable, high-performance distributed systems. Master C#, SQL Server database optimization, SOLID principles, design patterns, LINQ, Entity Framework Core, and production-ready ASP.NET Core APIs with real-world architecture.
+    </p>
+
+    <div class="metrics-strip">
+      <div class="metric-cell">
+        <span class="metric-val blue">09</span>
+        <span class="metric-lbl">Architectural Stages</span>
+      </div>
+      <div class="metric-cell">
+        <span class="metric-val">25+</span>
+        <span class="metric-lbl">Curated Resources</span>
+      </div>
+      <div class="metric-cell">
+        <span class="metric-val emerald">100%</span>
+        <span class="metric-lbl">Free Curated Tracks</span>
+      </div>
+      <div class="metric-cell">
+        <span class="metric-val" id="liveVisitorsCountHero">--</span>
+        <span class="metric-lbl">Platform Active Visitors</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTINUE BANNER -->
+  <div class="contbar" id="contbar">
+    <span id="contText" role="status" aria-live="polite">Loading roadmap progress...</span>
+    <button id="cont" class="btn-continue-action" type="button">Continue &rarr;</button>
+  </div>
+
+  <!-- TOOLS BAR -->
+  <div class="tools-bar">
+    <input id="q" type="search" placeholder="Search courses, platforms, topics (e.g. SQL, ASP.NET Core, Metigator)" autocomplete="off">
+    <button id="reset" class="btn-reset-ghost" type="button">Reset Progress</button>
+  </div>
+
+  <!-- STAGE NAV CHIPS -->
+  <nav class="stages-nav-strip" id="nav" aria-label="Roadmap stages navigation"></nav>
+
+  <!-- STAGES CONTAINER -->
+  <div id="stages"></div>
+
+  <!-- VOUCHER VAULT -->
+  <section class="vault-section" id="coupons">
+    <h2 class="vault-title" style="font-family:var(--font-arabic);">كوبونات دورات م. محمد أبو هدهود الرسمية</h2>
+    <p class="vault-lead" style="font-family:var(--font-arabic);">قسائم دعم وخصم مباشرة (25% - 50% - 75% - 100%) للاستخدام على موقع programmingadvices.com</p>
+
+    <div class="coupons-grid" id="cg">
+      <div class="coupon-ticket">
+        <div class="coupon-header-row">
+          <span class="coupon-badge-rate rate-100">100% OFF</span>
+          <span class="coupon-tier">مجاني بالكامل لوجه الله</span>
+        </div>
+        <div class="coupon-code-box">SUPPORT100%</div>
+        <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT100%">
+          <span>نسخ كود 100%</span>
+        </button>
+      </div>
+
+      <div class="coupon-ticket">
+        <div class="coupon-header-row">
+          <span class="coupon-badge-rate">75% OFF</span>
+          <span class="coupon-tier">قسيمة دعم مالي 75%</span>
+        </div>
+        <div class="coupon-code-box">SUPPORT75%</div>
+        <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT75%">
+          <span>نسخ كود 75%</span>
+        </button>
+      </div>
+
+      <div class="coupon-ticket">
+        <div class="coupon-header-row">
+          <span class="coupon-badge-rate">50% OFF</span>
+          <span class="coupon-tier">قسيمة دعم مالي 50%</span>
+        </div>
+        <div class="coupon-code-box">SUPPORT50%</div>
+        <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT50%">
+          <span>نسخ كود 50%</span>
+        </button>
+      </div>
+
+      <div class="coupon-ticket">
+        <div class="coupon-header-row">
+          <span class="coupon-badge-rate">25% OFF</span>
+          <span class="coupon-tier">قسيمة دعم مالي 25%</span>
+        </div>
+        <div class="coupon-code-box">SUPPORT25%</div>
+        <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT25%">
+          <span>نسخ كود 25%</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<button id="totop" class="totop" type="button" aria-label="Back to top" style="display:none;">&uarr;</button>
+
+<footer>
+  <div class="container">
+    <p>أرشيف مسار هندسة النظم الخلفية (.NET Backend) &bull; متاح مجاناً لوجه الله &bull; <a href="../" style="color:var(--accent-blue-light); font-weight:700;">&#8592; العودة للرئيسية</a></p>
+  </div>
+</footer>
+
 <script>
-var PA="https://programmingadvices.com/p/",YT="https://www.youtube.com/playlist?list=";
+var PA = "https://programmingadvices.com/p/";
+var YT = "https://www.youtube.com/playlist?list=";
+
 var S=[
 {n:"Computer Science Fundamentals",d:"Programming Advices playlist: essential fundamentals for every programmer, Level 1. The lesson list is not visible from the playlist page.",
 r:[["Computer Science Fundamentals",YT+"PL3X--QIIK-OHgMV2yBz3GLfM5d_5BxOSj","main",0,"20 videos"]]},
@@ -177,107 +1112,269 @@ r:[["Mastering ASP.NET Core: Concepts to Production-Ready APIs","https://www.met
 ["ASP.NET Core API, ITI scholarship 2024 (Syntax Error)",YT+"PLNFDrRZdysFwWljltjUvYN6O6jajgOJME","alt",0,"6 videos. Lesson list not visible."],
 ["Secure Your APIs: JWT, Roles & Policies",PA+"secure-api-jwt","alt",1,"Covers API security only, not general ASP.NET Core. Continues from a prior RESTful APIs course."]]}
 ];
-var TYPE={main:"Main Course",alt:"Alternative",practice:"Practice"};
-var cs=document.getElementById("cs");
-function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;}
-function plat(u){return u.indexOf("youtube.com")>-1?"YouTube":u.indexOf("programmingadvices")>-1?"ProgrammingAdvices":u.indexOf("udemy.com")>-1?"Udemy":u.indexOf("metigator.com")>-1?"Metigator":"Web";}
-function label(r){var p=plat(r[1]);if(r[3])return "Get Course";if(r[2]==="practice")return "Practice";if(r[2]==="alt")return "Open Alternative";return p==="YouTube"?"Watch Course":"Start Course";}
-function copy(code,btn){
-var orig=btn.getAttribute("data-l")||btn.textContent;btn.setAttribute("data-l",orig);
-function ok(){cs.textContent="Copied: "+code;btn.textContent="Copied";if(btn._tm)clearTimeout(btn._tm);btn._tm=setTimeout(function(){btn.textContent=orig;btn._tm=null;},1600);}
-function fail(){cs.textContent="Copy failed. Select the code manually: "+code;}
-try{navigator.clipboard.writeText(code).then(ok,fail);}catch(e){fail();}}
-function copyBtn(code,txt){var b=el("button","btn ghost",txt);b.type="button";b.setAttribute("aria-label",txt+" "+code);b.addEventListener("click",function(){copy(code,b);});return b;}
-var root=document.getElementById("stages"),nav=document.getElementById("nav"),mts=[];
-S.forEach(function(s,i){
-var id="stage-"+(i+1);
-var c=el("a","chip",(i+1)+". "+s.n);c.href="#"+id;nav.appendChild(c);
-var st=el("section","stage");st.id=id;st.setAttribute("aria-labelledby",id+"-h");
-var top=el("div","stop");
-var h=el("h2");h.id=id+"-h";h.appendChild(el("span","num",String(i+1)));h.appendChild(el("span","",s.n));top.appendChild(h);
-var m=el("label","mark"),cb=document.createElement("input");cb.type="checkbox";cb.setAttribute("data-i",i);m.appendChild(cb);var mt=el("span","mark-txt","Mark stage complete");m.appendChild(mt);mts.push(mt);top.appendChild(m);
-st.appendChild(top);
-st.appendChild(el("p","desc",s.d));
-var rc=s.r.length;st.appendChild(el("p","rescount",rc===0?"No resources yet":rc+(rc===1?" resource":" resources")));
-var g=el("div","grid");g.className="grid cols-"+(s.r.length===4?2:Math.min(s.r.length,3));
-s.r.forEach(function(r){
-var card=el("article","card"+(r[2]==="main"?" main":""));
-var tags=el("div","tags");
-tags.appendChild(el("span","tag"+(r[2]==="main"?" t-main":""),TYPE[r[2]]));
-if(r[5])tags.appendChild(el("span","tag","Coupon"));
-tags.appendChild(el("span","tag"+(r[3]?" paid":""),r[3]?"PAID":"Free"));
-card.appendChild(tags);
-card.appendChild(el("h3","",r[0]));
-card.appendChild(el("p","plat",plat(r[1])));
-if(r[4])card.appendChild(el("p","note",r[4]));
-if(r[5]){card.appendChild(el("p","lbl","Coupon"));card.appendChild(el("div","code",r[5]));}
-var a=el("div","acts");
-if(r[5])a.appendChild(copyBtn(r[5],"Copy Coupon"));
-var l=el("a","btn",label(r)+" \u2192");l.href=r[1];l.target="_blank";l.rel="noopener noreferrer";l.setAttribute("aria-label",label(r)+": "+r[0]+" (opens in a new tab)");
-a.appendChild(l);card.appendChild(a);g.appendChild(card);});
-st.appendChild(g);root.appendChild(st);});
-var cg=document.getElementById("cg");
-var codes=["SUPPORT25%","SUPPORT50%","SUPPORT75%","SUPPORT100%"];
-codes.forEach(function(k){
-var c=el("div","card");c.appendChild(el("p","lbl","Coupon"));c.appendChild(el("div","code",k));
-var a=el("div","acts");a.appendChild(copyBtn(k,"Copy Coupon"));c.appendChild(a);cg.appendChild(c);});
-cg.className="cgrid cols-"+(codes.length===4?2:Math.min(codes.length,3));
-var BASE_K="roadmap-progress-v1",done={};
-function loadKey(k){try{return JSON.parse(localStorage.getItem(k))||{};}catch(e){return{};}}
-function load(){return loadKey(BASE_K);}
-done=load();
-var cbs=root.querySelectorAll("input[data-i]"),chips=nav.querySelectorAll(".chip"),stg=root.querySelectorAll(".stage");
-var qe=document.getElementById("q"),em=document.getElementById("empty");
-function getNextStage(){for(var i=0;i<S.length;i++){if(!done[i])return i;}return -1;}
-var contText=document.getElementById("contText"),contBtn=document.getElementById("cont");
-function paint(){var next=getNextStage();cbs.forEach(function(c,i){var d=!!done[i];c.checked=d;stg[i].classList.toggle("is-done",d);mts[i].textContent=d?"Completed":"Mark stage complete";
-if(d){chips[i].textContent="\u2713 "+(i+1)+". "+S[i].n;chips[i].setAttribute("aria-label",S[i].n+", completed");chips[i].removeAttribute("aria-current");}
-else if(i===next){chips[i].textContent="\u2192 "+(i+1)+". "+S[i].n+" \u00B7 Up next";chips[i].setAttribute("aria-label",S[i].n+", up next");chips[i].setAttribute("aria-current","step");}
-else{chips[i].textContent="\u25CB "+(i+1)+". "+S[i].n;chips[i].setAttribute("aria-label",S[i].n+", not started");chips[i].removeAttribute("aria-current");}
-});
-if(next>=0){contText.textContent="Up next: "+(next+1)+". "+S[next].n;contBtn.innerHTML="Continue \u2192";contBtn.setAttribute("aria-label","Continue to "+(next+1)+". "+S[next].n);}
-else{contText.textContent="All "+S.length+" stages completed";contBtn.innerHTML="Review from the start \u2192";contBtn.setAttribute("aria-label","All stages completed. Review from the start.");}}
-function save(){try{localStorage.setItem(BASE_K,JSON.stringify(done));}catch(e){}}
-cbs.forEach(function(c){c.addEventListener("change",function(){var i=+c.getAttribute("data-i");if(c.checked)done[i]=1;else delete done[i];save();paint();});});
-contBtn.addEventListener("click",function(){
-var nx=getNextStage();qe.value="";filter();
-if(nx>=0){stg[nx].scrollIntoView();}else{stg[0].scrollIntoView();}});
-var rb=document.getElementById("reset"),rt2=null;
-rb.addEventListener("click",function(){
-if(rb.getAttribute("data-c")){done={};save();paint();rb.removeAttribute("data-c");rb.textContent="Reset progress";clearTimeout(rt2);return;}
-rb.setAttribute("data-c","1");rb.textContent="Tap again to confirm";rt2=setTimeout(function(){rb.removeAttribute("data-c");rb.textContent="Reset progress";},4000);});
-function filter(){var q=qe.value.trim().toLowerCase(),any=0;
-stg.forEach(function(st,i){var sm=!q||(S[i].n+" "+S[i].d).toLowerCase().indexOf(q)>-1,v=0;
-st.querySelectorAll(".card").forEach(function(c){var ok=sm||c.textContent.toLowerCase().indexOf(q)>-1;c.hidden=!ok;if(ok)v++;});
-st.hidden=!v;chips[i].hidden=!v;if(v)any++;});
-var csec=document.getElementById("coupons"),cmatch=0;
-cg.querySelectorAll(".card").forEach(function(c){var ok=!q||c.textContent.toLowerCase().indexOf(q)>-1;c.hidden=!ok;if(ok)cmatch++;});
-csec.hidden=!cmatch;if(cmatch)any++;
-em.hidden=!!any;}
-qe.addEventListener("input",filter);
-function setPad(){var t=window.innerWidth<=768?document.querySelector(".tools"):document.querySelector(".topbar");if(!t){document.documentElement.style.scrollPaddingTop="";return;}var h=Math.ceil(t.getBoundingClientRect().height+12);document.documentElement.style.scrollPaddingTop="calc(env(safe-area-inset-top,0px) + "+h+"px)";}
-window.addEventListener("resize",setPad);setPad();
-var totop=document.getElementById("totop");
-window.addEventListener("scroll",function(){totop.hidden=window.scrollY<600;},{passive:true});
-totop.addEventListener("click",function(){window.scrollTo(0,0);});
-paint();
-var rt=document.documentElement,tb=document.querySelectorAll("[data-t]"),mq=window.matchMedia("(prefers-color-scheme:dark)");
-function setT(t,keep){rt.setAttribute("data-theme",t);tb.forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-t")===t));});if(keep){try{localStorage.setItem("roadmap-theme",t);}catch(e){}}}
-var t0=null;try{t0=localStorage.getItem("roadmap-theme");}catch(e){}
-setT(t0||(mq.matches?"dark":"light"),false);
-tb.forEach(function(b){b.addEventListener("click",function(){setT(b.getAttribute("data-t"),true);});});
-if(mq.addEventListener)mq.addEventListener("change",function(e){var x=null;try{x=localStorage.getItem("roadmap-theme");}catch(_){}if(!x)setT(e.matches?"dark":"light",false);});
 
-// Live visitors counter
+var TYPE = { main: "Main Course", alt: "Alternative", practice: "Practice" };
+
+function el(tag, className, text) {
+  var e = document.createElement(tag);
+  if (className) e.className = className;
+  if (text != null) e.textContent = text;
+  return e;
+}
+
+function plat(url) {
+  if (url.indexOf("youtube.com") > -1) return "YouTube";
+  if (url.indexOf("programmingadvices") > -1) return "ProgrammingAdvices";
+  if (url.indexOf("udemy.com") > -1) return "Udemy";
+  if (url.indexOf("metigator.com") > -1) return "Metigator";
+  return "Web";
+}
+
+function getLabel(r) {
+  var p = plat(r[1]);
+  if (r[3]) return "Get Course";
+  if (r[2] === "practice") return "Practice";
+  if (r[2] === "alt") return "Open Alternative";
+  return p === "YouTube" ? "Watch on YouTube" : "Start Course";
+}
+
+var root = document.getElementById("stages");
+var nav = document.getElementById("nav");
+var mts = [];
+
+S.forEach(function(s, i) {
+  var id = "stage-" + (i + 1);
+  var chip = el("a", "stage-nav-chip", (i + 1) + ". " + s.n);
+  chip.href = "#" + id;
+  nav.appendChild(chip);
+
+  var st = el("section", "stage");
+  st.id = id;
+
+  var topRow = el("div", "stop");
+  var h2 = el("h2");
+  h2.appendChild(el("span", "stage-num-box", (i < 9 ? "0" : "") + (i + 1)));
+  h2.appendChild(el("span", "", s.n));
+  topRow.appendChild(h2);
+
+  var mLabel = el("label", "mark-toggle");
+  var cb = document.createElement("input");
+  cb.type = "checkbox";
+  cb.setAttribute("data-i", i);
+  mLabel.appendChild(cb);
+  var mt = el("span", "", "Mark stage complete");
+  mLabel.appendChild(mt);
+  mts.push(mt);
+  topRow.appendChild(mLabel);
+  st.appendChild(topRow);
+
+  st.appendChild(el("p", "stage-desc", s.d));
+  var rc = s.r.length;
+  st.appendChild(el("p", "rescount", rc + (rc === 1 ? " resource available" : " resources available")));
+
+  var grid = el("div", "grid cols-" + (rc === 4 ? 2 : Math.min(rc, 3)));
+  s.r.forEach(function(r) {
+    var card = el("article", "card" + (r[2] === "main" ? " main" : ""));
+    var tags = el("div", "card-tags");
+    tags.appendChild(el("span", "tag-badge" + (r[2] === "main" ? " t-main" : ""), TYPE[r[2]]));
+    tags.appendChild(el("span", "tag-badge " + (r[3] ? "paid" : "free"), r[3] ? "PAID" : "FREE"));
+    tags.appendChild(el("span", "tag-badge", plat(r[1])));
+    card.appendChild(tags);
+
+    card.appendChild(el("h3", "", r[0]));
+    if (r[4]) card.appendChild(el("p", "note", r[4]));
+
+    var acts = el("div", "acts");
+    var link = el("a", "btn-resource-launch", getLabel(r) + " →");
+    link.href = r[1];
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    acts.appendChild(link);
+    card.appendChild(acts);
+
+    grid.appendChild(card);
+  });
+
+  st.appendChild(grid);
+  root.appendChild(st);
+});
+
+// Storage and progress
+var BASE_K = "roadmap-progress-v1";
+var done = {};
+try { done = JSON.parse(localStorage.getItem(BASE_K)) || {}; } catch(e) { done = {}; }
+
+var cbs = root.querySelectorAll("input[data-i]");
+var chips = nav.querySelectorAll(".stage-nav-chip");
+var stg = root.querySelectorAll(".stage");
+var qe = document.getElementById("q");
+var contText = document.getElementById("contText");
+var contBtn = document.getElementById("cont");
+
+function getNextStage() {
+  for (var i = 0; i < S.length; i++) {
+    if (!done[i]) return i;
+  }
+  return -1;
+}
+
+function paint() {
+  var next = getNextStage();
+  cbs.forEach(function(c, i) {
+    var isDone = !!done[i];
+    c.checked = isDone;
+    stg[i].classList.toggle("is-done", isDone);
+    mts[i].textContent = isDone ? "Stage Completed ✓" : "Mark stage complete";
+    if (isDone) {
+      chips[i].textContent = "✓ " + (i + 1) + ". " + S[i].n;
+      chips[i].classList.remove("next-chip");
+    } else if (i === next) {
+      chips[i].textContent = "→ " + (i + 1) + ". " + S[i].n + " · Up next";
+      chips[i].classList.add("next-chip");
+    } else {
+      chips[i].textContent = (i + 1) + ". " + S[i].n;
+      chips[i].classList.remove("next-chip");
+    }
+  });
+
+  if (next >= 0) {
+    contText.textContent = "Up next: Stage " + (next + 1) + " — " + S[next].n;
+    contBtn.innerHTML = "Continue to Stage " + (next + 1) + " &rarr;";
+  } else {
+    contText.textContent = "All 9 stages completed! Congratulations!";
+    contBtn.innerHTML = "Review from Stage 1 &rarr;";
+  }
+}
+
+function save() {
+  try { localStorage.setItem(BASE_K, JSON.stringify(done)); } catch(e) {}
+}
+
+cbs.forEach(function(c) {
+  c.addEventListener("change", function() {
+    var i = +c.getAttribute("data-i");
+    if (c.checked) done[i] = 1; else delete done[i];
+    save();
+    paint();
+  });
+});
+
+contBtn.addEventListener("click", function() {
+  var nx = getNextStage();
+  if (nx >= 0) { stg[nx].scrollIntoView({ behavior: 'smooth' }); }
+  else { stg[0].scrollIntoView({ behavior: 'smooth' }); }
+});
+
+var rb = document.getElementById("reset"), rt2 = null;
+rb.addEventListener("click", function() {
+  if (rb.getAttribute("data-c")) {
+    done = {};
+    save();
+    paint();
+    rb.removeAttribute("data-c");
+    rb.textContent = "Reset Progress";
+    clearTimeout(rt2);
+    return;
+  }
+  rb.setAttribute("data-c", "1");
+  rb.textContent = "Tap again to confirm reset";
+  rt2 = setTimeout(function() {
+    rb.removeAttribute("data-c");
+    rb.textContent = "Reset Progress";
+  }, 4000);
+});
+
+// Search Filter
+qe.addEventListener("input", function() {
+  var q = qe.value.trim().toLowerCase();
+  stg.forEach(function(st, i) {
+    var matchStage = !q || (S[i].n + " " + S[i].d).toLowerCase().indexOf(q) > -1;
+    var cards = st.querySelectorAll(".card");
+    var visibleCards = 0;
+    cards.forEach(function(card) {
+      var matchCard = matchStage || card.textContent.toLowerCase().indexOf(q) > -1;
+      card.style.display = matchCard ? "" : "none";
+      if (matchCard) visibleCards++;
+    });
+    st.style.display = visibleCards > 0 ? "" : "none";
+    chips[i].style.display = visibleCards > 0 ? "" : "none";
+  });
+});
+
+// Coupons Copy Handler
+document.getElementById('coupons').addEventListener('click', function(e) {
+  var btn = e.target.closest('[data-coupon]');
+  if (!btn) return;
+  var code = btn.getAttribute('data-coupon');
+  var orig = btn.innerHTML;
+  function ok() {
+    btn.innerHTML = '<span>تم النسخ! &#10003;</span>';
+    btn.style.background = 'var(--accent-emerald)';
+    btn.style.borderColor = 'var(--accent-emerald)';
+    btn.style.color = '#080b11';
+    setTimeout(function() {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }, 2000);
+  }
+  try {
+    navigator.clipboard.writeText(code).then(ok, function() {
+      alert('كود الخصم: ' + code);
+    });
+  } catch(err) {
+    alert('كود الخصم: ' + code);
+  }
+});
+
+// Scroll to top
+var totop = document.getElementById("totop");
+window.addEventListener("scroll", function() {
+  totop.style.display = window.scrollY > 500 ? "grid" : "none";
+}, { passive: true });
+totop.addEventListener("click", function() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Theme switcher
+var themeLightBtn = document.getElementById("themeLightBtn");
+var themeDarkBtn = document.getElementById("themeDarkBtn");
+
+function setTheme(t) {
+  if (t === "light") {
+    document.body.classList.add("light-theme");
+    themeLightBtn.classList.add("active");
+    themeDarkBtn.classList.remove("active");
+  } else {
+    document.body.classList.remove("light-theme");
+    themeLightBtn.classList.remove("active");
+    themeDarkBtn.classList.add("active");
+  }
+  try { localStorage.setItem("backend_theme", t); } catch(e) {}
+}
+
+themeLightBtn.addEventListener("click", function() { setTheme("light"); });
+themeDarkBtn.addEventListener("click", function() { setTheme("dark"); });
+var savedTheme = null;
+try { savedTheme = localStorage.getItem("backend_theme"); } catch(e) {}
+if (savedTheme) setTheme(savedTheme);
+
+// Live Visitors Counter
 (function() {
   var API_BASE = 'https://abacus.jasoncameron.dev';
   var NAMESPACE = 'elhendawy-developer-roadmaps';
   var KEY_TOTAL = 'total-visits';
   var SESSION_KEY = 'visited_session_back';
   var CACHE_KEY = 'cached_visits_total';
-  var el = document.getElementById('liveVisitorsCount');
+  var elNav = document.getElementById('liveVisitorsCountNav');
+  var elHero = document.getElementById('liveVisitorsCountHero');
   var cached = localStorage.getItem(CACHE_KEY);
-  if (cached && el) el.textContent = Number(cached).toLocaleString();
+  if (cached) {
+    var formatted = Number(cached).toLocaleString();
+    if (elNav) elNav.textContent = formatted;
+    if (elHero) elHero.textContent = formatted;
+  }
   var action = sessionStorage.getItem(SESSION_KEY) ? 'get' : 'hit';
   fetch(API_BASE + '/' + action + '/' + NAMESPACE + '/' + KEY_TOTAL)
     .then(function(r){ return r.json(); })
@@ -285,10 +1382,15 @@ if(mq.addEventListener)mq.addEventListener("change",function(e){var x=null;try{x
       if (d && typeof d.value === 'number') {
         sessionStorage.setItem(SESSION_KEY, 'true');
         localStorage.setItem(CACHE_KEY, String(d.value));
-        if (el) el.textContent = d.value.toLocaleString();
+        var formatted = d.value.toLocaleString();
+        if (elNav) elNav.textContent = formatted;
+        if (elHero) elHero.textContent = formatted;
       }
     }).catch(function(){});
 })();
+
+// Initial paint
+paint();
 </script>
 </body>
 </html>

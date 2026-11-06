@@ -1,406 +1,1209 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Interactive roadmap to track progress through Programming Fundamentals courses.">
-    <meta name="referrer" content="no-referrer">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' data: https:; connect-src 'self' https:; base-uri 'self'; form-action 'self';">
-    <title>Programming Fundamentals Roadmap</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2300d2ff'/%3E%3Cstop offset='1' stop-color='%233a7bd5'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2312122a'/%3E%3Cstop offset='1' stop-color='%230d1b2a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect x='4' y='4' width='88' height='88' rx='24' fill='url(%23b)' stroke='url(%23g)' stroke-width='3'/%3E%3Cpath d='M38 30 L26 44 L38 58' fill='none' stroke='%2300d2ff' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M58 30 L70 44 L58 58' fill='none' stroke='%233a7bd5' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M54 28 L42 60' fill='none' stroke='url(%23g)' stroke-width='7' stroke-linecap='round'/%3E%3Cpath d='M24 76 H72' fill='none' stroke='%232a2a4a' stroke-width='3' stroke-linecap='round' stroke-dasharray='1 6'/%3E%3Ccircle cx='24' cy='76' r='5.5' fill='%2300d2ff'/%3E%3Ccircle cx='48' cy='76' r='5.5' fill='%233a7bd5' stroke='%230a0a1a' stroke-width='1.5'/%3E%3Ccircle cx='72' cy='76' r='6.5' fill='%23fff' stroke='url(%23g)' stroke-width='3'/%3E%3Cpath d='M69.5 76 l1.8 1.8 3.2-3.6' fill='none' stroke='%2300c853' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-    <meta name="theme-color" content="#080b11">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --accent-1: #06b6d4;
-            --accent-2: #2563eb;
-            --bg-dark: #080b11;
-            --bg-card: #0f141f;
-            --bg-card-hover: #161c2b;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #f43f5e;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Plus Jakarta Sans', 'Cairo', system-ui, sans-serif;
-            background-color: var(--bg-dark);
-            background-image: 
-              linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 56px 56px;
-            min-height: 100vh;
-            color: var(--text-primary);
-        }
-        .main-content {
-            animation: fadeIn 0.6s ease;
-        }
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, rgba(0,210,255,0.1), rgba(58,123,213,0.1));
-            border-bottom: 1px solid var(--border-color);
-        }
-        h1 {
-            font-size: 2.5rem;
-            color: #00d2ff;
-            background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-        .subtitle { color: var(--text-secondary); font-size: 1.1rem; }
-        .stats-bar { display: flex; justify-content: center; gap: 40px; margin-top: 20px; flex-wrap: wrap; }
-        .stat-item { text-align: center; }
-        .stat-value { font-size: 2rem; font-weight: bold; color: var(--accent-1); }
-        .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
-        .filters { display: flex; gap: 10px; margin: 30px 0; flex-wrap: wrap; justify-content: center; }
-        .filter-btn {
-            padding: 10px 20px; border: 1px solid var(--border-color);
-            background: var(--bg-card); color: var(--text-primary);
-            border-radius: 25px; cursor: pointer; transition: all 0.3s; font-size: 0.9rem;
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            border-color: transparent;
-        }
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(380px, 100%), 1fr));
-            gap: 25px; margin-top: 20px;
-        }
-        .course-card {
-            background: var(--bg-card); border-radius: 16px; padding: 25px;
-            border: 1px solid var(--border-color); transition: all 0.3s;
-            position: relative; overflow: hidden;
-        }
-        .course-card:hover {
-            transform: translateY(-5px); background: var(--bg-card-hover);
-            box-shadow: 0 10px 40px rgba(0,210,255,0.1);
-        }
-        .course-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-            background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-        }
-        .course-card.completed::before {
-            background: linear-gradient(90deg, var(--success), #20c997);
-        }
-        .course-card.completed .course-number {
-            background: linear-gradient(135deg, var(--success), #20c997);
-        }
-        .stage-header {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px;
-            margin-bottom: 25px;
-            background: rgba(58, 123, 213, 0.1);
-            border-radius: 12px;
-            border-left: 4px solid var(--accent-2);
-            grid-column: 1 / -1;
-        }
-        .stage-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #00d2ff;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .stage-info h2 {
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            margin-bottom: 5px;
-        }
-        .stage-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-        .course-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
-        .course-number {
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            color: white; width: 36px; height: 36px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: bold; font-size: 0.9rem;
-        }
-        .badges { display: flex; gap: 8px; }
-        .badge-free { background: var(--success); color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
-        .badge-paid { background: var(--warning); color: #333; padding: 4px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
-        .course-title { font-size: 1.2rem; margin-bottom: 10px; color: white; }
-        .course-description { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5; }
-        .course-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
-        .tag { background: rgba(0,210,255,0.1); color: var(--accent-1); padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; }
-        .progress-section { margin-bottom: 20px; }
-        .progress-header { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.85rem; }
-        .progress-bar { height: 8px; background: var(--bg-dark); border-radius: 4px; overflow: hidden; }
-        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent-1), var(--accent-2)); border-radius: 4px; transition: width 0.3s; }
-        .lessons-preview { margin-bottom: 20px; }
-        .lesson-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; }
-        .lesson-item:last-child { border-bottom: none; }
-        .lesson-status {
-            width: 20px; height: 20px; border-radius: 50%;
-            border: 2px solid var(--border-color);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.2s; flex-shrink: 0;
-        }
-        .lesson-status.completed { background: var(--success); border-color: var(--success); }
-        .lesson-status.completed::after { content: '\2713'; color: white; font-size: 12px; }
-        .lesson-status:hover { border-color: var(--accent-1); transform: scale(1.15); }
-        .lesson-name { flex: 1; color: var(--text-secondary); }
-        .lesson-name.completed { color: var(--text-primary); text-decoration: line-through; }
-        .lesson-duration { color: var(--text-secondary); font-size: 0.75rem; }
-        .course-actions { display: flex; gap: 10px; }
-        .btn {
-            flex: 1; padding: 12px; border-radius: 8px; border: none;
-            cursor: pointer; font-weight: 600; transition: all 0.3s;
-            text-align: center; text-decoration: none;
-        }
-        .btn-primary { background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); color: white; }
-        .btn-primary:hover { transform: scale(1.02); box-shadow: 0 5px 20px rgba(0,210,255,0.3); }
-        .btn-secondary { background: var(--bg-dark); color: var(--text-primary); border: 1px solid var(--border-color); }
-        .btn-secondary:hover { background: var(--border-color); }
-        .btn-youtube {
-            background: #ff0000;
-            color: white;
-            flex: 0.5;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-        }
-        .btn-youtube:hover {
-            background: #cc0000;
-            transform: scale(1.02);
-        }
-        .btn-reset { background: var(--danger); color: white; margin-top: 30px; padding: 12px 30px; }
-        .btn-reset:hover { opacity: 0.85; }
-        .modal-overlay {
-            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.8); z-index: 1000;
-            align-items: center; justify-content: center;
-        }
-        .modal-overlay.active { display: flex; }
-        .modal {
-            background: var(--bg-card); border-radius: 16px; width: 90%;
-            max-width: 700px; max-height: 80vh; overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-        .modal-header {
-            padding: 20px; border-bottom: 1px solid var(--border-color);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .modal-title { font-size: 1.3rem; }
-        .modal-close { background: none; border: none; color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; }
-        .modal-close:hover { color: white; }
-        .modal-body { padding: 20px; overflow-y: auto; max-height: 60vh; }
-        .modal-progress { margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); }
-        .modal-progress-text { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 10px; }
-        .modal-lesson { display: flex; align-items: center; gap: 12px; padding: 12px; border-bottom: 1px solid var(--border-color); }
-        .modal-lesson:last-child { border-bottom: none; }
-        .modal-lesson-num { color: var(--text-secondary); font-size: 0.85rem; min-width: 30px; }
-        .modal-lesson-info { flex: 1; }
-        .modal-lesson-name { font-size: 0.95rem; }
-        .modal-lesson-duration { font-size: 0.8rem; color: var(--text-secondary); }
-        .coupon-section { margin-top: 60px; padding: 40px 20px; text-align: center; }
-        .coupon-section h2 {
-            font-size: 2rem;
-            color: #00d2ff;
-            background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; margin-bottom: 10px;
-        }
-        .coupon-subtitle { color: var(--text-secondary); margin-bottom: 30px; font-size: 1.1rem; }
-        .coupon-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px; max-width: 900px; margin: 0 auto;
-        }
-        .coupon-card {
-            background: var(--bg-card); border: 1px solid var(--border-color);
-            border-radius: 16px; padding: 25px; text-align: center; transition: all 0.3s;
-        }
-        .coupon-card:hover {
-            transform: translateY(-5px); border-color: var(--accent-1);
-            box-shadow: 0 10px 30px rgba(0,210,255,0.2);
-        }
-        .coupon-discount {
-            font-size: 2.5rem; font-weight: bold;
-            color: #00d2ff;
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            background-clip: text; margin-bottom: 10px;
-        }
-        .coupon-code {
-            font-family: monospace; font-size: 1rem; color: var(--text-primary);
-            background: var(--bg-dark); padding: 10px 15px; border-radius: 8px;
-            margin-bottom: 15px; letter-spacing: 1px; border: 1px dashed var(--border-color);
-        }
-        .coupon-copy {
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            color: white; border: none; padding: 10px 20px; border-radius: 8px;
-            cursor: pointer; font-weight: 600; transition: all 0.3s; width: 100%;
-        }
-        .coupon-copy:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0,210,255,0.3); }
-        footer { text-align: center; padding: 40px 20px; border-top: 1px solid var(--border-color); margin-top: 40px; }
-        footer p { color: var(--text-secondary); margin-bottom: 10px; font-size: 0.9rem; }
-        footer a { color: var(--accent-1); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
-        @media (max-width: 768px) {
-            h1 { font-size: 1.8rem; }
-            .courses-grid { grid-template-columns: 1fr; }
-            .course-actions { flex-direction: column; }
-            .coupon-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (max-width: 480px) {
-            .coupon-grid { grid-template-columns: 1fr; }
-        }
-        .brand-mark {
-            width: 64px; height: 64px;
-            display: inline-block;
-            vertical-align: middle;
-            filter: drop-shadow(0 4px 16px rgba(0,210,255,0.35));
-        }
-        .site-brand {
-            display: flex; align-items: center; justify-content: center;
-            gap: 14px; margin-bottom: 10px;
-        }
-        .site-brand .brand-mark { width: 56px; height: 56px; flex-shrink: 0; }
-        .site-brand h1 { margin-bottom: 0 !important; text-align: left; }
-        @media (max-width: 480px) {
-            .site-brand { flex-direction: column; gap: 10px; }
-            .site-brand h1 { text-align: center; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="خارطة طريق تفاعلية متكاملة لاحتراف أساسيات علوم الحاسوب والبرمجة: 24 كورساً و479 درساً من الصفر حتى الاحتراف بالاعتماد على منهج د. محمد أبو هدهود.">
+<meta name="theme-color" content="#080b11">
+<title>مسار أساسيات علوم الحاسوب والبرمجة | Programming Fundamentals Roadmap</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='24' fill='%23080b11'/%3E%3Crect x='2' y='2' width='92' height='92' rx='22' fill='none' stroke='%2306b6d4' stroke-width='3' stroke-opacity='0.4'/%3E%3Cpath d='M38 30 L26 48 L38 66' fill='none' stroke='%2306b6d4' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M58 30 L70 48 L58 66' fill='none' stroke='%2310b981' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='48' cy='48' r='5' fill='%2322d3ee'/%3E%3C/svg%3E">
+
+<!-- Google Fonts: Cairo & Plus Jakarta Sans -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg-main: #080b11;
+    --bg-surface: #0f141f;
+    --bg-surface-elevated: #161c2b;
+    --bg-surface-hover: #1c2438;
+    
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    
+    --border-subtle: rgba(255, 255, 255, 0.07);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --border-focus: #06b6d4;
+    
+    --accent-cyan: #06b6d4;
+    --accent-cyan-light: #22d3ee;
+    --accent-emerald: #10b981;
+    --accent-emerald-light: #34d399;
+    --accent-amber: #f59e0b;
+    --accent-blue: #2563eb;
+    
+    --font-arabic: 'Cairo', system-ui, -apple-system, sans-serif;
+    --font-latin: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-arabic);
+    line-height: 1.65;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Architectural structural background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ================= 1. MASTHEAD NAVBAR ================= */
+  .masthead {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    background: rgba(8, 11, 17, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .masthead-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 68px;
+    padding: 10px 0;
+    gap: 16px;
+  }
+
+  .brand-group {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  .brand-symbol {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    display: grid;
+    place-items: center;
+    color: var(--accent-cyan-light);
+    flex-shrink: 0;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+
+  .brand-group:hover .brand-symbol {
+    transform: rotate(-6deg) scale(1.05);
+    border-color: var(--accent-cyan);
+  }
+
+  .brand-identity {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .brand-name {
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .brand-tag {
+    font-family: var(--font-latin);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: var(--accent-cyan);
+    text-transform: uppercase;
+  }
+
+  .masthead-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .masthead-nav-links a:hover {
+    color: #fff;
+  }
+
+  .masthead-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  .btn-back-hub {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 16px;
+    border-radius: 99px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+  }
+
+  .btn-back-hub:hover {
+    background: var(--bg-surface-elevated);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan-light);
+    transform: translateY(-1px);
+  }
+
+  .live-status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 99px;
+    background: var(--bg-surface);
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+  }
+
+  .status-light {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-emerald);
+    box-shadow: 0 0 8px var(--accent-emerald);
+  }
+
+  .live-status-chip strong {
+    font-family: var(--font-latin);
+    font-weight: 800;
+    color: var(--accent-cyan-light);
+  }
+
+  /* ================= 2. HERO STATEMENT ================= */
+  .hero-section {
+    padding: 56px 0 36px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .hero-meta-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .meta-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--accent-cyan-light);
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.25);
+    padding: 4px 12px;
+    border-radius: 6px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 3.8vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: #fff;
+    max-width: 950px;
+    margin-bottom: 16px;
+  }
+
+  .hero-description {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    color: var(--text-secondary);
+    max-width: 860px;
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  /* ================= 3. OVERALL STATS RIBBON ================= */
+  .metrics-strip {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 36px;
+  }
+
+  .metric-cell {
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-inline-start: 1px solid var(--border-subtle);
+  }
+
+  .metric-cell:first-child {
+    border-inline-start: none;
+  }
+
+  .metric-val {
+    font-family: var(--font-latin);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .metric-val.cyan {
+    color: var(--accent-cyan-light);
+  }
+
+  .metric-val.emerald {
+    color: var(--accent-emerald-light);
+  }
+
+  .metric-lbl {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  /* Progress Bar in Hero */
+  .overall-progress-bar-wrapper {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 40px;
+  }
+
+  .overall-progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  .overall-progress-track {
+    height: 8px;
+    background: var(--bg-surface-elevated);
+    border-radius: 99px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .overall-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
+    border-radius: 99px;
+    transition: width 0.4s ease;
+  }
+
+  /* ================= 4. FILTER PILLS BAR ================= */
+  .filters-container {
+    margin: 36px 0 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .filters-label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+
+  .filters-scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 99px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    font-weight: 700;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .filter-btn:hover {
+    background: var(--bg-surface-elevated);
+    border-color: var(--border-strong);
+    color: #fff;
+  }
+
+  .filter-btn.active {
+    background: rgba(6, 182, 212, 0.15);
+    border-color: var(--accent-cyan);
+    color: #fff;
+    box-shadow: 0 0 16px rgba(6, 182, 212, 0.2);
+  }
+
+  /* ================= 5. STAGE ROADMAP & COURSE CARDS ================= */
+  .stages-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    margin-bottom: 64px;
+  }
+
+  .stage-banner {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-right: 4px solid var(--accent-cyan);
+    border-radius: 14px;
+    padding: 22px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .stage-banner-tag {
+    font-family: var(--font-latin);
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: var(--accent-cyan);
+    letter-spacing: 0.06em;
+  }
+
+  .stage-banner-title {
+    font-size: 1.45rem;
+    font-weight: 900;
+    color: #fff;
+  }
+
+  .stage-banner-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-top: 20px;
+  }
+
+  .course-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .course-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(6, 182, 212, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  }
+
+  .course-card.completed {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.04) 0%, var(--bg-surface) 100%);
+  }
+
+  .course-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .course-num-badge {
+    font-family: var(--font-latin);
+    font-size: 0.85rem;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 6px;
+    background: var(--bg-surface-elevated);
+    color: var(--accent-cyan-light);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .course-badges-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .badge-tier {
+    font-family: var(--font-latin);
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 3px 9px;
+    border-radius: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .badge-tier.free {
+    background: rgba(16, 185, 129, 0.15);
+    color: #6ee7b7;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .badge-tier.paid {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fde68a;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+  }
+
+  .course-title {
+    font-size: 1.22rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.4;
+  }
+
+  .course-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .course-tags-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag-pill {
+    font-family: var(--font-latin);
+    font-size: 0.74rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: var(--bg-surface-elevated);
+    color: var(--text-muted);
+    border: 1px solid var(--border-subtle);
+  }
+
+  /* Mini progress bar */
+  .card-progress-wrapper {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .card-progress-track {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .card-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-cyan), var(--accent-emerald));
+    border-radius: 99px;
+    transition: width 0.3s ease;
+  }
+
+  /* Lessons preview list */
+  .lessons-preview-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .lesson-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    transition: all 0.15s ease;
+  }
+
+  .lesson-row:hover {
+    background: var(--bg-surface-elevated);
+    border-color: var(--border-subtle);
+  }
+
+  .lesson-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .lesson-toggle-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border-strong);
+    background: var(--bg-surface);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .lesson-toggle-btn:hover {
+    border-color: var(--accent-cyan);
+  }
+
+  .lesson-toggle-btn.completed {
+    background: var(--accent-emerald);
+    border-color: var(--accent-emerald);
+    color: #080b11;
+  }
+
+  .lesson-title-text {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .lesson-title-text.completed {
+    text-decoration: line-through;
+    color: var(--text-muted);
+  }
+
+  .lesson-dur-text {
+    font-family: var(--font-latin);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .btn-view-all-lessons {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--accent-cyan-light);
+    padding: 6px 0;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: color 0.2s ease;
+  }
+
+  .btn-view-all-lessons:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .course-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .btn-action-launch {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: var(--accent-cyan);
+    color: #080b11;
+    font-weight: 800;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+
+  .btn-action-launch:hover {
+    background: var(--accent-cyan-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-action-yt {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    font-weight: 700;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+  }
+
+  .btn-action-yt:hover {
+    background: rgba(239, 68, 68, 0.25);
+    color: #fff;
+  }
+
+  /* ================= 6. VOUCHER TICKETS VAULT ================= */
+  .vault-section {
+    padding: 64px 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .vault-header-center {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 36px;
+  }
+
+  .vault-title {
+    font-size: 1.85rem;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 8px;
+  }
+
+  .vault-lead {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+  }
+
+  .coupons-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .coupon-ticket {
+    background: var(--bg-surface);
+    border: 1px solid rgba(245, 158, 11, 0.28);
+    border-radius: 16px;
+    padding: 22px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .coupon-ticket:hover {
+    transform: translateY(-3px);
+    border-color: rgba(245, 158, 11, 0.55);
+  }
+
+  .coupon-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .coupon-badge-rate {
+    font-family: var(--font-latin);
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #fef08a;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    padding: 3px 10px;
+    border-radius: 7px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  .coupon-badge-rate.rate-100 {
+    background: var(--accent-amber);
+    border-color: var(--accent-amber);
+    color: #080b11;
+  }
+
+  .coupon-tier {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .coupon-code-box {
+    font-family: var(--font-latin);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: #fff;
+    background: var(--bg-surface-elevated);
+    padding: 9px 12px;
+    border-radius: 8px;
+    border: 1px dashed rgba(255, 255, 255, 0.18);
+    text-align: center;
+  }
+
+  .btn-copy-ticket {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: rgba(245, 158, 11, 0.15);
+    border: 1px solid rgba(245, 158, 11, 0.35);
+    color: #fef08a;
+    font-weight: 700;
+    font-size: 0.88rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+
+  .btn-copy-ticket:hover {
+    background: var(--accent-amber);
+    color: #080b11;
+    border-color: var(--accent-amber);
+  }
+
+  /* ================= 7. LESSON CHECKLIST MODAL ================= */
+  .modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(8, 11, 17, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .modal-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 680px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+  }
+
+  .modal-header {
+    padding: 24px 28px;
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .modal-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .btn-modal-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    display: grid;
+    place-items: center;
+    font-size: 1.1rem;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .btn-modal-close:hover {
+    color: #fff;
+    border-color: var(--accent-cyan);
+  }
+
+  .modal-body {
+    padding: 24px 28px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modal-progress-bar {
+    background: var(--bg-surface-elevated);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* ================= 8. FOOTER ================= */
+  footer {
+    padding: 48px 0 36px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+  }
+
+  footer a {
+    color: var(--accent-cyan-light);
+    font-weight: 700;
+  }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width: 1024px) {
+    .metrics-strip {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .metrics-strip .metric-cell:nth-child(4) {
+      border-inline-start: none;
+    }
+    .coupons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 18px;
+    }
+    .courses-grid {
+      grid-template-columns: 1fr;
+    }
+    .metrics-strip {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .metrics-strip .metric-cell:nth-child(3) {
+      border-inline-start: none;
+    }
+    .masthead-nav-links {
+      display: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hub-full { display: none; }
+    .brand-name { font-size: 0.98rem; white-space: nowrap; }
+    .masthead-inner { min-height: 56px; gap: 8px; }
+    .masthead-controls { gap: 6px; }
+    .live-status-chip span:not(.status-light):not(#liveVisitorsCountNav) { display: none; }
+  }
+  @media (max-width: 540px) {
+    .coupons-grid {
+      grid-template-columns: 1fr;
+    }
+    .masthead-inner {
+      min-height: 58px;
+    }
+    .brand-tag {
+      display: none;
+    }
+    .btn-back-hub {
+      padding: 6px 12px;
+      font-size: 0.78rem;
+    }
+    .live-status-chip {
+      padding: 5px 10px;
+      font-size: 0.76rem;
+    }
+  }
+</style>
 </head>
 <body>
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-        <defs>
-            <linearGradient id="pf-grad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#00d2ff"/>
-                <stop offset="1" stop-color="#3a7bd5"/>
-            </linearGradient>
-            <linearGradient id="pf-bg" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#12122a"/>
-                <stop offset="1" stop-color="#0d1b2a"/>
-            </linearGradient>
-            <symbol id="pf-logo" viewBox="0 0 96 96">
-                <title>Programming Fundamentals Roadmap logo</title>
-                <rect x="4" y="4" width="88" height="88" rx="24" fill="url(#pf-bg)" stroke="url(#pf-grad)" stroke-width="3"/>
-                <path d="M38 30 L26 44 L38 58" fill="none" stroke="#00d2ff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M58 30 L70 44 L58 58" fill="none" stroke="#3a7bd5" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M54 28 L42 60" fill="none" stroke="url(#pf-grad)" stroke-width="7" stroke-linecap="round"/>
-                <path d="M24 76 H72" fill="none" stroke="#2a2a4a" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 6"/>
-                <circle cx="24" cy="76" r="5.5" fill="#00d2ff"/>
-                <circle cx="48" cy="76" r="5.5" fill="#3a7bd5" stroke="#0a0a1a" stroke-width="1.5"/>
-                <circle cx="72" cy="76" r="6.5" fill="#fff" stroke="url(#pf-grad)" stroke-width="3"/>
-                <path d="M69.5 76 l1.8 1.8 3.2-3.6" fill="none" stroke="#00c853" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </symbol>
-        </defs>
-    </svg>
-    <div class="main-content" id="mainContent">
-    <div style="position:sticky;top:0;z-index:90;padding:12px 24px;border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(8,11,17,0.88);backdrop-filter:blur(14px);display:flex;align-items:center;justify-content:space-between;gap:12px;">
-        <a href="../" style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;background:var(--bg-card);border:1px solid rgba(255,255,255,0.12);border-radius:10px;color:#fff;text-decoration:none;font-size:0.86rem;font-weight:700;transition:all 0.2s;">
-            <span>&#8592;</span> All Roadmaps &bull; الرئيسية
-        </a>
-        <div style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:99px;background:var(--bg-card);border:1px solid rgba(255,255,255,0.08);font-size:0.82rem;color:var(--text-secondary);">
-            <span style="width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 8px #10b981;"></span>
-            <span>الزوار:</span>
-            <strong id="liveVisitorsCountNav" style="color:#fff;">--</strong>
-        </div>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="container masthead-inner">
+    <div class="brand-group">
+      <div class="brand-symbol" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+      </div>
+      <div class="brand-identity">
+        <span class="brand-name">أساسيات البرمجة</span>
+        <span class="brand-tag">CS & ALGORITHMS</span>
+      </div>
     </div>
-    <header>
-        <div class="site-brand">
-            <svg class="brand-mark" width="56" height="56" role="img" aria-label="Programming Fundamentals Roadmap logo"><use href="#pf-logo"/></svg>
-            <h1>Programming Fundamentals Roadmap</h1>
-        </div>
-        <p class="subtitle">Based on Dr. Mohammed Abu-Hadhoud's 24 Courses</p>
-        <div class="stats-bar">
-            <div class="stat-item"><div class="stat-value" id="totalCourses">24</div><div class="stat-label">Total Courses</div></div>
-            <div class="stat-item"><div class="stat-value" id="totalLessons">0</div><div class="stat-label">Total Lessons</div></div>
-            <div class="stat-item"><div class="stat-value" id="completedLessons">0</div><div class="stat-label">Completed</div></div>
-            <div class="stat-item"><div class="stat-value" id="overallProgress">0%</div><div class="stat-label">Progress</div></div>
-            <div class="stat-item"><div class="stat-value" id="liveVisitorsCount" style="color:var(--accent-1)">--</div><div class="stat-label">Total Visitors</div></div>
-        </div>
-    </header>
-    <div class="container">
-        <div class="filters">
-            <button class="filter-btn active" data-filter="all">All Courses</button>
-            <button class="filter-btn" data-filter="free">Free</button>
-            <button class="filter-btn" data-filter="paid">Paid</button>
-            <button class="filter-btn" data-filter="cpp">C++</button>
-            <button class="filter-btn" data-filter="cs">C#</button>
-            <button class="filter-btn" data-filter="sql">SQL</button>
-            <button class="filter-btn" data-filter="algorithms">Algorithms</button>
-            <button class="filter-btn" data-filter="oop">OOP</button>
-            <button class="filter-btn" data-filter="ds">Data Structures</button>
-            <button class="filter-btn" data-filter="fundamentals">Fundamentals</button>
-        </div>
-        <div class="courses-grid" id="coursesGrid"></div>
-        <div style="text-align: center;">
-            <button class="btn btn-reset" id="resetProgressBtn" type="button">Reset All Progress</button>
-        </div>
+
+    <div class="masthead-controls">
+      <a href="../" class="btn-back-hub">&#8592; <span class="hub-full">All Roadmaps &bull; </span>الرئيسية</a>
+      <div class="live-status-chip" title="إجمالي الزيارات الحية للمسار">
+        <span class="status-light" aria-hidden="true"></span>
+        <span>الزوار:</span>
+        <strong id="liveVisitorsCountNav">--</strong>
+      </div>
     </div>
-    <div class="modal-overlay" id="lessonModal">
-        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <div class="modal-header">
-                <h2 class="modal-title" id="modalTitle"></h2>
-                <button class="modal-close" id="modalCloseBtn" type="button">&times;</button>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
-        </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-meta-bar">
+      <span class="meta-badge">&#10003; مسار تأسيسي معتمد</span>
+      <span class="meta-badge">منهج د. محمد أبو هدهود (24 كورساً)</span>
+      <span class="meta-badge">حفظ التقدم التلقائي محلياً</span>
     </div>
-    <section class="coupon-section">
-        <h2>Support &amp; Coupons</h2>
-        <p class="coupon-subtitle">Use these coupon codes to get discounts on courses</p>
-        <div class="coupon-grid" id="couponGrid">
-            <div class="coupon-card">
-                <div class="coupon-discount">25%</div>
-                <div class="coupon-code">SUPPORT25%</div>
-                <button class="coupon-copy" data-coupon="SUPPORT25%" type="button">Copy Code</button>
-            </div>
-            <div class="coupon-card">
-                <div class="coupon-discount">50%</div>
-                <div class="coupon-code">SUPPORT50%</div>
-                <button class="coupon-copy" data-coupon="SUPPORT50%" type="button">Copy Code</button>
-            </div>
-            <div class="coupon-card">
-                <div class="coupon-discount">75%</div>
-                <div class="coupon-code">SUPPORT75%</div>
-                <button class="coupon-copy" data-coupon="SUPPORT75%" type="button">Copy Code</button>
-            </div>
-            <div class="coupon-card">
-                <div class="coupon-discount">100%</div>
-                <div class="coupon-code">SUPPORT100%</div>
-                <button class="coupon-copy" data-coupon="SUPPORT100%" type="button">Copy Code</button>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <p>&copy; <span id="copyYear">2026</span> Elhendawy. All Rights Reserved.</p>
-        <p>Created with respect to Dr. Mohammed Abu-Hadhoud</p>
-        <p><a href="https://programmingadvices.com" target="_blank" rel="noopener noreferrer">ProgrammingAdvices.com</a> | <a href="https://www.youtube.com/@ProgrammingAdvices" target="_blank" rel="noopener noreferrer">YouTube Channel</a></p>
-    </footer>
+
+    <h1 class="hero-headline">مسار أساسيات علوم الحاسوب وحل المشكلات</h1>
+    <p class="hero-description">
+      المنهج الأكاديمي الشامل والمتكامل لنقل عقليتك من الصفر إلى مستوى مهندس البرمجيات المحترف: التفكير المنطقي، C++، الخوارزميات وحل المشكلات (Levels 1–4)، هياكل البيانات المتقدمة، البرمجة كائنية التوجه (OOP)، وقواعد بيانات SQL Server و T-SQL.
+    </p>
+
+    <!-- METRICS STRIP -->
+    <div class="metrics-strip">
+      <div class="metric-cell">
+        <span class="metric-val cyan">24</span>
+        <span class="metric-lbl">كورساً متكاملاً</span>
+      </div>
+      <div class="metric-cell">
+        <span class="metric-val">479</span>
+        <span class="metric-lbl">درساً ومسألة</span>
+      </div>
+      <div class="metric-cell">
+        <span class="metric-val emerald" id="completedLessons">0</span>
+        <span class="metric-lbl">درساً منجزاً</span>
+      </div>
+      <div class="metric-cell">
+        <span class="metric-val cyan" id="overallProgress">0%</span>
+        <span class="metric-lbl">نسبة الإنجاز الكلية</span>
+      </div>
+      <div class="metric-cell">
+        <span class="metric-val" id="liveVisitorsCount">--</span>
+        <span class="metric-lbl">إجمالي الزيارات النشطة</span>
+      </div>
     </div>
-    <script>
-        // Security helpers. Note: password gate below is a soft-gate only (public content).
-        function escapeHtml(str) {
-            return String(str == null ? '' : str).replace(/[&<>"']/g, function (c) {
-                return ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[c];
-            });
-        }
-        var ALLOWED_FILTERS = ['all', 'free', 'paid', 'cpp', 'cs', 'sql', 'algorithms', 'oop', 'ds', 'fundamentals'];
-        function isAllowedCourseUrl(url) {
-            return typeof url === 'string' && /^https:\/\/(www\.)?(programmingadvices\.com|youtube\.com|youtu\.be)\//.test(url);
-        }
-        const courses = [
+
+    <!-- OVERALL PROGRESS TRACK -->
+    <div class="overall-progress-bar-wrapper">
+      <div class="overall-progress-info">
+        <span>تقدمك في المنهج الكلي:</span>
+        <span id="overallProgressText" style="color:var(--accent-cyan-light);">0% منجز</span>
+      </div>
+      <div class="overall-progress-track">
+        <div class="overall-progress-fill" id="overallProgressBar"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <section class="filters-container">
+    <span class="filters-label">تصفية الكورسات حسب المجال أو التقنية:</span>
+    <div class="filters-scroll" id="filterButtons">
+      <button class="filter-btn active" data-filter="all">كافة الكورسات (24)</button>
+      <button class="filter-btn" data-filter="free">مجاني فقط (11)</button>
+      <button class="filter-btn" data-filter="paid">المدفوع (13)</button>
+      <button class="filter-btn" data-filter="cpp">C++ Programming</button>
+      <button class="filter-btn" data-filter="algorithms">حل المشكلات والخوارزميات</button>
+      <button class="filter-btn" data-filter="oop">البرمجة الكائنية OOP</button>
+      <button class="filter-btn" data-filter="ds">هياكل البيانات</button>
+      <button class="filter-btn" data-filter="sql">قواعد بيانات SQL</button>
+      <button class="filter-btn" data-filter="cs">C# Foundations</button>
+      <button class="filter-btn" data-filter="fundamentals">المفاهيم التأسيسية</button>
+    </div>
+  </section>
+
+  <!-- COURSES GRID / STAGES FLOW -->
+  <section class="stages-flow" id="coursesGrid"></section>
+
+  <!-- VOUCHER VAULT -->
+  <section class="vault-section" id="coupons">
+    <div class="vault-header-center">
+      <h2 class="vault-title">كوبونات دورات م. محمد أبو هدهود الرسمية</h2>
+      <p class="vault-lead">قسائم دعم وخصم مباشرة (25% - 50% - 75% - 100%) للاستخدام على موقع programmingadvices.com</p>
+    </div>
+
+    <div class="coupons-grid">
+      <div class="coupon-ticket">
+        <div class="coupon-header-row">
+          <span class="coupon-badge-rate rate-100">100% OFF</span>
+          <span class="coupon-tier">مجاني بالكامل لوجه الله</span>
+        </div>
+        <div class="coupon-code-box">SUPPORT100%</div>
+        <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT100%">
+          <span>نسخ كود 100%</span>
+        </button>
+      </div>
+
+      <div class="coupon-ticket">
+        <div class="coupon-header-row">
+          <span class="coupon-badge-rate">75% OFF</span>
+          <span class="coupon-tier">قسيمة دعم مالي 75%</span>
+        </div>
+        <div class="coupon-code-box">SUPPORT75%</div>
+        <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT75%">
+          <span>نسخ كود 75%</span>
+        </button>
+      </div>
+
+      <div class="coupon-ticket">
+        <div class="coupon-header-row">
+          <span class="coupon-badge-rate">50% OFF</span>
+          <span class="coupon-tier">قسيمة دعم مالي 50%</span>
+        </div>
+        <div class="coupon-code-box">SUPPORT50%</div>
+        <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT50%">
+          <span>نسخ كود 50%</span>
+        </button>
+      </div>
+
+      <div class="coupon-ticket">
+        <div class="coupon-header-row">
+          <span class="coupon-badge-rate">25% OFF</span>
+          <span class="coupon-tier">قسيمة دعم مالي 25%</span>
+        </div>
+        <div class="coupon-code-box">SUPPORT25%</div>
+        <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT25%">
+          <span>نسخ كود 25%</span>
+        </button>
+      </div>
+    </div>
+
+    <p style="margin-top:20px; font-size:0.88rem; color:var(--text-muted); text-align:center;">
+      انسخ أي كود أعلاه وضعه في صفحة إتمام الطلب على <a href="https://programmingadvices.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent-amber); font-weight:700;">programmingadvices.com</a>.
+    </p>
+  </section>
+
+</main>
+
+<!-- LESSON CHECKLIST MODAL -->
+<div class="modal-overlay" id="courseModal" role="dialog" aria-modal="true" aria-labelledby="modalCourseTitle">
+  <div class="modal-card">
+    <div class="modal-header">
+      <div>
+        <h3 class="modal-title" id="modalCourseTitle">قائمة الدروس</h3>
+        <p id="modalCourseSub" style="font-size:0.85rem; color:var(--text-secondary); margin-top:4px;"></p>
+      </div>
+      <button class="btn-modal-close" id="modalCloseBtn" aria-label="إغلاق">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <p>أرشيف مسار أساسيات علوم الحاسوب &bull; تم إعداده وتنسيقه مجاناً لوجه الله تعالى &bull; <a href="../">&#8592; العودة للرئيسية</a></p>
+  </div>
+</footer>
+
+<script>
+// Escape HTML Helper
+function escapeHtml(str) {
+  return String(str == null ? '' : str).replace(/[&<>"']/g, function(c) {
+    return ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[c];
+  });
+}
+
+function isAllowedCourseUrl(url) {
+  return typeof url === 'string' && /^https:\/\/(www\.)?(programmingadvices\.com|youtube\.com|youtu\.be)\//.test(url);
+}
+
+const courses = [
             {id:1,title:"Programming Foundations - Level 1",description:"Build a solid understanding of computer science fundamentals, binary systems, and programming concepts.",url:"https://programmingadvices.com/p/00316b",isFree:true,tags:["fundamentals","beginner","free"],category:["cpp","free"],youtube:"https://www.youtube.com/playlist?list=PL3X--QIIK-OHgMV2yBz3GLfM5d_5BxOSj",lessons:[
                 {id:1,name:"Lesson # 1 - From Data to Wisdom: Data, Information, Knowledge, and Wisdom",duration:"15 min"},
                 {id:2,name:"Lesson #2 - Computer, Function, and Components",duration:"18 min"},
@@ -929,394 +1732,338 @@
                 {id:14,name:"Install and Configure",duration:"18 min"}
             ]}
         ];
-        let progress = {};
-        var currentFilter = 'all';
-        var modalOpener = null;
+        
 
-        function findLesson(courseId, lessonId) {
-            if (typeof courseId !== 'number' || typeof lessonId !== 'number' || isNaN(courseId) || isNaN(lessonId)) return null;
-            var course = courses.find(function(c) { return c.id === courseId; });
-            if (!course) return null;
-            var lesson = course.lessons.find(function(l) { return l.id === lessonId; });
-            return lesson ? {course: course, lesson: lesson} : null;
-        }
+// State
+let progress = {};
+var currentFilter = 'all';
 
-        function flipLesson(courseId, lessonId) {
-            if (!findLesson(courseId, lessonId)) return false;
-            var key = courseId + '-' + lessonId;
-            if (progress[key]) {
-                delete progress[key];
-            } else {
-                progress[key] = true;
-            }
-            saveProgress();
-            return true;
-        }
+function getProgress() {
+  try {
+    var raw = localStorage.getItem('roadmapProgress');
+    if (!raw) return {};
+    var parsed = JSON.parse(raw);
+    return (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) ? parsed : {};
+  } catch (e) {
+    return {};
+  }
+}
 
-        function refocusToggle(container, action, courseId, lessonId) {
-            var sel = '[data-action="' + action + '"][data-course="' + courseId + '"][data-lesson="' + lessonId + '"]';
-            var nt = container.querySelector(sel);
-            if (nt) {
-                try { nt.focus({preventScroll: true}); } catch (e) { nt.focus(); }
-            }
-        }
+function saveProgress() {
+  try {
+    localStorage.setItem('roadmapProgress', JSON.stringify(progress));
+  } catch (e) {}
+}
 
-        function getProgress() {
-            try {
-                var raw = localStorage.getItem('roadmapProgress');
-                if (!raw) return {};
-                var parsed = JSON.parse(raw);
-                return (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) ? parsed : {};
-            } catch (e) {
-                return {};
-            }
-        }
+progress = getProgress();
 
-        function saveProgress() {
-            try {
-                localStorage.setItem('roadmapProgress', JSON.stringify(progress));
-            } catch (e) {
-                // Quota exceeded or storage blocked (private mode) - progress stays in memory.
-            }
-        }
+function findLesson(courseId, lessonId) {
+  var course = courses.find(function(c) { return c.id === courseId; });
+  if (!course) return null;
+  var lesson = course.lessons.find(function(l) { return l.id === lessonId; });
+  return lesson ? {course: course, lesson: lesson} : null;
+}
 
-        function toggleLesson(courseId, lessonId, event) {
-            if (!flipLesson(courseId, lessonId)) return;
-            renderAll();
-            refocusToggle(document.getElementById('coursesGrid'), 'toggle', courseId, lessonId);
-        }
+function flipLesson(courseId, lessonId) {
+  if (!findLesson(courseId, lessonId)) return false;
+  var key = courseId + '-' + lessonId;
+  if (progress[key]) {
+    delete progress[key];
+  } else {
+    progress[key] = true;
+  }
+  saveProgress();
+  return true;
+}
 
-        function toggleLessonFromModal(courseId, lessonId) {
-            if (!flipLesson(courseId, lessonId)) return;
-            var modalBody = document.getElementById('modalBody');
-            var scrollTop = modalBody.scrollTop;
-            renderAll();
-            openCourseModal(courseId);
-            document.getElementById('modalBody').scrollTop = scrollTop;
-            refocusToggle(document.getElementById('modalBody'), 'toggle-modal', courseId, lessonId);
-        }
+function getCourseProgress(courseId) {
+  var course = courses.find(function(c) { return c.id === courseId; });
+  if (!course) return { completed: 0, total: 0, percent: 0 };
+  var completed = course.lessons.filter(function(l) { return progress[courseId + '-' + l.id]; }).length;
+  var total = course.lessons.length;
+  var percent = total > 0 ? Math.round((completed / total) * 100) : 0;
+  return { completed: completed, total: total, percent: percent };
+}
 
-        function getCourseProgress(courseId) {
-            var course = courses.find(function(c) { return c.id === courseId; });
-            if (!course) return {completed: 0, total: 0, percent: 0};
-            var completed = course.lessons.filter(function(l) { return progress[courseId + '-' + l.id]; }).length;
-            var total = course.lessons.length;
-            var percent = total > 0 ? Math.round((completed / total) * 100) : 0;
-            return {completed: completed, total: total, percent: percent};
-        }
+function getOverallStats() {
+  var totalLessons = 0;
+  var completedLessons = 0;
+  courses.forEach(function(course) {
+    totalLessons += course.lessons.length;
+    course.lessons.forEach(function(lesson) {
+      if (progress[course.id + '-' + lesson.id]) {
+        completedLessons++;
+      }
+    });
+  });
+  var percent = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
+  return { totalCourses: courses.length, totalLessons: totalLessons, completedLessons: completedLessons, percent: percent };
+}
 
-        function getOverallStats() {
-            var totalLessons = 0;
-            var completedLessons = 0;
-            courses.forEach(function(course) {
-                totalLessons += course.lessons.length;
-                course.lessons.forEach(function(lesson) {
-                    if (progress[course.id + '-' + lesson.id]) {
-                        completedLessons++;
-                    }
-                });
-            });
-            var percent = totalLessons > 0 ? Math.round((completedLessons / totalLessons) * 100) : 0;
-            return {totalLessons: totalLessons, completedLessons: completedLessons, percent: percent};
-        }
+function updateOverallStatsUI() {
+  var stats = getOverallStats();
+  var compEl = document.getElementById('completedLessons');
+  if (compEl) compEl.textContent = stats.completedLessons.toLocaleString();
+  var progEl = document.getElementById('overallProgress');
+  if (progEl) progEl.textContent = stats.percent + '%';
+  var progText = document.getElementById('overallProgressText');
+  if (progText) progText.textContent = stats.percent + '% منجز (' + stats.completedLessons + ' من ' + stats.totalLessons + ' درساً)';
+  var bar = document.getElementById('overallProgressBar');
+  if (bar) bar.style.width = stats.percent + '%';
+}
 
-        function openCourseModal(courseId) {
-            var course = courses.find(function(c) { return c.id === courseId; });
-            if (!course) return;
-            document.getElementById('modalTitle').textContent = course.title;
+function renderCourseCard(course) {
+  var prog = getCourseProgress(course.id);
+  var previewLessons = course.lessons.slice(0, 4);
+  var isComplete = prog.percent === 100;
+  var cardClass = isComplete ? 'course-card completed' : 'course-card';
+  var safeYoutube = isAllowedCourseUrl(course.youtube) ? escapeHtml(course.youtube) : '';
+  var youtubeBtn = safeYoutube ? '<a href="' + safeYoutube + '" target="_blank" rel="noopener noreferrer" class="btn-action-yt">YouTube</a>' : '';
+  var btnText = prog.completed > 0 ? 'متابعة الكورس' : 'بدء الكورس';
+  var courseLink = isAllowedCourseUrl(course.url)
+    ? '<a class="btn-action-launch" href="' + escapeHtml(course.url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(btnText) + ' &#8594;</a>'
+    : '<span class="btn-action-launch" style="opacity:0.6;">' + escapeHtml(btnText) + '</span>';
 
-            var prog = getCourseProgress(courseId);
-            var barColor = prog.percent === 100 ? 'background: linear-gradient(90deg, var(--success), #20c997);' : '';
-            var html = '<div class="modal-progress">' +
-                '<div class="modal-progress-text">' + prog.completed + '/' + prog.total + ' lessons completed (' + prog.percent + '%)</div>' +
-                '<div class="progress-bar"><div class="progress-fill" style="width: ' + prog.percent + '%; ' + barColor + '"></div></div>' +
-                '</div>';
+  return '<article class="' + cardClass + '">' +
+    '<div class="course-card-top">' +
+      '<span class="course-num-badge">COURSE ' + (course.id < 10 ? '0' : '') + Number(course.id) + '</span>' +
+      '<div class="course-badges-group">' +
+        (course.isFree ? '<span class="badge-tier free">مجاني FREE</span>' : '<span class="badge-tier paid">مدفوع PAID</span>') +
+      '</div>' +
+    '</div>' +
+    '<h3 class="course-title">' + escapeHtml(course.title) + '</h3>' +
+    '<p class="course-desc">' + escapeHtml(course.description) + '</p>' +
+    '<div class="course-tags-group">' +
+      course.tags.map(function(t) { return '<span class="tag-pill">' + escapeHtml(t) + '</span>'; }).join('') +
+    '</div>' +
+    '<div class="card-progress-wrapper">' +
+      '<div class="card-progress-header">' +
+        '<span>' + prog.completed + ' من ' + prog.total + ' درساً مكتملة</span>' +
+        '<span style="color:var(--accent-cyan-light); font-family:var(--font-latin);">' + prog.percent + '%</span>' +
+      '</div>' +
+      '<div class="card-progress-track">' +
+        '<div class="card-progress-fill" style="width:' + prog.percent + '%;"></div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="lessons-preview-box">' +
+      previewLessons.map(function(lesson) {
+        var isDone = progress[course.id + '-' + lesson.id];
+        return '<div class="lesson-row">' +
+          '<div class="lesson-left">' +
+            '<button type="button" class="lesson-toggle-btn ' + (isDone ? 'completed' : '') + '" data-action="toggle" data-course="' + course.id + '" data-lesson="' + lesson.id + '" aria-label="تحديد إنجاز الدرس">' +
+              (isDone ? '&#10003;' : '') +
+            '</button>' +
+            '<span class="lesson-title-text ' + (isDone ? 'completed' : '') + '">' + escapeHtml(lesson.name) + '</span>' +
+          '</div>' +
+          '<span class="lesson-dur-text">' + escapeHtml(lesson.duration) + '</span>' +
+        '</div>';
+      }).join('') +
+      (course.lessons.length > 4 ? '<button type="button" class="btn-view-all-lessons" data-action="open-modal" data-course="' + course.id + '">عرض كافة الدروس (' + course.lessons.length + ' درساً) &larr;</button>' : '') +
+    '</div>' +
+    '<div class="course-actions-group">' +
+      courseLink +
+      youtubeBtn +
+    '</div>' +
+  '</article>';
+}
 
-            course.lessons.forEach(function(lesson, index) {
-                var isCompleted = progress[courseId + '-' + lesson.id];
-                html += '<div class="modal-lesson">' +
-                    '<span class="modal-lesson-num">' + (index + 1) + '</span>' +
-                    '<div class="lesson-status ' + (isCompleted ? 'completed' : '') + '" data-action="toggle-modal" data-course="' + courseId + '" data-lesson="' + lesson.id + '" role="button" tabindex="0" aria-label="Toggle lesson"></div>' +
-                    '<div class="modal-lesson-info">' +
-                    '<div class="modal-lesson-name">' + escapeHtml(lesson.name) + '</div>' +
-                    '<div class="modal-lesson-duration">' + escapeHtml(lesson.duration) + '</div>' +
-                    '</div></div>';
-            });
-            document.getElementById('modalBody').innerHTML = html;
-            document.getElementById('lessonModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+function renderAll() {
+  var grid = document.getElementById('coursesGrid');
+  var filtered = courses;
+  if (currentFilter === 'free') filtered = courses.filter(function(c) { return c.isFree; });
+  else if (currentFilter === 'paid') filtered = courses.filter(function(c) { return !c.isFree; });
+  else if (currentFilter !== 'all') {
+    filtered = courses.filter(function(c) {
+      return c.tags && c.tags.some(function(t) { return t.toLowerCase().indexOf(currentFilter.toLowerCase()) > -1; });
+    });
+  }
 
-        function closeModal() {
-            document.getElementById('lessonModal').classList.remove('active');
-            document.body.style.overflow = '';
-            if (modalOpener && document.contains(modalOpener)) {
-                try { modalOpener.focus({preventScroll: true}); } catch (e) { try { modalOpener.focus(); } catch (e2) {} }
-            }
-            modalOpener = null;
-        }
+  var html = '';
+  if (currentFilter === 'all') {
+    var stage1 = filtered.filter(function(c) { return c.id <= 13; });
+    var stage2 = filtered.filter(function(c) { return c.id >= 14; });
 
-        function filterCourses(filter) {
-            if (ALLOWED_FILTERS.indexOf(filter) === -1) return;
-            renderAll(filter);
-        }
+    html += '<div class="stage-block">' +
+      '<div class="stage-banner">' +
+        '<span class="stage-banner-tag">STAGE 01 &bull; التأسيس والتفكير المنطقي</span>' +
+        '<h2 class="stage-banner-title">المرحلة الأولى: أساسيات البرمجة وحل المشكلات بـ C++</h2>' +
+        '<p class="stage-banner-desc">الكورسات (1 إلى 13): بناء التفكير المنطقي الخوارزمي، خوارزميات ومسائل من المستوى 1 حتى 4، هياكل البيانات، ومقدمة الـ OOP.</p>' +
+      '</div>' +
+      '<div class="courses-grid">' + stage1.map(renderCourseCard).join('') + '</div>' +
+    '</div>';
 
-        function resetProgress() {
-            if (confirm('Are you sure you want to reset all progress? This cannot be undone.')) {
-                progress = {};
-                saveProgress();
-                renderAll();
-            }
-        }
+    html += '<div class="stage-block">' +
+      '<div class="stage-banner" style="border-right-color: var(--accent-emerald);">' +
+        '<span class="stage-banner-tag" style="color:var(--accent-emerald);">STAGE 02 &bull; البرمجة المتقدمة وقواعد البيانات</span>' +
+        '<h2 class="stage-banner-title">المرحلة الثانية: قواعد البيانات وهياكل البيانات والبرمجة الكائنية المتقدمة</h2>' +
+        '<p class="stage-banner-desc">الكورسات (14 إلى 24): قواعد بيانات SQL Server، برمجة T-SQL المتقدمة، مشاريع عملية كاملة، وهياكل البيانات بلغة C#.</p>' +
+      '</div>' +
+      '<div class="courses-grid">' + stage2.map(renderCourseCard).join('') + '</div>' +
+    '</div>';
+  } else {
+    html = '<div class="courses-grid">' + filtered.map(renderCourseCard).join('') + '</div>';
+  }
 
-        function flashCopied(btn, success) {
-            if (!btn || !btn.textContent) return;
-            if (!btn._copyTimer && btn.dataset.origText === undefined) {
-                btn.dataset.origText = btn.textContent;
-            }
-            if (btn._copyTimer) clearTimeout(btn._copyTimer);
-            btn.textContent = success === false ? 'Copy failed' : 'Copied!';
-            btn.style.background = success === false ? 'var(--danger)' : 'var(--success)';
-            btn._copyTimer = setTimeout(function() {
-                btn.textContent = btn.dataset.origText || 'Copy Code';
-                btn.style.background = '';
-                btn._copyTimer = null;
-            }, 2000);
-        }
+  grid.innerHTML = html;
+  updateOverallStatsUI();
+}
 
-        function copyCoupon(code, btnOrEvt) {
-            var btn = null;
-            if (btnOrEvt && btnOrEvt.nodeType === 1) {
-                btn = btnOrEvt;
-            } else if (btnOrEvt && btnOrEvt.target && btnOrEvt.target.closest) {
-                btn = btnOrEvt.target.closest('[data-coupon]');
-            }
-            if (!btn || !btn.matches || !btn.matches('[data-coupon]')) return;
-            var safeCode = String(code == null ? '' : code);
-            if (navigator.clipboard && window.isSecureContext) {
-                navigator.clipboard.writeText(safeCode).then(function() {
-                    flashCopied(btn, true);
-                }, function() {
-                    legacyCopy(safeCode, btn);
-                });
-            } else {
-                legacyCopy(safeCode, btn);
-            }
-        }
+// Modal handling
+var modal = document.getElementById('courseModal');
+var modalCloseBtn = document.getElementById('modalCloseBtn');
+var activeModalCourseId = null;
 
-        function legacyCopy(text, btn) {
-            var copied = false;
-            var area = null;
-            try {
-                area = document.createElement('textarea');
-                area.value = text;
-                area.setAttribute('readonly', '');
-                area.style.position = 'fixed';
-                area.style.left = '-9999px';
-                area.style.opacity = '0';
-                document.body.appendChild(area);
-                area.select();
-                try { copied = document.execCommand('copy'); } catch (e) { copied = false; }
-            } catch (e) {
-                copied = false;
-            } finally {
-                if (area && area.parentNode) area.parentNode.removeChild(area);
-                if (btn && btn.textContent) flashCopied(btn, copied);
-            }
-        }
+function openCourseModal(courseId) {
+  var course = courses.find(function(c) { return c.id === courseId; });
+  if (!course) return;
+  activeModalCourseId = courseId;
+  document.getElementById('modalCourseTitle').textContent = course.title;
+  var prog = getCourseProgress(courseId);
+  document.getElementById('modalCourseSub').textContent = course.lessons.length + ' درساً &bull; تم إنجاز ' + prog.completed + ' درساً (' + prog.percent + '%)';
 
-        function renderCourseCard(course) {
-            var prog = getCourseProgress(course.id);
-            var previewLessons = course.lessons.slice(0, 4);
-            var btnText = prog.completed > 0 ? 'Continue Learning' : 'Start Learning';
-            var isComplete = prog.percent === 100;
-            var cardClass = isComplete ? 'course-card completed' : 'course-card';
-            var barColor = prog.percent === 100 ? 'background: linear-gradient(90deg, var(--success), #20c997);' : '';
-            var safeYoutube = isAllowedCourseUrl(course.youtube) ? escapeHtml(course.youtube) : '';
-            var youtubeBtn = safeYoutube ? '<a href="' + safeYoutube + '" target="_blank" rel="noopener noreferrer" class="btn btn-youtube">YouTube</a>' : '';
-            var courseLink = isAllowedCourseUrl(course.url)
-                ? '<a class="btn btn-primary" href="' + escapeHtml(course.url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(btnText) + '</a>'
-                : '<span class="btn btn-secondary" aria-disabled="true">' + escapeHtml(btnText) + '</span>';
+  var modalBody = document.getElementById('modalBody');
+  var lessonsHtml = '<div class="modal-progress-bar">' +
+    '<div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:700;">' +
+      '<span>نسبة إنجاز الكورس:</span>' +
+      '<span style="color:var(--accent-cyan-light); font-family:var(--font-latin);">' + prog.percent + '%</span>' +
+    '</div>' +
+    '<div class="card-progress-track" style="height:7px;">' +
+      '<div class="card-progress-fill" style="width:' + prog.percent + '%;"></div>' +
+    '</div>' +
+  '</div>';
 
-            return '<div class="' + cardClass + '">' +
-                '<div class="course-header">' +
-                '<div class="course-number">' + Number(course.id) + '</div>' +
-                '<div class="badges">' +
-                (course.isFree ? '<span class="badge-free">FREE</span>' : '<span class="badge-paid">PAID</span>') +
-                '</div></div>' +
-                '<h3 class="course-title">' + escapeHtml(course.title) + '</h3>' +
-                '<p class="course-description">' + escapeHtml(course.description) + '</p>' +
-                '<div class="course-tags">' +
-                course.tags.map(function(tag) { return '<span class="tag">' + escapeHtml(tag) + '</span>'; }).join('') +
-                '</div>' +
-                '<div class="progress-section">' +
-                '<div class="progress-header"><span>' + prog.completed + '/' + prog.total + ' lessons</span><span>' + prog.percent + '%</span></div>' +
-                '<div class="progress-bar"><div class="progress-fill" style="width: ' + prog.percent + '%; ' + barColor + '"></div></div>' +
-                '</div>' +
-                '<div class="lessons-preview">' +
-                previewLessons.map(function(lesson) {
-                    var isLessonCompleted = progress[course.id + '-' + lesson.id];
-                    return '<div class="lesson-item">' +
-                        '<div class="lesson-status ' + (isLessonCompleted ? 'completed' : '') + '" data-action="toggle" data-course="' + Number(course.id) + '" data-lesson="' + Number(lesson.id) + '" role="button" tabindex="0" aria-label="Toggle lesson"></div>' +
-                        '<span class="lesson-name ' + (isLessonCompleted ? 'completed' : '') + '">' + escapeHtml(lesson.name) + '</span>' +
-                        '<span class="lesson-duration">' + escapeHtml(lesson.duration) + '</span></div>';
-                }).join('') +
-                (course.lessons.length > 4 ? '<div class="lesson-item" style="justify-content: center; color: var(--text-secondary); font-size: 0.85rem;">+ ' + (course.lessons.length - 4) + ' more lessons</div>' : '') +
-                '</div>' +
-                '<div class="course-actions">' +
-                '<button class="btn btn-secondary" data-action="open-modal" data-course="' + Number(course.id) + '">View All Lessons</button>' +
-                youtubeBtn +
-                courseLink +
-                '</div></div>';
-        }
+  lessonsHtml += course.lessons.map(function(lesson) {
+    var isDone = progress[course.id + '-' + lesson.id];
+    return '<div class="lesson-row">' +
+      '<div class="lesson-left">' +
+        '<button type="button" class="lesson-toggle-btn ' + (isDone ? 'completed' : '') + '" data-action="toggle-modal" data-course="' + course.id + '" data-lesson="' + lesson.id + '">' +
+          (isDone ? '&#10003;' : '') +
+        '</button>' +
+        '<span class="lesson-title-text ' + (isDone ? 'completed' : '') + '">' + escapeHtml(lesson.name) + '</span>' +
+      '</div>' +
+      '<span class="lesson-dur-text">' + escapeHtml(lesson.duration) + '</span>' +
+    '</div>';
+  }).join('');
 
-        function renderAll(filter) {
-            if (filter && ALLOWED_FILTERS.indexOf(filter) !== -1) currentFilter = filter;
-            filter = currentFilter;
-            document.querySelectorAll('.filter-btn').forEach(function(btn) {
-                btn.classList.toggle('active', btn.getAttribute('data-filter') === filter);
-            });
-            var grid = document.getElementById('coursesGrid');
-            var filteredCourses = courses;
-            if (filter === 'free') filteredCourses = courses.filter(function(c) { return c.isFree; });
-            else if (filter === 'paid') filteredCourses = courses.filter(function(c) { return !c.isFree; });
-            else if (filter === 'cpp') filteredCourses = courses.filter(function(c) { return c.category.indexOf('cpp') !== -1; });
-            else if (filter === 'cs') filteredCourses = courses.filter(function(c) { return c.category.indexOf('cs') !== -1; });
-            else if (filter === 'sql') filteredCourses = courses.filter(function(c) { return c.category.indexOf('sql') !== -1; });
-            else if (filter === 'algorithms') filteredCourses = courses.filter(function(c) { return c.category.indexOf('algorithms') !== -1; });
-            else if (filter === 'oop') filteredCourses = courses.filter(function(c) { return c.category.indexOf('oop') !== -1; });
-            else if (filter === 'ds') filteredCourses = courses.filter(function(c) { return c.category.indexOf('ds') !== -1; });
-            else if (filter === 'fundamentals') filteredCourses = courses.filter(function(c) { return c.category.indexOf('fundamentals') !== -1; });
+  modalBody.innerHTML = lessonsHtml;
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
 
-            var html = '';
-            var showStages = (filter === 'all');
+function closeCourseModal() {
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+  activeModalCourseId = null;
+}
 
-            if (showStages) {
-                var stage1 = filteredCourses.filter(function(c) { return c.id <= 13; });
-                if (stage1.length > 0) {
-                    html += '<div class="stage-header"><div class="stage-number">01</div><div class="stage-info"><h2>Stage 1: Foundations & Core Programming</h2><p>Courses 1-13: Build your programming mindset and master C++ fundamentals</p></div></div>';
-                    stage1.forEach(function(course) { html += renderCourseCard(course); });
-                }
-                var stage2 = filteredCourses.filter(function(c) { return c.id >= 14; });
-                if (stage2.length > 0) {
-                    html += '<div class="stage-header"><div class="stage-number">02</div><div class="stage-info"><h2>Stage 2: Professional Development</h2><p>Courses 14-24: Master C#, Databases, and real-world application development</p></div></div>';
-                    stage2.forEach(function(course) { html += renderCourseCard(course); });
-                }
-            } else {
-                filteredCourses.forEach(function(course) { html += renderCourseCard(course); });
-            }
+modalCloseBtn.addEventListener('click', closeCourseModal);
+modal.addEventListener('click', function(e) {
+  if (e.target === modal) closeCourseModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && modal.classList.contains('active')) closeCourseModal();
+});
 
-            grid.innerHTML = html;
+// Event Delegation for course grid
+document.getElementById('coursesGrid').addEventListener('click', function(e) {
+  var toggleBtn = e.target.closest('[data-action="toggle"]');
+  if (toggleBtn) {
+    var cid = Number(toggleBtn.getAttribute('data-course'));
+    var lid = Number(toggleBtn.getAttribute('data-lesson'));
+    flipLesson(cid, lid);
+    renderAll();
+    return;
+  }
+  var openModalBtn = e.target.closest('[data-action="open-modal"]');
+  if (openModalBtn) {
+    var cid = Number(openModalBtn.getAttribute('data-course'));
+    openCourseModal(cid);
+    return;
+  }
+});
 
-            var stats = getOverallStats();
-            document.getElementById('totalCourses').textContent = courses.length;
-            document.getElementById('totalLessons').textContent = stats.totalLessons;
-            document.getElementById('completedLessons').textContent = stats.completedLessons;
-            document.getElementById('overallProgress').textContent = stats.percent + '%';
-        }
+// Event Delegation for modal body
+document.getElementById('modalBody').addEventListener('click', function(e) {
+  var toggleModalBtn = e.target.closest('[data-action="toggle-modal"]');
+  if (toggleModalBtn) {
+    var cid = Number(toggleModalBtn.getAttribute('data-course'));
+    var lid = Number(toggleModalBtn.getAttribute('data-lesson'));
+    flipLesson(cid, lid);
+    var scrollTop = document.getElementById('modalBody').scrollTop;
+    renderAll();
+    openCourseModal(cid);
+    document.getElementById('modalBody').scrollTop = scrollTop;
+  }
+});
 
-        document.getElementById('lessonModal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
+// Filter buttons
+document.getElementById('filterButtons').addEventListener('click', function(e) {
+  var btn = e.target.closest('.filter-btn');
+  if (!btn) return;
+  document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  currentFilter = btn.getAttribute('data-filter');
+  renderAll();
+});
 
-        document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
+// Coupons Copy Handler
+document.getElementById('coupons').addEventListener('click', function(e) {
+  var btn = e.target.closest('[data-coupon]');
+  if (!btn) return;
+  var code = btn.getAttribute('data-coupon');
+  var orig = btn.innerHTML;
+  function ok() {
+    btn.innerHTML = '<span>تم النسخ! &#10003;</span>';
+    btn.style.background = 'var(--accent-emerald)';
+    btn.style.borderColor = 'var(--accent-emerald)';
+    btn.style.color = '#080b11';
+    setTimeout(function() {
+      btn.innerHTML = orig;
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }, 2000);
+  }
+  try {
+    navigator.clipboard.writeText(code).then(ok, function() {
+      alert('كود الخصم: ' + code);
+    });
+  } catch (err) {
+    alert('كود الخصم: ' + code);
+  }
+});
 
-        document.querySelectorAll('.filter-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                filterCourses(this.getAttribute('data-filter'));
-            });
-        });
-
-        document.getElementById('coursesGrid').addEventListener('click', function(e) {
-            var el = e.target.closest('[data-action]');
-            if (!el || !this.contains(el)) return;
-            var action = el.getAttribute('data-action');
-            var courseId = parseInt(el.getAttribute('data-course'), 10);
-            if (action === 'toggle') {
-                var lessonId = parseInt(el.getAttribute('data-lesson'), 10);
-                if (!isNaN(courseId) && !isNaN(lessonId)) toggleLesson(courseId, lessonId);
-            } else if (action === 'open-modal') {
-                if (!isNaN(courseId)) { modalOpener = el; openCourseModal(courseId); }
-            }
-        });
-
-        document.getElementById('lessonModal').addEventListener('keydown', function(e) {
-            if (e.key !== 'Tab') return;
-            var items = this.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
-            if (!items.length) return;
-            var first = items[0], last = items[items.length - 1];
-            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && document.getElementById('lessonModal').classList.contains('active')) closeModal();
-        });
-
-        document.getElementById('coursesGrid').addEventListener('keydown', function(e) {
-            if (e.key !== 'Enter' && e.key !== ' ') return;
-            var el = e.target.closest && e.target.closest('[data-action="toggle"]');
-            if (!el || !this.contains(el)) return;
-            e.preventDefault();
-            var courseId = parseInt(el.getAttribute('data-course'), 10);
-            var lessonId = parseInt(el.getAttribute('data-lesson'), 10);
-            if (!isNaN(courseId) && !isNaN(lessonId)) toggleLesson(courseId, lessonId);
-        });
-
-        document.getElementById('modalBody').addEventListener('click', function(e) {
-            var el = e.target.closest('[data-action="toggle-modal"]');
-            if (!el || !this.contains(el)) return;
-            var courseId = parseInt(el.getAttribute('data-course'), 10);
-            var lessonId = parseInt(el.getAttribute('data-lesson'), 10);
-            if (!isNaN(courseId) && !isNaN(lessonId)) toggleLessonFromModal(courseId, lessonId);
-        });
-
-        document.getElementById('modalBody').addEventListener('keydown', function(e) {
-            if (e.key !== 'Enter' && e.key !== ' ') return;
-            var el = e.target.closest && e.target.closest('[data-action="toggle-modal"]');
-            if (!el || !this.contains(el)) return;
-            e.preventDefault();
-            var courseId = parseInt(el.getAttribute('data-course'), 10);
-            var lessonId = parseInt(el.getAttribute('data-lesson'), 10);
-            if (!isNaN(courseId) && !isNaN(lessonId)) toggleLessonFromModal(courseId, lessonId);
-        });
-
-        document.getElementById('resetProgressBtn').addEventListener('click', resetProgress);
-
-        document.getElementById('couponGrid').addEventListener('click', function(e) {
-            var btn = e.target.closest('[data-coupon]');
-            if (!btn || !this.contains(btn)) return;
-            copyCoupon(btn.getAttribute('data-coupon'), btn);
-        });
-
-        try { document.getElementById('copyYear').textContent = new Date().getFullYear(); } catch (e) {}
-        progress = getProgress();
-        renderAll();
-
-        // Live visitors counter
-        (function() {
-            var API_BASE = 'https://abacus.jasoncameron.dev';
-            var NAMESPACE = 'elhendawy-developer-roadmaps';
-            var KEY_TOTAL = 'total-visits';
-            var SESSION_KEY = 'visited_session_fund';
-            var CACHE_KEY = 'cached_visits_total';
-            var el = document.getElementById('liveVisitorsCount');
+// Live Visitors Counter
+(function() {
+  var API_BASE = 'https://abacus.jasoncameron.dev';
+  var NAMESPACE = 'elhendawy-developer-roadmaps';
+  var KEY_TOTAL = 'total-visits';
+  var SESSION_KEY = 'visited_session_fund';
+  var CACHE_KEY = 'cached_visits_total';
+  var el = document.getElementById('liveVisitorsCount');
   var navEl = document.getElementById('liveVisitorsCountNav');
-  if (cached && navEl) navEl.textContent = Number(cached).toLocaleString();
-            var cached = localStorage.getItem(CACHE_KEY);
-            if (cached && el) el.textContent = Number(cached).toLocaleString();
-            var action = sessionStorage.getItem(SESSION_KEY) ? 'get' : 'hit';
-            fetch(API_BASE + '/' + action + '/' + NAMESPACE + '/' + KEY_TOTAL)
-                .then(function(r){ return r.json(); })
-                .then(function(d){
-                    if (d && typeof d.value === 'number') {
-                        sessionStorage.setItem(SESSION_KEY, 'true');
-                        localStorage.setItem(CACHE_KEY, String(d.value));
-                        if (el) el.textContent = d.value.toLocaleString();
-        if (navEl) navEl.textContent = d.value.toLocaleString();
-                    }
-                }).catch(function(){});
-        })();
-    </script>
+  var cached = localStorage.getItem(CACHE_KEY);
+  if (cached) {
+    var formatted = Number(cached).toLocaleString();
+    if (el) el.textContent = formatted;
+    if (navEl) navEl.textContent = formatted;
+  }
+  var action = sessionStorage.getItem(SESSION_KEY) ? 'get' : 'hit';
+  fetch(API_BASE + '/' + action + '/' + NAMESPACE + '/' + KEY_TOTAL)
+    .then(function(r){ return r.json(); })
+    .then(function(d){
+      if (d && typeof d.value === 'number') {
+        sessionStorage.setItem(SESSION_KEY, 'true');
+        localStorage.setItem(CACHE_KEY, String(d.value));
+        var formatted = d.value.toLocaleString();
+        if (el) el.textContent = formatted;
+        if (navEl) navEl.textContent = formatted;
+      }
+    }).catch(function(){});
+})();
+
+// Initial Render
+renderAll();
+</script>
 </body>
 </html>
