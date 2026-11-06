@@ -7,7 +7,7 @@
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
 <meta name="description" content="Front-End Development Roadmap: Complete learning path from absolute beginner to job-ready modern web engineer (HTML, CSS, JS, TS, React).">
 <title>Front-End Roadmap — Zero to Job-Ready</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%23f43f5e'/%3E%3Cpath d='M15 14L9 20l6 6' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M25 14l6 6-6 6' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22 12l-4 16' stroke='%23fb7185' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='10' fill='%232563eb'/%3E%3Cpath d='M15 14L9 20l6 6' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M25 14l6 6-6 6' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22 12l-4 16' stroke='%2360a5fa' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 
 <!-- Google Fonts: Cairo & Plus Jakarta Sans -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,19 +28,20 @@
     --border-subtle: rgba(255, 255, 255, 0.07);
     --border-strong: rgba(255, 255, 255, 0.14);
     
-    --accent-primary: #f43f5e;
-    --accent-primary-light: #fb7185;
-    --accent-violet: #8b5cf6;
+    --accent-blue: #3b82f6;
+    --accent-blue-light: #60a5fa;
+    --accent-indigo: #6366f1;
+    --accent-cyan: #06b6d4;
+    --accent-cyan-light: #22d3ee;
     --accent-emerald: #10b981;
     --accent-amber: #f59e0b;
-    --accent-cyan: #06b6d4;
     
     --font-latin: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     --font-arabic: 'Cairo', system-ui, sans-serif;
     --sidebar-w: 290px;
   }
 
-  body.light-mode {
+  body.light-theme {
     --bg-main: #f8fafc;
     --bg-surface: #ffffff;
     --bg-surface-elevated: #f1f5f9;
@@ -63,6 +64,9 @@
     scroll-behavior: smooth;
     text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   body {
@@ -71,7 +75,10 @@
     font-family: var(--font-latin);
     line-height: 1.65;
     min-height: 100vh;
+    width: 100%;
+    max-width: 100%;
     overflow-x: hidden;
+    position: relative;
   }
 
   /* Structural background grid */
@@ -87,7 +94,7 @@
     z-index: 0;
   }
 
-  body.light-mode::before {
+  body.light-theme::before {
     background-image: 
       linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
       linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
@@ -110,6 +117,8 @@
   .layout-wrapper {
     display: flex;
     min-height: 100vh;
+    width: 100%;
+    max-width: 100%;
     position: relative;
     z-index: 1;
   }
@@ -132,7 +141,7 @@
     z-index: 50;
   }
 
-  body.light-mode .sidebar {
+  body.light-theme .sidebar {
     background: rgba(255, 255, 255, 0.94);
   }
 
@@ -148,10 +157,10 @@
     height: 38px;
     border-radius: 10px;
     background: var(--bg-surface-elevated);
-    border: 1px solid rgba(244, 63, 94, 0.3);
+    border: 1px solid rgba(59, 130, 246, 0.35);
     display: grid;
     place-items: center;
-    color: var(--accent-primary-light);
+    color: var(--accent-blue-light);
     flex-shrink: 0;
   }
 
@@ -167,15 +176,15 @@
     letter-spacing: -0.01em;
   }
 
-  body.light-mode .sidebar-brand-title {
+  body.light-theme .sidebar-brand-title {
     color: #0f172a;
   }
 
   .sidebar-brand-sub {
     font-size: 0.72rem;
-    font-weight: 700;
-    color: var(--accent-primary-light);
-    letter-spacing: 0.05em;
+    font-weight: 800;
+    color: var(--accent-blue-light);
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
@@ -199,7 +208,7 @@
   .btn-sidebar-hub:hover {
     background: var(--bg-surface-elevated);
     color: #fff;
-    border-color: var(--accent-primary);
+    border-color: var(--accent-blue);
   }
 
   .sidebar-nav-heading {
@@ -236,9 +245,9 @@
   }
 
   .nav-item.active {
-    background: rgba(244, 63, 94, 0.15);
+    background: rgba(59, 130, 246, 0.15);
     color: #fff;
-    border-right: 3px solid var(--accent-primary);
+    border-right: 3px solid var(--accent-blue);
     font-weight: 700;
   }
 
@@ -250,10 +259,15 @@
     height: 22px;
     border-radius: 6px;
     background: var(--bg-surface-elevated);
-    color: var(--accent-primary-light);
+    color: var(--accent-blue-light);
     display: grid;
     place-items: center;
     flex-shrink: 0;
+  }
+
+  .nav-item.is-done .nav-num {
+    background: var(--accent-emerald);
+    color: #080b11;
   }
 
   .sidebar-bottom-controls {
@@ -306,13 +320,14 @@
     color: #fff;
   }
 
-  /* ================= MOBILE / TABLET MASTHEAD ================= */
+  /* ================= MOBILE / LAPTOP MASTHEAD ================= */
   .mobile-masthead {
     display: none;
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
+    width: 100%;
     z-index: 100;
     background: rgba(8, 11, 17, 0.94);
     backdrop-filter: blur(16px);
@@ -321,7 +336,7 @@
     padding-top: env(safe-area-inset-top, 0px);
   }
 
-  body.light-mode .mobile-masthead {
+  body.light-theme .mobile-masthead {
     background: rgba(255, 255, 255, 0.94);
   }
 
@@ -329,22 +344,24 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 18px;
+    padding: 10px 16px;
     min-height: 56px;
-    gap: 12px;
+    gap: 10px;
+    width: 100%;
   }
 
   .mobile-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     font-size: 0.98rem;
     font-weight: 800;
     color: #fff;
     white-space: nowrap;
+    min-width: 0;
   }
 
-  body.light-mode .mobile-brand {
+  body.light-theme .mobile-brand {
     color: #0f172a;
   }
 
@@ -352,24 +369,29 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-shrink: 0;
   }
 
   .mobile-pills-bar {
     display: none;
     position: sticky;
     top: 56px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100vw;
     z-index: 90;
-    background: rgba(15, 20, 31, 0.95);
+    background: rgba(15, 20, 31, 0.96);
     border-bottom: 1px solid var(--border-subtle);
-    padding: 8px 16px;
+    padding: 8px 14px;
     overflow-x: auto;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     gap: 8px;
   }
 
-  body.light-mode .mobile-pills-bar {
-    background: rgba(241, 245, 249, 0.95);
+  body.light-theme .mobile-pills-bar {
+    background: rgba(241, 245, 249, 0.96);
   }
 
   .mobile-phase-pill {
@@ -386,24 +408,25 @@
   }
 
   .mobile-phase-pill.active {
-    background: rgba(244, 63, 94, 0.2);
-    border-color: var(--accent-primary);
+    background: rgba(59, 130, 246, 0.2);
+    border-color: var(--accent-blue);
     color: #fff;
   }
 
-  /* ================= MAIN CONTENT ================= */
+  /* ================= MAIN SCROLLABLE CONTENT ================= */
   .main-content {
     flex: 1;
     min-width: 0;
-    padding: 48px clamp(20px, 4vw, 56px) 80px;
+    width: 100%;
+    padding: 48px clamp(16px, 3.5vw, 48px) 80px;
     max-width: 1040px;
     margin: 0 auto;
   }
 
   /* HERO */
   .fe-hero {
-    margin-bottom: 54px;
-    padding-bottom: 40px;
+    margin-bottom: 48px;
+    padding-bottom: 36px;
     border-bottom: 1px solid var(--border-subtle);
   }
 
@@ -413,9 +436,9 @@
     gap: 6px;
     padding: 4px 12px;
     border-radius: 6px;
-    background: rgba(244, 63, 94, 0.12);
-    border: 1px solid rgba(244, 63, 94, 0.3);
-    color: var(--accent-primary-light);
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--accent-blue-light);
     font-size: 0.82rem;
     font-weight: 700;
     margin-bottom: 18px;
@@ -430,7 +453,7 @@
     margin-bottom: 16px;
   }
 
-  body.light-mode .fe-hero-title {
+  body.light-theme .fe-hero-title {
     color: #0f172a;
   }
 
@@ -438,7 +461,7 @@
     font-size: clamp(1rem, 1.3vw, 1.15rem);
     color: var(--text-secondary);
     line-height: 1.8;
-    max-width: 780px;
+    max-width: 820px;
     margin-bottom: 28px;
   }
 
@@ -446,7 +469,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 36px;
+    margin-bottom: 32px;
   }
 
   .fe-pill {
@@ -462,11 +485,12 @@
   /* METRICS STRIP */
   .fe-metrics {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: 14px;
     overflow: hidden;
+    margin-bottom: 32px;
   }
 
   .fe-metric-cell {
@@ -489,12 +513,12 @@
     line-height: 1.1;
   }
 
-  body.light-mode .fe-metric-val {
+  body.light-theme .fe-metric-val {
     color: #0f172a;
   }
 
-  .fe-metric-val.rose {
-    color: var(--accent-primary-light);
+  .fe-metric-val.blue {
+    color: var(--accent-blue-light);
   }
 
   .fe-metric-val.emerald {
@@ -507,37 +531,89 @@
     color: var(--text-muted);
   }
 
+  /* Overall Curriculum Progress Bar */
+  .curriculum-progress-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  .curriculum-progress-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+  }
+
+  .curriculum-progress-track {
+    height: 8px;
+    background: var(--bg-surface-elevated);
+    border-radius: 99px;
+    overflow: hidden;
+  }
+
+  .curriculum-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+    border-radius: 99px;
+    transition: width 0.3s ease;
+  }
+
   /* ================= PHASE SECTION STYLING ================= */
   .phase {
     background: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: 20px;
-    padding: clamp(24px, 4vw, 36px);
-    margin-bottom: 40px;
+    padding: clamp(20px, 3.5vw, 32px);
+    margin-bottom: 36px;
     scroll-margin-top: 100px;
+    min-width: 0;
+    overflow: hidden;
     transition: border-color 0.2s ease;
   }
 
   .phase:hover {
-    border-color: rgba(244, 63, 94, 0.35);
+    border-color: rgba(59, 130, 246, 0.35);
+  }
+
+  .phase.is-done {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.04) 0%, var(--bg-surface) 100%);
   }
 
   .phase-header {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 16px;
-    margin-bottom: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
     padding-bottom: 18px;
     border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .phase-header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
   }
 
   .phase-num {
     width: 44px;
     height: 44px;
     border-radius: 12px;
-    background: rgba(244, 63, 94, 0.15);
-    border: 1px solid rgba(244, 63, 94, 0.3);
-    color: var(--accent-primary-light);
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    color: var(--accent-blue-light);
     font-size: 1.25rem;
     font-weight: 800;
     display: grid;
@@ -545,22 +621,79 @@
     flex-shrink: 0;
   }
 
+  .phase.is-done .phase-num {
+    background: var(--accent-emerald);
+    color: #080b11;
+  }
+
   .phase-header h2 {
-    font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+    font-size: clamp(1.35rem, 2vw, 1.8rem);
     font-weight: 800;
     color: #fff;
     letter-spacing: -0.01em;
   }
 
-  body.light-mode .phase-header h2 {
+  body.light-theme .phase-header h2 {
     color: #0f172a;
   }
 
   .phase-header .duration {
     font-size: 0.84rem;
     font-weight: 700;
-    color: var(--accent-primary-light);
+    color: var(--accent-blue-light);
     margin-top: 2px;
+  }
+
+  .phase-toggle-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 6px 14px 6px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 99px;
+    background: var(--bg-surface-elevated);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+  }
+
+  .phase-toggle-label:hover {
+    border-color: var(--accent-blue);
+    color: #fff;
+  }
+
+  .phase.is-done .phase-toggle-label {
+    border-color: var(--accent-emerald);
+    background: rgba(16, 185, 129, 0.15);
+    color: #6ee7b7;
+  }
+
+  .phase-toggle-label input {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--border-strong);
+    border-radius: 5px;
+    background: var(--bg-surface);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+
+  .phase-toggle-label input:checked {
+    background: var(--accent-emerald);
+    border-color: var(--accent-emerald);
+  }
+
+  .phase-toggle-label input:checked::after {
+    content: "✓";
+    color: #080b11;
+    font-size: 0.8rem;
+    font-weight: 900;
   }
 
   .phase p {
@@ -570,29 +703,151 @@
     margin-bottom: 16px;
   }
 
+  /* PROMINENT COURSE LAUNCH HERO CARD (THE BUTTON THE USER ASKED FOR) */
+  .course-launch-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid rgba(59, 130, 246, 0.35);
+    border-left: 4px solid var(--accent-blue);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .course-launch-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .course-launch-title {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  body.light-theme .course-launch-title {
+    color: #0f172a;
+  }
+
+  .course-meta-pills {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pill-tag {
+    font-size: 0.74rem;
+    font-weight: 800;
+    padding: 3px 9px;
+    border-radius: 6px;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+  }
+
+  .pill-tag.free {
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.3);
+    color: #6ee7b7;
+  }
+
+  .pill-tag.rating {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.3);
+    color: #fde68a;
+  }
+
+  /* THE HIGH-VISIBILITY UNMISSABLE LAUNCH BUTTON */
+  .btn-course-launch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, #1d4ed8 100%);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.96rem;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35);
+    transition: all 0.2s ease;
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .btn-course-launch:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+  }
+
+  /* Study steps flow */
+  .study-method {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: rgba(59, 130, 246, 0.06);
+    border: 1px dashed rgba(59, 130, 246, 0.25);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 18px 0;
+  }
+
+  .step-num {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.78rem;
+    display: inline-grid;
+    place-items: center;
+    flex-shrink: 0;
+  }
+
+  .step-arrow {
+    color: var(--accent-blue-light);
+    font-weight: 800;
+  }
+
+  /* Modular Topic Parts */
   .part {
     background: var(--bg-surface-elevated);
     border: 1px solid var(--border-subtle);
     border-radius: 14px;
     padding: 20px 22px;
     margin-bottom: 16px;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .part h3 {
-    font-size: 1.15rem;
+    font-size: 1.12rem;
     font-weight: 800;
     color: #fff;
     margin-bottom: 6px;
   }
 
-  body.light-mode .part h3 {
+  body.light-theme .part h3 {
     color: #0f172a;
   }
 
   .part .focus {
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--accent-primary-light);
+    color: var(--accent-blue-light);
     margin-bottom: 12px;
   }
 
@@ -605,241 +860,162 @@
   .part li, .phase li {
     margin-bottom: 8px;
     line-height: 1.6;
+    overflow-wrap: break-word;
   }
 
   .part code, .phase code {
     font-family: monospace;
     font-size: 0.86em;
     background: rgba(255, 255, 255, 0.08);
-    color: #fca5a5;
+    color: #93c5fd;
     padding: 2px 6px;
     border-radius: 5px;
-  }
-
-  /* Courses & Resources Box inside phases */
-  .course {
-    background: var(--bg-surface-elevated);
-    border: 1px solid rgba(244, 63, 94, 0.25);
-    border-left: 4px solid var(--accent-primary);
-    border-radius: 12px;
-    padding: 18px 20px;
-    margin: 18px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .course h4 {
-    font-size: 1.05rem;
-    font-weight: 800;
-    color: #fff;
-  }
-
-  body.light-mode .course h4 {
-    color: #0f172a;
-  }
-
-  .course a {
-    color: var(--accent-primary-light);
-    font-weight: 700;
-    font-size: 0.9rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .course a:hover {
-    text-decoration: underline;
-  }
-
-  .course .meta {
-    font-size: 0.82rem;
-    color: var(--text-muted);
-  }
-
-  .rating {
-    display: inline-block;
-    padding: 2px 7px;
-    border-radius: 5px;
-    background: rgba(245, 158, 11, 0.15);
-    color: #fde68a;
-    font-size: 0.78rem;
-    font-weight: 800;
-  }
-
-  /* Study method steps flow */
-  .study-method {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    background: rgba(244, 63, 94, 0.06);
-    border: 1px dashed rgba(244, 63, 94, 0.25);
-    border-radius: 12px;
-    padding: 14px 18px;
-    font-size: 0.86rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-top: 18px;
-  }
-
-  .step {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: var(--accent-primary);
-    color: #fff;
-    font-weight: 800;
-    font-size: 0.78rem;
-    display: inline-grid;
-    place-items: center;
-  }
-
-  .arrow {
-    color: var(--accent-primary-light);
-    font-weight: 800;
   }
 
   .exercise-box, .project-box {
     background: var(--bg-surface-elevated);
     border: 1px solid var(--border-subtle);
     border-radius: 12px;
-    padding: 16px 20px;
+    padding: 18px 20px;
     margin: 16px 0;
+    min-width: 0;
+    overflow: hidden;
   }
 
   .exercise-box h4, .project-box h4 {
-    font-size: 0.96rem;
+    font-size: 1rem;
     font-weight: 800;
     color: #fff;
     margin-bottom: 8px;
   }
 
-  body.light-mode .exercise-box h4, body.light-mode .project-box h4 {
+  body.light-theme .exercise-box h4, body.light-theme .project-box h4 {
     color: #0f172a;
   }
 
-  /* ================= VOUCHER VAULT ================= */
-  .vault-section {
-    padding: 56px 0;
-    border-top: 1px solid var(--border-subtle);
-    margin-top: 40px;
-  }
-
-  .vault-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 8px;
-    text-align: center;
-  }
-
-  body.light-mode .vault-title {
-    color: #0f172a;
-  }
-
-  .vault-lead {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    text-align: center;
-    margin-bottom: 32px;
-  }
-
-  .coupons-grid {
+  /* ================= 6. REDESIGNED COURSE SUMMARY (GRID DIRECTORY) ================= */
+  .summary-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
+    margin: 22px 0 36px;
   }
 
-  .coupon-ticket {
-    background: var(--bg-surface);
-    border: 1px solid rgba(245, 158, 11, 0.28);
-    border-radius: 16px;
-    padding: 22px 20px;
+  .summary-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 18px 20px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 12px;
+    min-width: 0;
+    overflow: hidden;
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
-  .coupon-ticket:hover {
-    transform: translateY(-3px);
-    border-color: rgba(245, 158, 11, 0.55);
+  .summary-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(59, 130, 246, 0.35);
   }
 
-  .coupon-header-row {
+  .summary-card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
   }
 
-  .coupon-badge-rate {
+  .summary-tag {
+    font-size: 0.74rem;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 5px;
+    background: var(--bg-surface);
+    color: var(--accent-blue-light);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .summary-card h4 {
     font-size: 1.05rem;
     font-weight: 800;
-    color: #fef08a;
-    background: rgba(245, 158, 11, 0.15);
-    border: 1px solid rgba(245, 158, 11, 0.35);
-    padding: 3px 10px;
-    border-radius: 7px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    direction: ltr;
-  }
-
-  .coupon-badge-rate.rate-100 {
-    background: var(--accent-amber);
-    color: #080b11;
-  }
-
-  .coupon-tier {
-    font-family: var(--font-arabic);
-    font-size: 0.84rem;
-    font-weight: 700;
-    color: var(--text-secondary);
-  }
-
-  .coupon-code-box {
-    font-size: 1.15rem;
-    font-weight: 800;
-    letter-spacing: 0.05em;
     color: #fff;
-    background: var(--bg-surface-elevated);
-    padding: 9px 12px;
-    border-radius: 8px;
-    border: 1px dashed rgba(255, 255, 255, 0.18);
-    text-align: center;
+    line-height: 1.35;
   }
 
-  body.light-mode .coupon-code-box {
+  body.light-theme .summary-card h4 {
     color: #0f172a;
   }
 
-  .btn-copy-ticket {
-    width: 100%;
-    padding: 10px 14px;
+  .summary-card p {
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  .summary-card a.btn-card-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 14px;
     border-radius: 8px;
-    background: rgba(245, 158, 11, 0.15);
-    border: 1px solid rgba(245, 158, 11, 0.35);
-    color: #fef08a;
+    background: var(--accent-blue);
+    color: #fff;
     font-weight: 700;
-    font-size: 0.88rem;
+    font-size: 0.86rem;
     transition: all 0.2s ease;
-    cursor: pointer;
   }
 
-  .btn-copy-ticket:hover {
-    background: var(--accent-amber);
-    color: #080b11;
+  .summary-card a.btn-card-link:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
   }
 
-  /* ================= RESPONSIVE MEDIA QUERIES ================= */
-  @media (max-width: 1024px) {
-    .coupons-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+  /* DOCS GRID */
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 18px;
   }
 
+  .doc-card {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+    transition: all 0.2s ease;
+  }
+
+  .doc-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+  }
+
+  .doc-tech {
+    font-size: 0.76rem;
+    font-weight: 800;
+    color: var(--accent-blue-light);
+    text-transform: uppercase;
+  }
+
+  .doc-card h5 {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #fff;
+  }
+
+  body.light-theme .doc-card h5 {
+    color: #0f172a;
+  }
+
+  /* ================= RESPONSIVE ================= */
   @media (max-width: 900px) {
     .sidebar {
       display: none;
@@ -851,32 +1027,41 @@
       display: flex;
     }
     .main-content {
-      padding: 32px 18px 60px;
+      padding: 28px 16px 60px;
     }
     .fe-metrics {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .fe-metric-cell:nth-child(3) {
       border-inline-start: none;
     }
+    .summary-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .docs-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
 
   @media (max-width: 540px) {
-    .coupons-grid {
-      grid-template-columns: 1fr;
-    }
     .fe-hero-title {
       font-size: 1.85rem;
     }
+    .docs-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
     .mobile-masthead-inner {
-      padding: 8px 14px;
+      padding: 8px 12px;
+    }
+    .btn-course-launch {
+      max-width: 100%;
     }
   }
 </style>
 </head>
 <body>
 
-<!-- MOBILE / TABLET MASTHEAD -->
+<!-- MOBILE / LAPTOP MASTHEAD -->
 <header class="mobile-masthead">
   <div class="mobile-masthead-inner">
     <div class="mobile-brand">
@@ -890,7 +1075,7 @@
       <a href="../" class="fe-pill" style="font-family:var(--font-arabic);">&#8592; الرئيسية</a>
       <div class="fe-pill" style="display:inline-flex; align-items:center; gap:6px;">
         <span class="status-light" aria-hidden="true"></span>
-        <strong id="liveVisitorsCountMobile" style="color:var(--accent-primary-light);">--</strong>
+        <strong id="liveVisitorsCountMobile" style="color:var(--accent-blue-light);">--</strong>
       </div>
       <button type="button" class="fe-pill" id="mobileThemeToggle" aria-label="Toggle Theme">&#9790;</button>
     </div>
@@ -899,7 +1084,7 @@
 
 <!-- MOBILE QUICK PHASE PILLS -->
 <nav class="mobile-pills-bar" aria-label="Quick Phase Jump">
-  <a href="#phase0" class="mobile-phase-pill active">0. Fundamentals</a>
+  <a href="#phase0" class="mobile-phase-pill active">0. Web Basics</a>
   <a href="#phase1" class="mobile-phase-pill">1. HTML+CSS</a>
   <a href="#phase2" class="mobile-phase-pill">2. JavaScript</a>
   <a href="#phase3" class="mobile-phase-pill">3. Git</a>
@@ -908,7 +1093,7 @@
   <a href="#phase6" class="mobile-phase-pill">6. Modern Tools</a>
   <a href="#phase7" class="mobile-phase-pill">7. Testing</a>
   <a href="#phase8" class="mobile-phase-pill">8. Advanced</a>
-  <a href="#courses" class="mobile-phase-pill">Courses Summary</a>
+  <a href="#courses" class="mobile-phase-pill">Course Summary</a>
 </nav>
 
 <div class="layout-wrapper">
@@ -942,14 +1127,13 @@
       <a href="#phase7" class="nav-item"><span class="nav-num">7</span> Automated Testing</a>
       <a href="#phase8" class="nav-item"><span class="nav-num">8</span> Advanced Topics</a>
       <a href="#courses" class="nav-item"><span class="nav-num">&bull;</span> Course Directory</a>
-      <a href="#coupons" class="nav-item" style="color:#fde68a;"><span class="nav-num">%</span> Discount Vouchers</a>
     </nav>
 
     <div class="sidebar-bottom-controls">
       <div class="sidebar-visitor-chip">
         <span class="status-light"></span>
         <span>Visitors:</span>
-        <strong id="liveVisitorsCountSidebar" style="color:var(--accent-primary-light); font-weight:800; margin-left:auto;">--</strong>
+        <strong id="liveVisitorsCountSidebar" style="color:var(--accent-blue-light); font-weight:800; margin-left:auto;">--</strong>
       </div>
       <button type="button" class="theme-toggle-btn" id="desktopThemeToggle">
         <span id="themeToggleIcon">&#9790;</span>
@@ -982,475 +1166,695 @@
 
       <div class="fe-metrics">
         <div class="fe-metric-cell">
-          <span class="fe-metric-val rose">10</span>
+          <span class="fe-metric-val blue">10</span>
           <span class="fe-metric-lbl">Curriculum Phases</span>
         </div>
         <div class="fe-metric-cell">
-          <span class="fe-metric-val">40+</span>
-          <span class="fe-metric-lbl">Core Technologies</span>
+          <span class="fe-metric-val" id="completedPhasesVal">0</span>
+          <span class="fe-metric-lbl">Phases Completed</span>
         </div>
         <div class="fe-metric-cell">
-          <span class="fe-metric-val emerald">100%</span>
-          <span class="fe-metric-lbl">Free Curated Sources</span>
+          <span class="fe-metric-val emerald" id="overallProgressVal">0%</span>
+          <span class="fe-metric-lbl">Overall Progress</span>
         </div>
         <div class="fe-metric-cell">
           <span class="fe-metric-val" id="liveVisitorsCountMain">--</span>
           <span class="fe-metric-lbl">Platform Active Visitors</span>
         </div>
       </div>
+
+      <!-- PROGRESS TRACK -->
+      <div class="curriculum-progress-box">
+        <div class="curriculum-progress-head">
+          <span>Overall Track Progress:</span>
+          <span id="curriculumProgressText" style="color:var(--accent-blue-light);">0 of 10 phases completed (0%)</span>
+        </div>
+        <div class="curriculum-progress-track">
+          <div class="curriculum-progress-fill" id="curriculumProgressBar"></div>
+        </div>
+      </div>
     </header>
 
-    <!-- ALL 10 PRESERVED PHASES -->
-<section class="phase" id="phase0">
-    <div class="phase-header">
-      <div class="phase-num">0</div>
-      <div>
-        <h2>Web Fundamentals</h2>
-        <div class="duration">1–2 days</div>
-      </div>
-    </div>
-    <p>Understand how the web works before writing any code. This phase is short by design.</p>
-    <ul style="margin:14px 0 14px 18px; font-size:14px;">
-      <li><strong>Internet vs Web</strong> — The internet is the infrastructure. The web is a service on top of it.</li>
-      <li><strong>Client / Server</strong> — Browser sends request → server sends response.</li>
-      <li><strong>DNS</strong> — Translates domain names into IP addresses.</li>
-      <li><strong>HTTP/HTTPS</strong> — Protocols for transferring data. HTTPS is encrypted.</li>
-      <li><strong>Browser DevTools</strong> — Your #1 debugging tool.</li>
-      <li><strong>VS Code + Terminal basics</strong> — Your development environment.</li>
-    </ul>
-    <div class="course">
-      <h4>Essential Programming Fundamentals — Level One</h4>
-      <a href="https://www.youtube.com/playlist?list=PL3X--QIIK-OHgMV2yBz3GLfM5d_5BxOSj" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-      <div class="meta">37 videos · ~4h 12m · Arabic &nbsp; <span class="rating">5/5</span></div>
-    </div>
-    <div class="study-method">
-      <span class="step">1</span> Watch first 5–10 lessons
-      <span class="arrow">→</span>
-      <span class="step">2</span> Install VS Code + Live Server
-      <span class="arrow">→</span>
-      <span class="step">3</span> Create first HTML file
-      <span class="arrow">→</span>
-      <span class="step">4</span> Experiment with DevTools
-      <span class="arrow">→</span>
-      <span class="step">5</span> Move to Phase 1
-    </div>
-  </section>
-
-<section class="phase" id="phase1">
-    <div class="phase-header">
-      <div class="phase-num">1</div>
-      <div>
-        <h2>HTML + CSS</h2>
-        <div class="duration">4–6 weeks</div>
-      </div>
-    </div>
-
-    <div class="part">
-      <h3>Part 1 — HTML</h3>
-      <p class="focus">Key Focus: Semantic HTML, Accessibility, Clean Structure</p>
-      <ul>
-        <li>Document structure, elements, tags, attributes</li>
-        <li>Headings, paragraphs, text formatting, links, images, lists, tables</li>
-        <li>Forms, input types, buttons, audio, video, iframe</li>
-        <li><strong>Semantic HTML:</strong> <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code></li>
-        <li><strong>Accessibility:</strong> <code>alt</code> text, <code>aria-*</code> labels, form labels, heading hierarchy</li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 2 — CSS Fundamentals</h3>
-      <p class="focus">Key Focus: Box Model, Specificity, Positioning</p>
-      <ul>
-        <li>Selectors, specificity, cascade, inheritance</li>
-        <li>Colors, units (<code>px</code>, <code>rem</code>, <code>em</code>, <code>vw</code>, <code>vh</code>), typography</li>
-        <li>Box model (<code>box-sizing: border-box</code>), display, positioning</li>
-        <li>Pseudo-classes, pseudo-elements, CSS variables</li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 3 — Flexbox</h3>
-      <p class="focus">Key Focus: Centering, Navigation Bars, Card Layouts</p>
-      <ul>
-        <li>Main/Cross axis, <code>flex-direction</code>, <code>justify-content</code>, <code>align-items</code></li>
-        <li><code>flex-wrap</code>, <code>gap</code>, <code>flex-grow</code>/<code>shrink</code>/<code>basis</code></li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 4 — CSS Grid</h3>
-      <p class="focus">Key Focus: Page Layouts, Grid Areas, Responsive Grids</p>
-      <ul>
-        <li>Grid container, columns/rows, <code>fr</code> unit, <code>repeat()</code>, <code>minmax()</code></li>
-        <li>Grid areas, <code>grid-column</code>/<code>row</code>, named lines</li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 5 — Responsive Design</h3>
-      <p class="focus">Key Focus: Mobile-First, <code>clamp()</code>, Media Queries</p>
-      <ul>
-        <li>Media queries, responsive units, <code>min()</code>/<code>max()</code>/<code>clamp()</code></li>
-        <li>Responsive typography, images, breakpoints</li>
-      </ul>
-    </div>
-
-    <div class="course">
-      <h4>Elzero Web School — HTML + CSS</h4>
-      <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji" target="_blank" rel="noopener noreferrer">HTML Playlist</a>
-      <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAzjsz06gkzlSrlev53MGIKe" target="_blank" rel="noopener noreferrer">CSS Playlist</a>
-      <div class="meta">Total: ~15h 40m · Arabic &nbsp; <span class="rating">5/5</span></div>
-    </div>
-
-    <h3 style="margin-top:24px;">Projects</h3>
-    <table>
-      <tr><th>#</th><th>Project</th><th>Difficulty</th><th>Concepts</th></tr>
-      <tr><td>1</td><td>Personal Profile Page</td><td><span class="diff diff-1">1/5</span></td><td>HTML structure, semantic elements</td></tr>
-      <tr><td>2</td><td>Recipe Page</td><td><span class="diff diff-2">2/5</span></td><td>Headings, lists, images, tables</td></tr>
-      <tr><td>3</td><td>Landing Page</td><td><span class="diff diff-2">2/5</span></td><td>Box model, colors, backgrounds</td></tr>
-      <tr><td>4</td><td>Pricing Cards</td><td><span class="diff diff-3">3/5</span></td><td>Flexbox, card layout, hover effects</td></tr>
-      <tr><td>5</td><td>Login/Register Form</td><td><span class="diff diff-3">3/5</span></td><td>Forms, validation, accessibility</td></tr>
-      <tr><td>6</td><td>Responsive Portfolio</td><td><span class="diff diff-4">4/5</span></td><td>Semantic HTML, Flexbox/Grid, responsive</td></tr>
-      <tr><td>7</td><td>Full Responsive Landing Page</td><td><span class="diff diff-4">4/5</span></td><td>Everything combined</td></tr>
-    </table>
-  </section>
-
-<section class="phase" id="phase2">
-    <div class="phase-header">
-      <div class="phase-num">2</div>
-      <div>
-        <h2>JavaScript</h2>
-        <div class="duration">6–10 weeks</div>
-      </div>
-    </div>
-
-    <div class="part">
-      <h3>Part 1 — JS Fundamentals</h3>
-      <p class="focus">Key Focus: <code>let</code> vs <code>const</code>, Type Coercion, Functions</p>
-      <ul>
-        <li>Variables, data types, operators, type conversion</li>
-        <li>Conditions, loops, functions, scope</li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 2 — Arrays &amp; Objects</h3>
-      <p class="focus">Key Focus: <code>map</code>, <code>filter</code>, <code>reduce</code>, Destructuring, Spread</p>
-      <ul>
-        <li>Array methods (<code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code>)</li>
-        <li>Destructuring, spread/rest operators</li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 3 — ES6+</h3>
-      <p class="focus">Key Focus: Arrow functions, Modules, Optional chaining</p>
-      <ul>
-        <li>Template literals, arrow functions, default parameters</li>
-        <li>Modules (<code>import</code>/<code>export</code>), optional chaining (<code>?.</code>), nullish coalescing (<code>??</code>)</li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 4 — Deeper Concepts</h3>
-      <p class="focus">Key Focus: Closures, <code>this</code>, Event Loop, References vs Values</p>
-      <ul>
-        <li>Hoisting, closures, execution context, call stack</li>
-        <li><code>this</code> keyword, shallow vs deep copy</li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 5 — DOM</h3>
-      <p class="focus">Key Focus: Event Delegation, <code>event.preventDefault()</code>, Dynamic Element Creation</p>
-      <ul>
-        <li>Selecting, traversing, changing elements</li>
-        <li>Event listeners, bubbling, delegation</li>
-        <li>Forms and form validation</li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 6 — Browser APIs</h3>
-      <p class="focus">Key Focus: <code>localStorage</code>, Timers</p>
-      <ul>
-        <li><code>localStorage</code>/<code>sessionStorage</code>, <code>setTimeout</code>/<code>setInterval</code></li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 7 — Asynchronous JavaScript</h3>
-      <p class="focus">Key Focus: <code>async/await</code>, Error Handling, Event Loop</p>
-      <ul>
-        <li>Callbacks, Promises, <code>async</code>/<code>await</code></li>
-        <li><code>try</code>/<code>catch</code>, microtasks vs macrotasks</li>
-      </ul>
-    </div>
-
-    <div class="part">
-      <h3>Part 8 — HTTP, JSON &amp; APIs</h3>
-      <p class="focus">Key Focus: <code>fetch()</code>, Status Codes, CORS</p>
-      <ul>
-        <li>REST basics, HTTP methods, status codes</li>
-        <li>JSON, <code>fetch()</code> with <code>async/await</code></li>
-      </ul>
-    </div>
-
-    <div class="course">
-      <h4>Elzero Web School — JavaScript</h4>
-      <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-      <div class="meta">188 videos · ~19h 23m · Arabic &nbsp; <span class="rating">5/5</span></div>
-    </div>
-    <div class="course">
-      <h4>Elzero Web School — ES6+ (Supplement)</h4>
-      <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAz7_BgzvNcOaE-m_SnE4jiT" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-      <div class="meta">52 videos · ~6h 44m · Arabic &nbsp; <span class="rating">5/5</span></div>
-    </div>
-
-    <h3 style="margin-top:24px;">Projects</h3>
-    <table>
-      <tr><th>#</th><th>Project</th><th>Difficulty</th><th>Concepts</th></tr>
-      <tr><td>1</td><td>Counter</td><td><span class="diff diff-1">1/5</span></td><td>DOM, events</td></tr>
-      <tr><td>2</td><td>Todo List</td><td><span class="diff diff-2">2/5</span></td><td>CRUD, localStorage</td></tr>
-      <tr><td>3</td><td>Calculator</td><td><span class="diff diff-3">3/5</span></td><td>Events, state, string manipulation</td></tr>
-      <tr><td>4</td><td>Quiz App</td><td><span class="diff diff-3">3/5</span></td><td>Arrays, objects, timer</td></tr>
-      <tr><td>5</td><td>Notes App</td><td><span class="diff diff-3">3/5</span></td><td>CRUD, localStorage</td></tr>
-      <tr><td>6</td><td>Weather App</td><td><span class="diff diff-4">4/5</span></td><td>fetch(), async/await, API</td></tr>
-      <tr><td>7</td><td>Movie Search</td><td><span class="diff diff-4">4/5</span></td><td>API, search, debouncing</td></tr>
-      <tr><td>8</td><td>GitHub Search</td><td><span class="diff diff-4">4/5</span></td><td>GitHub API, error handling</td></tr>
-      <tr><td>9</td><td>Product Filter</td><td><span class="diff diff-4">4/5</span></td><td>Filtering, sorting, state</td></tr>
-      <tr><td>10</td><td>API Dashboard</td><td><span class="diff diff-5">5/5</span></td><td>Multiple APIs, charts, responsive</td></tr>
-    </table>
-  </section>
-
-<section class="phase" id="phase3">
-    <div class="phase-header">
-      <div class="phase-num">3</div>
-      <div>
-        <h2>Git &amp; GitHub</h2>
-        <div class="duration">1 week</div>
-      </div>
-    </div>
-    <p><strong>When to start:</strong> Start using Git from Phase 1 (commit your projects). Learn formally here.</p>
-    <ul style="margin:14px 0 14px 18px; font-size:14px;">
-      <li><code>git init</code>, <code>status</code>, <code>add</code>, <code>commit</code>, <code>log</code>, <code>.gitignore</code></li>
-      <li>Branches: <code>branch</code>, <code>switch</code>, <code>merge</code></li>
-      <li>Remote: <code>remote</code>, <code>push</code>, <code>pull</code>, <code>clone</code></li>
-      <li>GitHub: repositories, README, Pull Requests, Issues</li>
-    </ul>
-    <div class="course">
-      <h4>Git &amp; GitHub Course — Arabic</h4>
-      <a href="https://www.youtube.com/watch?v=Q6G-J54vgKc" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-      <div class="meta">Arabic &nbsp; <span class="rating">4/5</span></div>
-    </div>
-  </section>
-
-<section class="phase" id="phase4">
-    <div class="phase-header">
-      <div class="phase-num">4</div>
-      <div>
-        <h2>TypeScript</h2>
-        <div class="duration">2–3 weeks</div>
-      </div>
-    </div>
-    <p><strong>Prerequisites:</strong> Strong JavaScript foundation required.</p>
-    <ul style="margin:14px 0 14px 18px; font-size:14px;">
-      <li>Why TypeScript exists, type inference, annotations</li>
-      <li>Interfaces, type aliases, union/intersection types</li>
-      <li>Generics, narrowing, utility types</li>
-      <li>TypeScript with React (props, state, events)</li>
-    </ul>
-    <div class="course">
-      <h4>Elzero Web School — TypeScript</h4>
-      <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAy532K9M_fjiAmrJ0gkCyLJ" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-      <div class="meta">38 videos · ~3h 21m · Arabic &nbsp; <span class="rating">4/5</span></div>
-    </div>
-  </section>
-
-<section class="phase" id="phase5">
-    <div class="phase-header">
-      <div class="phase-num">5</div>
-      <div>
-        <h2>React</h2>
-        <div class="duration">4–6 weeks</div>
-      </div>
-    </div>
-    <ul style="margin:0 0 14px 18px; font-size:14px;">
-      <li>JSX, Components, Props, State, Events</li>
-      <li>Conditional rendering, Lists, Keys, Forms</li>
-      <li>Hooks: <code>useState</code>, <code>useEffect</code>, <code>useRef</code>, <code>useContext</code>, Custom Hooks</li>
-      <li>Component composition, folder structure, state management</li>
-      <li>React Router (routes, nested routes, protected routes)</li>
-      <li>APIs with React (fetching, loading/error states, auth)</li>
-    </ul>
-    <div class="course">
-      <h4>ITI — React Course (Arabic)</h4>
-      <a href="https://www.youtube.com/playlist?list=PLNFDrRZdysFyKuETeKNLYu5ATuYf6oEPb" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-      <div class="meta">Arabic &nbsp; <span class="rating">4/5</span></div>
-    </div>
-    <div class="course">
-      <h4>SuperSimpleDev — React 19 Full Course (English)</h4>
-      <a href="https://www.youtube.com/watch?v=TtPXvEcE11E&t=1s" target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
-      <div class="meta">~11h 32m · React 19 · English &nbsp; <span class="rating">5/5</span></div>
-    </div>
-  </section>
-
-<section class="phase" id="phase6">
-    <div class="phase-header">
-      <div class="phase-num">6</div>
-      <div>
-        <h2>Modern Front-End Skills</h2>
-        <div class="duration">4–6 weeks</div>
-      </div>
-    </div>
-    <ul style="margin:0 0 10px 18px; font-size:14px;">
-      <li>Authentication &amp; Authorization (JWT, protected routes)</li>
-      <li>Form Handling &amp; Validation (React Hook Form, Zod)</li>
-      <li>State Management (Context, Redux Toolkit, TanStack Query)</li>
-      <li>Performance (memo, useMemo, useCallback, lazy loading)</li>
-      <li>Accessibility (ARIA, keyboard nav, screen readers)</li>
-      <li>Deployment (Vercel, Netlify, GitHub Pages)</li>
-      <li>Web Security Basics (XSS, CSRF, HTTPS)</li>
-      <li>SEO Basics (meta tags, semantic HTML, SSR)</li>
-    </ul>
-  </section>
-
-<section class="phase" id="phase7">
-    <div class="phase-header">
-      <div class="phase-num">7</div>
-      <div>
-        <h2>Testing</h2>
-        <div class="duration">1–2 weeks</div>
-      </div>
-    </div>
-    <ul style="margin:0 0 10px 18px; font-size:14px;">
-      <li>Unit Testing (Jest)</li>
-      <li>Component Testing (React Testing Library)</li>
-      <li>Integration Testing (API mocking)</li>
-      <li>E2E Testing (Cypress / Playwright — optional for junior)</li>
-    </ul>
-  </section>
-
-<section class="phase" id="phase8">
-    <div class="phase-header">
-      <div class="phase-num">8</div>
-      <div>
-        <h2>Advanced Topics</h2>
-        <div class="duration">Ongoing</div>
-      </div>
-    </div>
-    <div class="part" style="border-left-color:var(--accent-green);">
-      <h3 style="color:var(--accent-green);">Junior Level (Learn Now)</h3>
-      <ul>
-        <li>Advanced React patterns, performance optimization</li>
-        <li>Code splitting, lazy loading, memoization</li>
-        <li>Advanced TypeScript, web accessibility</li>
-        <li>Browser rendering pipeline, service workers</li>
-      </ul>
-    </div>
-    <div class="part" style="border-left-color:var(--accent-orange);">
-      <h3 style="color:#c68a00;">Intermediate Level (1–2 Years)</h3>
-      <ul>
-        <li>Next.js (SSR/SSG), Server Components</li>
-        <li>Advanced state management (Zustand, Jotai)</li>
-        <li>WebSockets, GraphQL, CI/CD, Docker basics</li>
-      </ul>
-    </div>
-    <div class="part" style="border-left-color:var(--accent-red);">
-      <h3 style="color:var(--accent-red);">Advanced / Optional</h3>
-      <ul>
-        <li>Micro-frontends, WebAssembly, Web Workers</li>
-        <li>Advanced animation (Framer Motion, GSAP)</li>
-        <li>Monorepo tools (Turborepo, Nx)</li>
-      </ul>
-    </div>
-  </section>
-
-<section class="phase" id="courses">
-    <div class="phase-header">
-      <div class="phase-num">★</div>
-      <div>
-        <h2>Course Summary</h2>
-      </div>
-    </div>
-    <table>
-      <tr><th>Phase</th><th>Course</th><th>Language</th><th>Link</th></tr>
-      <tr><td>HTML</td><td>Elzero Web School</td><td>Arabic</td><td><a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji" target="_blank" rel="noopener noreferrer">YouTube</a></td></tr>
-      <tr><td>CSS</td><td>Elzero Web School</td><td>Arabic</td><td><a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAzjsz06gkzlSrlev53MGIKe" target="_blank" rel="noopener noreferrer">YouTube</a></td></tr>
-      <tr><td>JavaScript</td><td>Elzero Web School</td><td>Arabic</td><td><a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv" target="_blank" rel="noopener noreferrer">YouTube</a></td></tr>
-      <tr><td>ES6+</td><td>Elzero Web School</td><td>Arabic</td><td><a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAz7_BgzvNcOaE-m_SnE4jiT" target="_blank" rel="noopener noreferrer">YouTube</a></td></tr>
-      <tr><td>Git/GitHub</td><td>Git &amp; GitHub Course</td><td>Arabic</td><td><a href="https://www.youtube.com/watch?v=Q6G-J54vgKc" target="_blank" rel="noopener noreferrer">YouTube</a></td></tr>
-      <tr><td>TypeScript</td><td>Elzero Web School</td><td>Arabic</td><td><a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAy532K9M_fjiAmrJ0gkCyLJ" target="_blank" rel="noopener noreferrer">YouTube</a></td></tr>
-      <tr><td>React</td><td>ITI</td><td>Arabic</td><td><a href="https://www.youtube.com/playlist?list=PLNFDrRZdysFyKuETeKNLYu5ATuYf6oEPb" target="_blank" rel="noopener noreferrer">YouTube</a></td></tr>
-      <tr><td>React (alt)</td><td>SuperSimpleDev</td><td>English</td><td><a href="https://www.youtube.com/watch?v=TtPXvEcE11E&t=1s" target="_blank" rel="noopener noreferrer">YouTube</a></td></tr>
-    </table>
-
-    <h3 style="margin-top:28px;">Official Documentation</h3>
-    <table>
-      <tr><th>Tech</th><th>Link</th></tr>
-      <tr><td>HTML/CSS/JS</td><td><a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">MDN Web Docs</a></td></tr>
-      <tr><td>JavaScript</td><td><a href="https://javascript.info/" target="_blank" rel="noopener noreferrer">JavaScript.info</a></td></tr>
-      <tr><td>React</td><td><a href="https://react.dev/" target="_blank" rel="noopener noreferrer">react.dev</a></td></tr>
-      <tr><td>TypeScript</td><td><a href="https://www.typescriptlang.org/docs/handbook/" target="_blank" rel="noopener noreferrer">TypeScript Handbook</a></td></tr>
-      <tr><td>Git</td><td><a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer">git-scm.com/doc</a></td></tr>
-      <tr><td>GitHub</td><td><a href="https://docs.github.com/" target="_blank" rel="noopener noreferrer">docs.github.com</a></td></tr>
-    </table>
-  </section>
-
-    <!-- VOUCHER VAULT -->
-    <section class="vault-section" id="coupons">
-      <h2 class="vault-title" style="font-family:var(--font-arabic);">كوبونات دورات م. محمد أبو هدهود الرسمية</h2>
-      <p class="vault-lead" style="font-family:var(--font-arabic);">قسائم دعم وخصم مباشرة (25% - 50% - 75% - 100%) للاستخدام على موقع programmingadvices.com</p>
-
-      <div class="coupons-grid">
-        <div class="coupon-ticket">
-          <div class="coupon-header-row">
-            <span class="coupon-badge-rate rate-100">100% OFF</span>
-            <span class="coupon-tier">مجاني بالكامل لوجه الله</span>
+    <!-- ========== PHASE 0 ========== -->
+    <section class="phase" id="phase0">
+      <div class="phase-header">
+        <div class="phase-header-left">
+          <div class="phase-num">0</div>
+          <div>
+            <h2>Web Fundamentals</h2>
+            <div class="duration">1–2 days</div>
           </div>
-          <div class="coupon-code-box">SUPPORT100%</div>
-          <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT100%">
-            <span>نسخ كود 100%</span>
-          </button>
+        </div>
+        <label class="phase-toggle-label">
+          <input type="checkbox" data-phase="phase0">
+          <span>Mark complete &check;</span>
+        </label>
+      </div>
+
+      <p>Understand how the web works before writing any code. This phase is short by design.</p>
+      
+      <div class="part">
+        <h3>Core Knowledge Pillars</h3>
+        <ul>
+          <li><strong>Internet vs Web</strong> — The internet is the infrastructure. The web is a service on top of it.</li>
+          <li><strong>Client / Server</strong> — Browser sends request &rarr; server sends response.</li>
+          <li><strong>DNS</strong> — Translates domain names into IP addresses.</li>
+          <li><strong>HTTP/HTTPS</strong> — Protocols for transferring data. HTTPS is encrypted.</li>
+          <li><strong>Browser DevTools</strong> — Your #1 debugging tool.</li>
+          <li><strong>VS Code + Terminal basics</strong> — Your development environment.</li>
+        </ul>
+      </div>
+
+      <!-- PROMINENT COURSE LAUNCH BOX -->
+      <div class="course-launch-card">
+        <div class="course-launch-header">
+          <h4 class="course-launch-title">Essential Programming Fundamentals — Level One</h4>
+          <div class="course-meta-pills">
+            <span class="pill-tag free">FREE</span>
+            <span class="pill-tag">37 videos &bull; ~4h 12m</span>
+            <span class="pill-tag">Arabic</span>
+            <span class="pill-tag rating">&starf; 5/5</span>
+          </div>
+        </div>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-secondary);">
+          Foundational course covering the core mental model of how computing systems, memory, and code interact.
+        </p>
+        <a href="https://www.youtube.com/playlist?list=PL3X--QIIK-OHgMV2yBz3GLfM5d_5BxOSj" target="_blank" rel="noopener noreferrer" class="btn-course-launch">
+          &#9654; Watch Course on YouTube &rarr;
+        </a>
+      </div>
+
+      <div class="study-method">
+        <span class="step-num">1</span> Watch first 5–10 lessons
+        <span class="step-arrow">&rarr;</span>
+        <span class="step-num">2</span> Install VS Code + Live Server
+        <span class="step-arrow">&rarr;</span>
+        <span class="step-num">3</span> Create first HTML file
+        <span class="step-arrow">&rarr;</span>
+        <span class="step-num">4</span> Experiment with DevTools
+        <span class="step-arrow">&rarr;</span>
+        <span class="step-num">5</span> Move to Phase 1
+      </div>
+    </section>
+
+    <!-- ========== PHASE 1 ========== -->
+    <section class="phase" id="phase1">
+      <div class="phase-header">
+        <div class="phase-header-left">
+          <div class="phase-num">1</div>
+          <div>
+            <h2>HTML + CSS</h2>
+            <div class="duration">4–6 weeks</div>
+          </div>
+        </div>
+        <label class="phase-toggle-label">
+          <input type="checkbox" data-phase="phase1">
+          <span>Mark complete &check;</span>
+        </label>
+      </div>
+
+      <!-- COURSE LAUNCH CARD 1: HTML -->
+      <div class="course-launch-card">
+        <div class="course-launch-header">
+          <h4 class="course-launch-title">HTML 2021 Course — Elzero Web School</h4>
+          <div class="course-meta-pills">
+            <span class="pill-tag free">FREE</span>
+            <span class="pill-tag">37 videos &bull; ~5h</span>
+            <span class="pill-tag">Arabic</span>
+            <span class="pill-tag rating">&starf; 5/5</span>
+          </div>
+        </div>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-secondary);">Comprehensive modern semantic HTML mastery from zero to full page structure.</p>
+        <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji" target="_blank" rel="noopener noreferrer" class="btn-course-launch">
+          &#9654; Watch HTML Course on YouTube &rarr;
+        </a>
+      </div>
+
+      <!-- COURSE LAUNCH CARD 2: CSS -->
+      <div class="course-launch-card">
+        <div class="course-launch-header">
+          <h4 class="course-launch-title">CSS 2021 Course — Elzero Web School</h4>
+          <div class="course-meta-pills">
+            <span class="pill-tag free">FREE</span>
+            <span class="pill-tag">88 videos &bull; ~14h</span>
+            <span class="pill-tag">Arabic</span>
+            <span class="pill-tag rating">&starf; 5/5</span>
+          </div>
+        </div>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-secondary);">Complete modern CSS, Box Model, Flexbox, CSS Grid, animations, variables, and responsive design.</p>
+        <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAzjsz06gkzlSrlev53MGIKe" target="_blank" rel="noopener noreferrer" class="btn-course-launch">
+          &#9654; Watch CSS Course on YouTube &rarr;
+        </a>
+      </div>
+
+      <div class="part">
+        <h3>Part 1 — HTML</h3>
+        <p class="focus">Key Focus: Semantic HTML, Accessibility, Clean Structure</p>
+        <ul>
+          <li>Document structure, elements, tags, attributes</li>
+          <li>Headings, paragraphs, text formatting, links, images, lists, tables</li>
+          <li>Forms, input types, buttons, audio, video, iframe</li>
+          <li><strong>Semantic HTML:</strong> <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code></li>
+          <li><strong>Accessibility:</strong> <code>alt</code> text, <code>aria-*</code> labels, form labels, heading hierarchy</li>
+        </ul>
+      </div>
+
+      <div class="part">
+        <h3>Part 2 — CSS Fundamentals</h3>
+        <p class="focus">Key Focus: Box Model, Specificity, Positioning</p>
+        <ul>
+          <li>Selectors, specificity, cascade, inheritance</li>
+          <li>Colors, units (<code>px</code>, <code>rem</code>, <code>em</code>, <code>vw</code>, <code>vh</code>), typography</li>
+          <li>Box model (<code>box-sizing: border-box</code>), display, positioning</li>
+          <li>Pseudo-classes, pseudo-elements, CSS variables</li>
+        </ul>
+      </div>
+
+      <div class="part">
+        <h3>Part 3 — Flexbox</h3>
+        <p class="focus">Key Focus: Centering, Navigation Bars, Card Layouts</p>
+        <ul>
+          <li>Main/Cross axis, <code>flex-direction</code>, <code>justify-content</code>, <code>align-items</code></li>
+          <li><code>flex-wrap</code>, <code>gap</code>, <code>flex-grow</code>/<code>shrink</code>/<code>basis</code></li>
+        </ul>
+      </div>
+
+      <div class="part">
+        <h3>Part 4 — CSS Grid</h3>
+        <p class="focus">Key Focus: Page Layouts, Photo Galleries, Dashboards</p>
+        <ul>
+          <li><code>grid-template-columns</code>, <code>repeat()</code>, <code>minmax()</code>, <code>auto-fit</code> / <code>auto-fill</code></li>
+          <li><code>grid-gap</code>, <code>grid-column</code>/<code>row</code>, <code>grid-template-areas</code></li>
+        </ul>
+      </div>
+
+      <div class="part">
+        <h3>Part 5 — Responsive Design</h3>
+        <p class="focus">Key Focus: Mobile-First Approach</p>
+        <ul>
+          <li>Viewport meta tag, media queries (<code>min-width</code>, <code>max-width</code>)</li>
+          <li>Fluid typography with <code>clamp()</code></li>
+          <li>Breakpoints (Mobile &le; 480px, Tablet &le; 768px, Desktop &ge; 1024px)</li>
+        </ul>
+      </div>
+
+      <div class="part">
+        <h3>Part 6 — Modern CSS &amp; Polish</h3>
+        <p class="focus">Key Focus: Transitions, Animations, Shadow Layers</p>
+        <ul>
+          <li>Transitions, transforms (<code>scale</code>, <code>translate</code>, <code>rotate</code>), keyframe animations</li>
+          <li>Gradients, glassmorphism (<code>backdrop-filter</code>), multi-layer shadows</li>
+        </ul>
+      </div>
+
+      <div class="project-box">
+        <h4>Practical Projects to Build</h4>
+        <ul>
+          <li>Personal Portfolio / Link-in-Bio page</li>
+          <li>Product Landing Page (Mobile-first)</li>
+          <li>Modern Analytics Dashboard UI (Grid + Flexbox)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PHASE 2 ========== -->
+    <section class="phase" id="phase2">
+      <div class="phase-header">
+        <div class="phase-header-left">
+          <div class="phase-num">2</div>
+          <div>
+            <h2>JavaScript</h2>
+            <div class="duration">6–10 weeks</div>
+          </div>
+        </div>
+        <label class="phase-toggle-label">
+          <input type="checkbox" data-phase="phase2">
+          <span>Mark complete &check;</span>
+        </label>
+      </div>
+
+      <!-- COURSE LAUNCH CARD 1: JS BASICS -->
+      <div class="course-launch-card">
+        <div class="course-launch-header">
+          <h4 class="course-launch-title">JavaScript 2021 Course — Elzero Web School</h4>
+          <div class="course-meta-pills">
+            <span class="pill-tag free">FREE</span>
+            <span class="pill-tag">188 videos &bull; ~33h</span>
+            <span class="pill-tag">Arabic</span>
+            <span class="pill-tag rating">&starf; 5/5</span>
+          </div>
+        </div>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-secondary);">From programming logic to DOM manipulation, OOP, BOM, and asynchronous requests.</p>
+        <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv" target="_blank" rel="noopener noreferrer" class="btn-course-launch">
+          &#9654; Watch JavaScript Course on YouTube &rarr;
+        </a>
+      </div>
+
+      <!-- COURSE LAUNCH CARD 2: ES6 -->
+      <div class="course-launch-card">
+        <div class="course-launch-header">
+          <h4 class="course-launch-title">Mastering ECMAScript 6 (ES6) — Elzero Web School</h4>
+          <div class="course-meta-pills">
+            <span class="pill-tag free">FREE</span>
+            <span class="pill-tag">36 videos &bull; ~7h</span>
+            <span class="pill-tag">Arabic</span>
+            <span class="pill-tag rating">&starf; 5/5</span>
+          </div>
+        </div>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-secondary);">Destructuring, Arrow functions, Spread/Rest, Map, Set, Symbols, Classes, and Modules.</p>
+        <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAz7_BgzvNcOaE-m_SnE4jiT" target="_blank" rel="noopener noreferrer" class="btn-course-launch">
+          &#9654; Watch ES6 Course on YouTube &rarr;
+        </a>
+      </div>
+
+      <div class="part">
+        <h3>Part 1 — JavaScript Basics</h3>
+        <p class="focus">Key Focus: Data Types, Operators, Control Flow</p>
+        <ul>
+          <li>Variables (<code>let</code>, <code>const</code> — never <code>var</code>)</li>
+          <li>Data types: Primitive vs Reference</li>
+          <li>Conditionals (<code>if/else</code>, ternary, switch)</li>
+          <li>Loops (<code>for</code>, <code>while</code>, <code>for...of</code>, <code>for...in</code>)</li>
+          <li>Functions (declarations, expressions, arrow functions, default params)</li>
+        </ul>
+      </div>
+
+      <div class="part">
+        <h3>Part 2 — Intermediate JavaScript</h3>
+        <p class="focus">Key Focus: Array Methods, Objects, Scope</p>
+        <ul>
+          <li>Array methods: <code>map</code>, <code>filter</code>, <code>reduce</code>, <code>find</code>, <code>some</code>, <code>every</code>, <code>flat</code></li>
+          <li>Object manipulation: destructuring, spread, <code>Object.keys/values/entries</code></li>
+          <li>Scope (global, block, function), hoisting, closures</li>
+          <li>ES6+ features: template literals, optional chaining (<code>?.</code>), nullish coalescing (<code>??</code>)</li>
+        </ul>
+      </div>
+
+      <div class="part">
+        <h3>Part 3 — DOM &amp; Browser APIs</h3>
+        <p class="focus">Key Focus: Interactive Web Apps</p>
+        <ul>
+          <li>DOM selection: <code>querySelector</code>, <code>querySelectorAll</code></li>
+          <li>DOM manipulation: creating, appending, removing elements, class lists</li>
+          <li>Events: <code>addEventListener</code>, event object, event bubbling, event delegation</li>
+          <li>Browser Storage: <code>localStorage</code>, <code>sessionStorage</code></li>
+        </ul>
+      </div>
+
+      <div class="part">
+        <h3>Part 4 — Asynchronous JavaScript</h3>
+        <p class="focus">Key Focus: Working with APIs &amp; Data Fetching</p>
+        <ul>
+          <li>Synchronous vs Asynchronous, Event Loop, Call Stack</li>
+          <li>Promises: states, chaining, <code>.then()</code> / <code>.catch()</code> / <code>.finally()</code></li>
+          <li><code>async/await</code>, error handling with <code>try/catch</code></li>
+          <li><code>fetch()</code> API: GET, POST requests, headers, handling JSON</li>
+        </ul>
+      </div>
+
+      <div class="project-box">
+        <h4>Core JavaScript Projects</h4>
+        <ul>
+          <li>To-Do Application with localStorage persistence</li>
+          <li>Real-time Weather App fetching from live REST API</li>
+          <li>Interactive GitHub Profile Finder with repository stats</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PHASE 3 ========== -->
+    <section class="phase" id="phase3">
+      <div class="phase-header">
+        <div class="phase-header-left">
+          <div class="phase-num">3</div>
+          <div>
+            <h2>Git &amp; GitHub</h2>
+            <div class="duration">1 week</div>
+          </div>
+        </div>
+        <label class="phase-toggle-label">
+          <input type="checkbox" data-phase="phase3">
+          <span>Mark complete &check;</span>
+        </label>
+      </div>
+
+      <div class="course-launch-card">
+        <div class="course-launch-header">
+          <h4 class="course-launch-title">Git &amp; GitHub Full Course</h4>
+          <div class="course-meta-pills">
+            <span class="pill-tag free">FREE</span>
+            <span class="pill-tag">Single Video &bull; ~1h 15m</span>
+            <span class="pill-tag">Arabic</span>
+          </div>
+        </div>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-secondary);">Version control essentials: commits, branches, pull requests, and remote repositories.</p>
+        <a href="https://www.youtube.com/watch?v=Q6G-J54vgKc" target="_blank" rel="noopener noreferrer" class="btn-course-launch">
+          &#9654; Watch Git Tutorial on YouTube &rarr;
+        </a>
+      </div>
+
+      <div class="part">
+        <h3>Essential Commands &amp; Workflow</h3>
+        <ul>
+          <li><code>git init</code>, <code>git clone</code>, <code>git status</code>, <code>git log</code></li>
+          <li>Staging and committing: <code>git add</code>, <code>git commit -m "feat: message"</code></li>
+          <li>Branching &amp; Merging: <code>git branch</code>, <code>git checkout -b</code>, <code>git merge</code></li>
+          <li>Remotes: <code>git push</code>, <code>git pull</code>, <code>git fetch</code></li>
+          <li>GitHub: Pull Requests, Forking, Issue tracking, GitHub Pages deployment</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PHASE 4 ========== -->
+    <section class="phase" id="phase4">
+      <div class="phase-header">
+        <div class="phase-header-left">
+          <div class="phase-num">4</div>
+          <div>
+            <h2>TypeScript</h2>
+            <div class="duration">2–3 weeks</div>
+          </div>
+        </div>
+        <label class="phase-toggle-label">
+          <input type="checkbox" data-phase="phase4">
+          <span>Mark complete &check;</span>
+        </label>
+      </div>
+
+      <div class="course-launch-card">
+        <div class="course-launch-header">
+          <h4 class="course-launch-title">Mastering TypeScript — Elzero Web School</h4>
+          <div class="course-meta-pills">
+            <span class="pill-tag free">FREE</span>
+            <span class="pill-tag">38 videos &bull; ~6h</span>
+            <span class="pill-tag">Arabic</span>
+            <span class="pill-tag rating">&starf; 5/5</span>
+          </div>
+        </div>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-secondary);">Type safety, interfaces, generics, type assertions, and compiler configuration.</p>
+        <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAy532K9M_fjiAmrJ0gkCyLJ" target="_blank" rel="noopener noreferrer" class="btn-course-launch">
+          &#9654; Watch TypeScript Course on YouTube &rarr;
+        </a>
+      </div>
+
+      <div class="part">
+        <h3>Type System Essentials</h3>
+        <ul>
+          <li>Type annotations, type inference, union types, literal types</li>
+          <li><code>interface</code> vs <code>type</code> aliases, extending interfaces</li>
+          <li>Function signatures, optional parameters, return types</li>
+          <li>Generics: <code>&lt;T&gt;</code> functions, generic interfaces, constraints</li>
+          <li>TypeScript with DOM elements and Event objects</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PHASE 5 ========== -->
+    <section class="phase" id="phase5">
+      <div class="phase-header">
+        <div class="phase-header-left">
+          <div class="phase-num">5</div>
+          <div>
+            <h2>React 19 Core</h2>
+            <div class="duration">4–6 weeks</div>
+          </div>
+        </div>
+        <label class="phase-toggle-label">
+          <input type="checkbox" data-phase="phase5">
+          <span>Mark complete &check;</span>
+        </label>
+      </div>
+
+      <!-- COURSE LAUNCH CARD 1: ITI -->
+      <div class="course-launch-card">
+        <div class="course-launch-header">
+          <h4 class="course-launch-title">React JS Course — ITI Scholarship</h4>
+          <div class="course-meta-pills">
+            <span class="pill-tag free">FREE</span>
+            <span class="pill-tag">Comprehensive Playlist</span>
+            <span class="pill-tag">Arabic</span>
+            <span class="pill-tag rating">&starf; 5/5</span>
+          </div>
+        </div>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-secondary);">In-depth academic and production-level React architecture from ITI instructors.</p>
+        <a href="https://www.youtube.com/playlist?list=PLNFDrRZdysFyKuETeKNLYu5ATuYf6oEPb" target="_blank" rel="noopener noreferrer" class="btn-course-launch">
+          &#9654; Watch React (ITI) on YouTube &rarr;
+        </a>
+      </div>
+
+      <!-- COURSE LAUNCH CARD 2: SUPERSIMPLEDEV -->
+      <div class="course-launch-card">
+        <div class="course-launch-header">
+          <h4 class="course-launch-title">React Full Course 2024 — SuperSimpleDev</h4>
+          <div class="course-meta-pills">
+            <span class="pill-tag free">FREE</span>
+            <span class="pill-tag">Project-Based Tutorial</span>
+            <span class="pill-tag">English</span>
+          </div>
+        </div>
+        <p style="margin:0; font-size:0.9rem; color:var(--text-secondary);">Hands-on practical React course building full real-world applications.</p>
+        <a href="https://www.youtube.com/watch?v=TtPXvEcE11E&t=1s" target="_blank" rel="noopener noreferrer" class="btn-course-launch">
+          &#9654; Watch React (SuperSimpleDev) on YouTube &rarr;
+        </a>
+      </div>
+
+      <div class="part">
+        <h3>Core React Architecture</h3>
+        <ul>
+          <li>JSX syntax, component lifecycle, props, children prop</li>
+          <li>State management: <code>useState</code>, <code>useReducer</code></li>
+          <li>Side effects &amp; data fetching: <code>useEffect</code> dependencies, cleanup</li>
+          <li>Performance hooks: <code>useMemo</code>, <code>useCallback</code>, <code>memo</code></li>
+          <li>Context API for global state: <code>createContext</code>, <code>useContext</code></li>
+          <li>React Router for Single Page Application navigation</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PHASE 6 ========== -->
+    <section class="phase" id="phase6">
+      <div class="phase-header">
+        <div class="phase-header-left">
+          <div class="phase-num">6</div>
+          <div>
+            <h2>Modern Front-End Skills</h2>
+            <div class="duration">4–6 weeks</div>
+          </div>
+        </div>
+        <label class="phase-toggle-label">
+          <input type="checkbox" data-phase="phase6">
+          <span>Mark complete &check;</span>
+        </label>
+      </div>
+
+      <div class="part">
+        <h3>Build Tools &amp; Styling Standards</h3>
+        <ul>
+          <li><strong>Tailwind CSS:</strong> Utility-first styling, responsive prefixes, dark mode classes</li>
+          <li><strong>Vite:</strong> Ultra-fast HMR build tooling, plugins, env variables</li>
+          <li><strong>Accessibility (a11y):</strong> WCAG standards, keyboard navigation, screen reader testing</li>
+          <li><strong>Core Web Vitals:</strong> LCP (Largest Contentful Paint), FID/INP, CLS optimization</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PHASE 7 ========== -->
+    <section class="phase" id="phase7">
+      <div class="phase-header">
+        <div class="phase-header-left">
+          <div class="phase-num">7</div>
+          <div>
+            <h2>Automated Testing</h2>
+            <div class="duration">1–2 weeks</div>
+          </div>
+        </div>
+        <label class="phase-toggle-label">
+          <input type="checkbox" data-phase="phase7">
+          <span>Mark complete &check;</span>
+        </label>
+      </div>
+
+      <div class="part">
+        <h3>Testing Levels &amp; Frameworks</h3>
+        <ul>
+          <li><strong>Unit Testing:</strong> Testing isolated utilities and logic with Vitest or Jest</li>
+          <li><strong>Component Testing:</strong> React Testing Library (RTL) testing user interactions</li>
+          <li><strong>End-to-End (E2E):</strong> Full browser workflow tests with Playwright</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PHASE 8 ========== -->
+    <section class="phase" id="phase8">
+      <div class="phase-header">
+        <div class="phase-header-left">
+          <div class="phase-num">8</div>
+          <div>
+            <h2>Advanced Topics &amp; Job Readiness</h2>
+            <div class="duration">Ongoing</div>
+          </div>
+        </div>
+        <label class="phase-toggle-label">
+          <input type="checkbox" data-phase="phase8">
+          <span>Mark complete &check;</span>
+        </label>
+      </div>
+
+      <div class="part">
+        <h3>Industry Production Standards</h3>
+        <ul>
+          <li><strong>Next.js (App Router):</strong> Server Components, SSR, SSG, API routes</li>
+          <li><strong>State Management:</strong> TanStack Query (React Query) for server state, Zustand for client state</li>
+          <li><strong>CI/CD Workflows:</strong> Automated linting, testing, and Vercel/GitHub Actions deployment</li>
+          <li><strong>Portfolio &amp; Interview Prep:</strong> 2-3 production-grade pinned projects on GitHub</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PHASE 9: REDESIGNED COURSE SUMMARY ========== -->
+    <section class="phase" id="courses">
+      <div class="phase-header">
+        <div class="phase-header-left">
+          <div class="phase-num">&#9733;</div>
+          <div>
+            <h2>Curated Course Directory &amp; Documentation</h2>
+            <div class="duration">Recommended Master Resources</div>
+          </div>
+        </div>
+      </div>
+
+      <p>A quick-access curated directory of all recommended free video courses across the Front-End roadmap:</p>
+
+      <!-- GORGEOUS CARD DIRECTORY GRID INSTEAD OF UGLY TABLE -->
+      <div class="summary-grid">
+        <div class="summary-card">
+          <div class="summary-card-top">
+            <span class="summary-tag">HTML5</span>
+            <span class="pill-tag free">FREE &bull; Arabic</span>
+          </div>
+          <h4>HTML 2021 Course</h4>
+          <p>Elzero Web School &bull; Complete semantic foundations</p>
+          <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAw_t_XWUFbBX-c9MafPk9ji" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+            &#9654; Open on YouTube &rarr;
+          </a>
         </div>
 
-        <div class="coupon-ticket">
-          <div class="coupon-header-row">
-            <span class="coupon-badge-rate">75% OFF</span>
-            <span class="coupon-tier">قسيمة دعم مالي 75%</span>
+        <div class="summary-card">
+          <div class="summary-card-top">
+            <span class="summary-tag">CSS3</span>
+            <span class="pill-tag free">FREE &bull; Arabic</span>
           </div>
-          <div class="coupon-code-box">SUPPORT75%</div>
-          <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT75%">
-            <span>نسخ كود 75%</span>
-          </button>
+          <h4>CSS 2021 Course</h4>
+          <p>Elzero Web School &bull; Box Model, Flexbox &amp; Grid</p>
+          <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAzjsz06gkzlSrlev53MGIKe" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+            &#9654; Open on YouTube &rarr;
+          </a>
         </div>
 
-        <div class="coupon-ticket">
-          <div class="coupon-header-row">
-            <span class="coupon-badge-rate">50% OFF</span>
-            <span class="coupon-tier">قسيمة دعم مالي 50%</span>
+        <div class="summary-card">
+          <div class="summary-card-top">
+            <span class="summary-tag">JavaScript</span>
+            <span class="pill-tag free">FREE &bull; Arabic</span>
           </div>
-          <div class="coupon-code-box">SUPPORT50%</div>
-          <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT50%">
-            <span>نسخ كود 50%</span>
-          </button>
+          <h4>JavaScript 2021 Course</h4>
+          <p>Elzero Web School &bull; 188 videos covering JS from zero</p>
+          <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAx3kiplQR_oeDqLDBUDYwVv" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+            &#9654; Open on YouTube &rarr;
+          </a>
         </div>
 
-        <div class="coupon-ticket">
-          <div class="coupon-header-row">
-            <span class="coupon-badge-rate">25% OFF</span>
-            <span class="coupon-tier">قسيمة دعم مالي 25%</span>
+        <div class="summary-card">
+          <div class="summary-card-top">
+            <span class="summary-tag">Modern JS</span>
+            <span class="pill-tag free">FREE &bull; Arabic</span>
           </div>
-          <div class="coupon-code-box">SUPPORT25%</div>
-          <button type="button" class="btn-copy-ticket" data-coupon="SUPPORT25%">
-            <span>نسخ كود 25%</span>
-          </button>
+          <h4>Mastering ECMAScript 6</h4>
+          <p>Elzero Web School &bull; Modern ES6+ syntax &amp; features</p>
+          <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAz7_BgzvNcOaE-m_SnE4jiT" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+            &#9654; Open on YouTube &rarr;
+          </a>
         </div>
+
+        <div class="summary-card">
+          <div class="summary-card-top">
+            <span class="summary-tag">Git / VCS</span>
+            <span class="pill-tag free">FREE &bull; Arabic</span>
+          </div>
+          <h4>Git &amp; GitHub Tutorial</h4>
+          <p>Complete guide to commits, branches, and remote repos</p>
+          <a href="https://www.youtube.com/watch?v=Q6G-J54vgKc" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+            &#9654; Open on YouTube &rarr;
+          </a>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-card-top">
+            <span class="summary-tag">TypeScript</span>
+            <span class="pill-tag free">FREE &bull; Arabic</span>
+          </div>
+          <h4>Mastering TypeScript</h4>
+          <p>Elzero Web School &bull; Types, Generics &amp; Interfaces</p>
+          <a href="https://www.youtube.com/playlist?list=PLDoPjvoNmBAy532K9M_fjiAmrJ0gkCyLJ" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+            &#9654; Open on YouTube &rarr;
+          </a>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-card-top">
+            <span class="summary-tag">React</span>
+            <span class="pill-tag free">FREE &bull; Arabic</span>
+          </div>
+          <h4>React JS — ITI Scholarship</h4>
+          <p>ITI instructors &bull; Deep component &amp; state architecture</p>
+          <a href="https://www.youtube.com/playlist?list=PLNFDrRZdysFyKuETeKNLYu5ATuYf6oEPb" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+            &#9654; Open on YouTube &rarr;
+          </a>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-card-top">
+            <span class="summary-tag">React (Alt)</span>
+            <span class="pill-tag free">FREE &bull; English</span>
+          </div>
+          <h4>React Full Course 2024</h4>
+          <p>SuperSimpleDev &bull; Hands-on real-world application build</p>
+          <a href="https://www.youtube.com/watch?v=TtPXvEcE11E&t=1s" target="_blank" rel="noopener noreferrer" class="btn-card-link">
+            &#9654; Open on YouTube &rarr;
+          </a>
+        </div>
+      </div>
+
+      <h3 style="font-size:1.25rem; font-weight:800; color:#fff; margin:28px 0 14px;">Official Developer Documentation</h3>
+      <div class="docs-grid">
+        <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer" class="doc-card">
+          <span class="doc-tech">HTML / CSS / JS</span>
+          <h5>MDN Web Docs &rarr;</h5>
+        </a>
+        <a href="https://javascript.info/" target="_blank" rel="noopener noreferrer" class="doc-card">
+          <span class="doc-tech">JavaScript Engine</span>
+          <h5>JavaScript.info &rarr;</h5>
+        </a>
+        <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" class="doc-card">
+          <span class="doc-tech">React Core</span>
+          <h5>react.dev &rarr;</h5>
+        </a>
+        <a href="https://www.typescriptlang.org/docs/handbook/" target="_blank" rel="noopener noreferrer" class="doc-card">
+          <span class="doc-tech">TypeScript</span>
+          <h5>TS Handbook &rarr;</h5>
+        </a>
+        <a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer" class="doc-card">
+          <span class="doc-tech">Git Reference</span>
+          <h5>git-scm.com/doc &rarr;</h5>
+        </a>
+        <a href="https://docs.github.com/" target="_blank" rel="noopener noreferrer" class="doc-card">
+          <span class="doc-tech">GitHub Workflows</span>
+          <h5>docs.github.com &rarr;</h5>
+        </a>
       </div>
     </section>
 
     <footer style="margin-top:60px; text-align:center; color:var(--text-muted); font-size:0.88rem; font-family:var(--font-arabic);">
-      أرشيف مسار هندسة الواجهات الأمامية (Front-End) &bull; متاح مجاناً لوجه الله تعالى &bull; <a href="../" style="color:var(--accent-primary-light); font-weight:700;">&#8592; العودة للرئيسية</a>
+      أرشيف مسار هندسة الواجهات الأمامية (Front-End) &bull; متاح مجاناً لوجه الله تعالى &bull; <a href="../" style="color:var(--accent-blue-light); font-weight:700;">&#8592; العودة للرئيسية</a>
     </footer>
 
   </main>
@@ -1466,7 +1870,7 @@ try {
 
 function applyTheme() {
   if (isDark) {
-    document.body.classList.remove('light-mode');
+    document.body.classList.remove('light-theme');
     var icon = document.getElementById('themeToggleIcon');
     var txt = document.getElementById('themeToggleText');
     var mIcon = document.getElementById('mobileThemeToggle');
@@ -1474,7 +1878,7 @@ function applyTheme() {
     if (txt) txt.textContent = 'Light Mode';
     if (mIcon) mIcon.innerHTML = '&#9728;';
   } else {
-    document.body.classList.add('light-mode');
+    document.body.classList.add('light-theme');
     var icon = document.getElementById('themeToggleIcon');
     var txt = document.getElementById('themeToggleText');
     var mIcon = document.getElementById('mobileThemeToggle');
@@ -1495,14 +1899,67 @@ var mBtn = document.getElementById('mobileThemeToggle');
 if (mBtn) mBtn.addEventListener('click', toggleTheme);
 applyTheme();
 
-// Scrollspy for sidebar & mobile pills
-var sections = document.querySelectorAll('section.phase, #coupons');
+// Progress Tracking System
+var STORAGE_KEY = 'frontendRoadmapProgress_v1';
+var feDone = {};
+try { feDone = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch(e) { feDone = {}; }
+
+var totalPhases = 10;
+var phaseCheckboxes = document.querySelectorAll('.phase-toggle-label input[data-phase]');
+var phaseSections = document.querySelectorAll('section.phase');
 var navItems = document.querySelectorAll('#sidebarNav .nav-item');
+
+function updateProgressUI() {
+  var completedCount = 0;
+  phaseCheckboxes.forEach(function(cb) {
+    var pid = cb.getAttribute('data-phase');
+    var isChecked = !!feDone[pid];
+    cb.checked = isChecked;
+    var section = document.getElementById(pid);
+    if (section) section.classList.toggle('is-done', isChecked);
+    
+    // Update sidebar nav badge
+    navItems.forEach(function(item) {
+      if (item.getAttribute('href') === '#' + pid) {
+        item.classList.toggle('is-done', isChecked);
+      }
+    });
+
+    if (isChecked) completedCount++;
+  });
+
+  var percent = Math.round((completedCount / totalPhases) * 100);
+  var compEl = document.getElementById('completedPhasesVal');
+  if (compEl) compEl.textContent = completedCount;
+  var progEl = document.getElementById('overallProgressVal');
+  if (progEl) progEl.textContent = percent + '%';
+  var textEl = document.getElementById('curriculumProgressText');
+  if (textEl) textEl.textContent = completedCount + ' of ' + totalPhases + ' phases completed (' + percent + '%)';
+  var bar = document.getElementById('curriculumProgressBar');
+  if (bar) bar.style.width = percent + '%';
+}
+
+function saveProgress() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(feDone)); } catch(e) {}
+}
+
+phaseCheckboxes.forEach(function(cb) {
+  cb.addEventListener('change', function() {
+    var pid = cb.getAttribute('data-phase');
+    if (cb.checked) feDone[pid] = 1; else delete feDone[pid];
+    saveProgress();
+    updateProgressUI();
+  });
+});
+
+updateProgressUI();
+
+// Scrollspy for sidebar & mobile pills
 var mobilePills = document.querySelectorAll('.mobile-phase-pill');
 
 window.addEventListener('scroll', function() {
   var scrollY = window.pageYOffset + 140;
-  sections.forEach(function(sec) {
+  phaseSections.forEach(function(sec) {
     var top = sec.offsetTop;
     var height = sec.offsetHeight;
     var id = sec.getAttribute('id');
@@ -1516,33 +1973,6 @@ window.addEventListener('scroll', function() {
     }
   });
 }, { passive: true });
-
-// Coupon Copy Handler
-document.getElementById('coupons').addEventListener('click', function(e) {
-  var btn = e.target.closest('[data-coupon]');
-  if (!btn) return;
-  var code = btn.getAttribute('data-coupon');
-  var orig = btn.innerHTML;
-  function ok() {
-    btn.innerHTML = '<span>تم النسخ! &#10003;</span>';
-    btn.style.background = 'var(--accent-emerald)';
-    btn.style.borderColor = 'var(--accent-emerald)';
-    btn.style.color = '#080b11';
-    setTimeout(function() {
-      btn.innerHTML = orig;
-      btn.style.background = '';
-      btn.style.borderColor = '';
-      btn.style.color = '';
-    }, 2000);
-  }
-  try {
-    navigator.clipboard.writeText(code).then(ok, function() {
-      alert('كود الخصم: ' + code);
-    });
-  } catch(err) {
-    alert('كود الخصم: ' + code);
-  }
-});
 
 // Real-Time Synchronized Visitors Counter
 (function() {
