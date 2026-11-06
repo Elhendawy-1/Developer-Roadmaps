@@ -52,6 +52,22 @@
     -webkit-text-size-adjust: 100%;
   }
 
+  /* Sleek Global Scrollbars */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-main, #080b11);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 99px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(96, 165, 250, 0.5);
+  }
+
   body {
     background-color: var(--bg-main);
     color: var(--text-primary);
@@ -60,7 +76,7 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
   }
 
@@ -384,9 +400,23 @@
     display: flex;
     gap: 10px;
     overflow-x: auto;
-    padding-bottom: 8px;
+    padding-bottom: 6px;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-behavior: smooth;
+    cursor: grab;
+    user-select: none;
+  }
+
+  .filters-scroll:active {
+    cursor: grabbing;
+  }
+
+  .filters-scroll::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
   }
 
   .filter-btn {
@@ -2005,8 +2035,45 @@ document.getElementById('modalBody').addEventListener('click', function(e) {
   }
 });
 
-// Filter buttons
-document.getElementById('filterButtons').addEventListener('click', function(e) {
+// Filter buttons with smooth drag & mouse-wheel support
+var filterContainer = document.getElementById('filterButtons');
+var isDown = false;
+var startX = 0;
+var scrollLeftVal = 0;
+var hasDragged = false;
+
+filterContainer.addEventListener('wheel', function(e) {
+  if (e.deltaY !== 0) {
+    e.preventDefault();
+    filterContainer.scrollLeft += (e.deltaY * 1.2);
+  }
+}, { passive: false });
+
+filterContainer.addEventListener('mousedown', function(e) {
+  isDown = true;
+  hasDragged = false;
+  startX = e.pageX - filterContainer.offsetLeft;
+  scrollLeftVal = filterContainer.scrollLeft;
+});
+
+window.addEventListener('mouseup', function() {
+  isDown = false;
+});
+
+filterContainer.addEventListener('mousemove', function(e) {
+  if (!isDown) return;
+  e.preventDefault();
+  var x = e.pageX - filterContainer.offsetLeft;
+  var walk = (x - startX) * 1.5;
+  if (Math.abs(walk) > 4) hasDragged = true;
+  filterContainer.scrollLeft = scrollLeftVal - walk;
+});
+
+filterContainer.addEventListener('click', function(e) {
+  if (hasDragged) {
+    hasDragged = false;
+    return;
+  }
   var btn = e.target.closest('.filter-btn');
   if (!btn) return;
   document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
